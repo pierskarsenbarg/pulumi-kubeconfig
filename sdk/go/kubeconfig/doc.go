@@ -1,0 +1,2 @@
+// Kubeconfig provider
+package kubeconfig

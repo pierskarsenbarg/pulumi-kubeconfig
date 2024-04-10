@@ -1,0 +1,64 @@
+name: eks-kubeconfig
+runtime: yaml
+
+plugins:
+  providers:
+    - name: kubeconfig
+      path: ../../bin
+
+resources:
+  kubeconfigprovider:
+    type: pulumi:providers:kubeconfig
+  vpc:
+    type: awsx:ec2:Vpc
+    properties:
+      tags:
+        Name: "PiersVpc"
+  eksRole:
+    type: aws:iam/role:Role
+    properties:
+      assumeRolePolicy: |
+        {
+          "Version": "2012-10-17",
+          "Statement": [
+            {
+              "Effect": "Allow",
+              "Principal": {
+                "Service": "eks.amazonaws.com"
+              },
+              "Action": "sts:AssumeRole"
+            }
+          ]
+        }
+      tags:
+        Name: pulumi-eks-role
+  eksRolePolicyAttachment:
+    type: aws:iam/rolePolicyAttachment:RolePolicyAttachment
+    properties:
+      policyArn: "arn:aws:iam::aws:policy/AmazonEKSClusterPolicy"
+      role: ${eksRole.name}
+  eksRolePolicyAttachmentVPC:
+    type: aws:iam/rolePolicyAttachment:RolePolicyAttachment
+    properties:
+      policyArn: "arn:aws:iam::aws:policy/AmazonEKSVPCResourceController"
+      role: ${eksRole.name}
+  eksCluster:
+    type: aws:eks/cluster:Cluster
+    properties:
+      roleArn: ${eksRole.arn}
+      vpcConfig:
+        publicAccessCidrs: ["0.0.0.0/0"]
+        subnetIds: ${vpc.publicSubnetIds}
+    options:
+      dependsOn:
+        - ${eksRolePolicyAttachment}
+        - ${eksRolePolicyAttachmentVPC}
+        - ${vpc}
+  kubeconfig:
+    type: kubeconfig:EksKubeConfig
+    properties:
+      clusterName: ${eksCluster.name}
+      clusterEndpoint: ${eksCluster.endpoint}
+      certificateData: ${eksCluster.certificateAuthority.data}
+outputs:
+  kubeconfig: ${kubeconfig.kubeconfig}
