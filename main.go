@@ -15,8 +15,10 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/common/tokens"
 )
 
+var Version string
+
 func main() {
-	err := p.RunProvider("kubeconfig", "0.1.0", provider())
+	err := p.RunProvider("kubeconfig", Version, provider())
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error: %s", err.Error())
 		os.Exit(1)
