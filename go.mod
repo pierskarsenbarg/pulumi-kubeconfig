@@ -4,7 +4,7 @@ go 1.22.1
 
 require (
 	github.com/pulumi/pulumi-azure-native-sdk/containerservice v1.104.0
-	github.com/pulumi/pulumi-go-provider v0.15.0
+	github.com/pulumi/pulumi-go-provider v0.16.0
 	github.com/pulumi/pulumi/pkg/v3 v3.112.0
 	github.com/pulumi/pulumi/sdk/v3 v3.113.3
 )
