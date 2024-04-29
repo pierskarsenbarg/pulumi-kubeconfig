@@ -175,7 +175,7 @@ func buildEksConfig(input EksKubeConfigArgs) (string, error) {
 	})
 
 	if err != nil {
-		return "", nil
+		return "", err
 	}
 
 	return string(kubeconfig), nil
