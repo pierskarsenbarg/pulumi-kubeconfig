@@ -1488,10 +1488,10 @@ github.com/pulumi/appdash v0.0.0-20231130102222-75f619a67231 h1:vkHw5I/plNdTr435
 github.com/pulumi/appdash v0.0.0-20231130102222-75f619a67231/go.mod h1:murToZ2N9hNJzewjHBgfFdXhZKjY3z5cYC1VXk+lbFE=
 github.com/pulumi/esc v0.6.2 h1:+z+l8cuwIauLSwXQS0uoI3rqB+YG4SzsZYtHfNoXBvw=
 github.com/pulumi/esc v0.6.2/go.mod h1:jNnYNjzsOgVTjCp0LL24NsCk8ZJxq4IoLQdCT0X7l8k=
-github.com/pulumi/pulumi-azure-native-sdk v1.104.0 h1:vyD4PvKSOkwL1z9WTis3ZE9XC73UM/7AyMNek4Vm1+E=
-github.com/pulumi/pulumi-azure-native-sdk v1.104.0/go.mod h1:ZfkbJPR8poiJgy4IlNaa2NBjHLW37nsLY2BIbZp3lHc=
-github.com/pulumi/pulumi-azure-native-sdk/containerservice v1.104.0 h1:grLVzWH6pS5os8ZfAbEkdEbaF4BFoLMwDai9ZsOINqo=
-github.com/pulumi/pulumi-azure-native-sdk/containerservice v1.104.0/go.mod h1:QRMkKXRX3suaDR13VgN9jEkPl66YI/MZOyu0hxZzwuk=
+github.com/pulumi/pulumi-azure-native-sdk/containerservice/v2 v2.38.0 h1:l93cC2a0ntGXVpbm9h/36/usFqJ6ETXEbdoCCjAN6Zk=
+github.com/pulumi/pulumi-azure-native-sdk/containerservice/v2 v2.38.0/go.mod h1:YqujYm4fdirw1yBb55OQ2TPSNSM2dp7tdNLXC/1TZl4=
+github.com/pulumi/pulumi-azure-native-sdk/v2 v2.38.0 h1:XzslLx/yTjbmBAtICF5hnIXrTVDMKX1kGDBM3Lrrtp8=
+github.com/pulumi/pulumi-azure-native-sdk/v2 v2.38.0/go.mod h1:APPYNWQ57dDSxHt+PsE9EPHfcNcHIRsGGJDxxo4CAnY=
 github.com/pulumi/pulumi-go-provider v0.16.0 h1:vLAiECprIoLdTPd0UFs9Vv/HgSw7l/SBAurRBm3vpSU=
 github.com/pulumi/pulumi-go-provider v0.16.0/go.mod h1:2yjjeyMSmsb/o/BRJeWk+kcXrJWF5U2EulJKnN7qVLs=
 github.com/pulumi/pulumi/pkg/v3 v3.114.0 h1:+Ru1DfQKKmZcTYF7i+IWTaxvHX+vIWmVPyUXXksM3Uk=
