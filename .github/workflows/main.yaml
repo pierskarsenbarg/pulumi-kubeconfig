@@ -45,9 +45,5 @@ jobs:
         uses: jaxxstorm/action-install-gh-release@v1.11.0
         with:
           repo: pulumi/pulumictl
-      - name: Install bun
-        uses: oven-sh/setup-bun@v1
-        with:
-          bun-version: 1.1.0
       - name: generate sdks
         run: task generate_sdks
