@@ -7,8 +7,7 @@ import (
 	"github.com/pulumi/pulumi-go-provider/infer"
 )
 
-type EksKubeConfig struct {
-}
+type EksKubeConfig struct{}
 
 type EksKubeConfigArgs struct {
 	ClusterName     string `pulumi:"clusterName"`
@@ -16,6 +15,7 @@ type EksKubeConfigArgs struct {
 	CertificateData string `pulumi:"certificateData,optional"`
 	RoleArn         string `pulumi:"roleArn,optional"`
 	ProfileName     string `pulumi:"profileName,optional"`
+	Region          string `pulumi:"region,optional"`
 }
 
 func (eks *EksKubeConfigArgs) Annotate(a infer.Annotator) {
@@ -24,6 +24,7 @@ func (eks *EksKubeConfigArgs) Annotate(a infer.Annotator) {
 	a.Describe(&eks.CertificateData, "Base64 encoded certificate data required to communicate with your cluster.")
 	a.Describe(&eks.RoleArn, "Role arn that you want the kubeconfig to use. Optional")
 	a.Describe(&eks.ProfileName, "AWS Profile name that you want the kubeconfig to use")
+	a.Describe(&eks.Region, "Region that the EKS cluster is in. Optional")
 }
 
 type EksKubeConfigState struct {
@@ -32,6 +33,7 @@ type EksKubeConfigState struct {
 	CertificateData string `pulumi:"certificateData"`
 	RoleArn         string `pulumi:"roleArn,optional"`
 	ProfileName     string `pulumi:"profileName,optional"`
+	Region          string `pulumi:"region,optional"`
 	KubeConfig      string `pulumi:"kubeconfig" provider:"secret"`
 }
 
@@ -45,7 +47,8 @@ func (eks *EksKubeConfigState) Annotate(a infer.Annotator) {
 }
 
 func (e *EksKubeConfig) Create(ctx p.Context, name string, input EksKubeConfigArgs, preview bool) (
-	id string, output EksKubeConfigState, err error) {
+	id string, output EksKubeConfigState, err error,
+) {
 	if preview {
 		return "", EksKubeConfigState{}, nil
 	}
@@ -64,6 +67,7 @@ func (e *EksKubeConfig) Create(ctx p.Context, name string, input EksKubeConfigAr
 		CertificateData: input.CertificateData,
 		RoleArn:         input.RoleArn,
 		ProfileName:     input.ProfileName,
+		Region: 		 input.Region,
 	}, nil
 }
 
@@ -93,9 +97,7 @@ func (*EksKubeConfig) Diff(ctx p.Context, id string, olds EksKubeConfigState, ne
 }
 
 func (*EksKubeConfig) Update(ctx p.Context, id string, olds EksKubeConfigState, news EksKubeConfigArgs, preview bool) (EksKubeConfigState, error) {
-
 	kubeConfig, err := buildEksConfig(news)
-
 	if err != nil {
 		return EksKubeConfigState{}, err
 	}
@@ -119,7 +121,11 @@ func buildEksConfig(input EksKubeConfigArgs) (string, error) {
 	}
 
 	if len(input.RoleArn) > 0 {
-		cmdArgs = append(cmdArgs, "--role", input.RoleArn)
+		cmdArgs = append(cmdArgs, "--role ", input.RoleArn)
+	}
+
+	if len(input.Region) > 0 {
+		cmdArgs = append(cmdArgs, "--region ", input.Region)
 	}
 
 	env := []Env{
@@ -173,7 +179,6 @@ func buildEksConfig(input EksKubeConfigArgs) (string, error) {
 			},
 		},
 	})
-
 	if err != nil {
 		return "", err
 	}
