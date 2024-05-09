@@ -1,6 +1,7 @@
 package pkg
 
 import (
+	"context"
 	"encoding/json"
 	"fmt"
 
@@ -36,7 +37,7 @@ func (gke *GkeKubeConfigState) Annotate(a infer.Annotator) {
 	a.Describe(&gke.KubeConfig, "Generated Kubeconfig for working with your GKE cluster")
 }
 
-func (g *GkeKubeConfig) Create(ctx p.Context, name string, input GkeKubeConfigArgs, preview bool) (
+func (g *GkeKubeConfig) Create(ctx context.Context, name string, input GkeKubeConfigArgs, preview bool) (
 	id string, output GkeKubeConfigState, err error) {
 	if preview {
 		return "", GkeKubeConfigState{}, nil
@@ -57,7 +58,7 @@ func (g *GkeKubeConfig) Create(ctx p.Context, name string, input GkeKubeConfigAr
 	}, nil
 }
 
-func (*GkeKubeConfig) Diff(ctx p.Context, id string, olds GkeKubeConfigState, news GkeKubeConfigArgs) (p.DiffResponse, error) {
+func (*GkeKubeConfig) Diff(ctx context.Context, id string, olds GkeKubeConfigState, news GkeKubeConfigArgs) (p.DiffResponse, error) {
 	diff := map[string]p.PropertyDiff{}
 	if news.CertificateData != olds.CertificateData {
 		diff["certificateData"] = p.PropertyDiff{Kind: p.Update}

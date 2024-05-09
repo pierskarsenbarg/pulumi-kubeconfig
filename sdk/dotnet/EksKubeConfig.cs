@@ -43,6 +43,9 @@ namespace PiersKarsenbarg.Kubeconfig
         [Output("profileName")]
         public Output<string?> ProfileName { get; private set; } = null!;
 
+        [Output("region")]
+        public Output<string?> Region { get; private set; } = null!;
+
         /// <summary>
         /// Role arn that you want the kubeconfig to use. Optional
         /// </summary>
@@ -122,6 +125,12 @@ namespace PiersKarsenbarg.Kubeconfig
         /// </summary>
         [Input("profileName")]
         public Input<string>? ProfileName { get; set; }
+
+        /// <summary>
+        /// Region that the EKS cluster is in. Optional
+        /// </summary>
+        [Input("region")]
+        public Input<string>? Region { get; set; }
 
         /// <summary>
         /// Role arn that you want the kubeconfig to use. Optional

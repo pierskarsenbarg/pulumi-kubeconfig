@@ -1,6 +1,7 @@
 package pkg
 
 import (
+	"context"
 	"encoding/json"
 
 	p "github.com/pulumi/pulumi-go-provider"
@@ -46,7 +47,7 @@ func (eks *EksKubeConfigState) Annotate(a infer.Annotator) {
 	a.Describe(&eks.ProfileName, "AWS Profile name that you want the kubeconfig to use. Optional")
 }
 
-func (e *EksKubeConfig) Create(ctx p.Context, name string, input EksKubeConfigArgs, preview bool) (
+func (e *EksKubeConfig) Create(ctx context.Context, name string, input EksKubeConfigArgs, preview bool) (
 	id string, output EksKubeConfigState, err error,
 ) {
 	if preview {
@@ -71,7 +72,7 @@ func (e *EksKubeConfig) Create(ctx p.Context, name string, input EksKubeConfigAr
 	}, nil
 }
 
-func (*EksKubeConfig) Diff(ctx p.Context, id string, olds EksKubeConfigState, news EksKubeConfigArgs) (p.DiffResponse, error) {
+func (*EksKubeConfig) Diff(ctx context.Context, id string, olds EksKubeConfigState, news EksKubeConfigArgs) (p.DiffResponse, error) {
 	diff := map[string]p.PropertyDiff{}
 	if news.CertificateData != olds.CertificateData {
 		diff["certificateData"] = p.PropertyDiff{Kind: p.Update}
@@ -96,7 +97,7 @@ func (*EksKubeConfig) Diff(ctx p.Context, id string, olds EksKubeConfigState, ne
 	}, nil
 }
 
-func (*EksKubeConfig) Update(ctx p.Context, id string, olds EksKubeConfigState, news EksKubeConfigArgs, preview bool) (EksKubeConfigState, error) {
+func (*EksKubeConfig) Update(ctx context.Context, id string, olds EksKubeConfigState, news EksKubeConfigArgs, preview bool) (EksKubeConfigState, error) {
 	kubeConfig, err := buildEksConfig(news)
 	if err != nil {
 		return EksKubeConfigState{}, err
