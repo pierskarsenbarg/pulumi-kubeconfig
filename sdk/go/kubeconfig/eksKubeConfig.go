@@ -26,6 +26,7 @@ type EksKubeConfig struct {
 	Kubeconfig pulumix.Output[string] `pulumi:"kubeconfig"`
 	// AWS Profile name that you want the kubeconfig to use. Optional
 	ProfileName pulumix.Output[*string] `pulumi:"profileName"`
+	Region      pulumix.Output[*string] `pulumi:"region"`
 	// Role arn that you want the kubeconfig to use. Optional
 	RoleArn pulumix.Output[*string] `pulumi:"roleArn"`
 }
@@ -88,6 +89,8 @@ type eksKubeConfigArgs struct {
 	ClusterName string `pulumi:"clusterName"`
 	// AWS Profile name that you want the kubeconfig to use
 	ProfileName *string `pulumi:"profileName"`
+	// Region that the EKS cluster is in. Optional
+	Region *string `pulumi:"region"`
 	// Role arn that you want the kubeconfig to use. Optional
 	RoleArn *string `pulumi:"roleArn"`
 }
@@ -102,6 +105,8 @@ type EksKubeConfigArgs struct {
 	ClusterName pulumix.Input[string]
 	// AWS Profile name that you want the kubeconfig to use
 	ProfileName pulumix.Input[*string]
+	// Region that the EKS cluster is in. Optional
+	Region pulumix.Input[*string]
 	// Role arn that you want the kubeconfig to use. Optional
 	RoleArn pulumix.Input[*string]
 }
@@ -157,6 +162,11 @@ func (o EksKubeConfigOutput) Kubeconfig() pulumix.Output[string] {
 // AWS Profile name that you want the kubeconfig to use. Optional
 func (o EksKubeConfigOutput) ProfileName() pulumix.Output[*string] {
 	value := pulumix.Apply[EksKubeConfig](o, func(v EksKubeConfig) pulumix.Output[*string] { return v.ProfileName })
+	return pulumix.Flatten[*string, pulumix.Output[*string]](value)
+}
+
+func (o EksKubeConfigOutput) Region() pulumix.Output[*string] {
+	value := pulumix.Apply[EksKubeConfig](o, func(v EksKubeConfig) pulumix.Output[*string] { return v.Region })
 	return pulumix.Flatten[*string, pulumix.Output[*string]](value)
 }
 
