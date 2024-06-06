@@ -10,17 +10,16 @@ import (
 	"errors"
 	"github.com/pierskarsenbarg/pulumi-kubeconfig/sdk/go/kubeconfig/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 type GkeKubeConfig struct {
 	pulumi.CustomResourceState
 
-	CertificateData pulumix.Output[*string] `pulumi:"certificateData"`
-	ClusterEndpoint pulumix.Output[string]  `pulumi:"clusterEndpoint"`
-	ClusterName     pulumix.Output[string]  `pulumi:"clusterName"`
+	CertificateData pulumi.StringPtrOutput `pulumi:"certificateData"`
+	ClusterEndpoint pulumi.StringOutput    `pulumi:"clusterEndpoint"`
+	ClusterName     pulumi.StringOutput    `pulumi:"clusterName"`
 	// Generated Kubeconfig for working with your GKE cluster
-	Kubeconfig pulumix.Output[string] `pulumi:"kubeconfig"`
+	Kubeconfig pulumi.StringOutput `pulumi:"kubeconfig"`
 }
 
 // NewGkeKubeConfig registers a new resource with the given unique name, arguments, and options.
@@ -95,23 +94,42 @@ type gkeKubeConfigArgs struct {
 // The set of arguments for constructing a GkeKubeConfig resource.
 type GkeKubeConfigArgs struct {
 	// Base64 encoded certificate data required to communicate with your cluster.
-	CertificateData pulumix.Input[string]
+	CertificateData pulumi.StringInput
 	// Endpoint for your Kubernetes API server.
-	ClusterEndpoint pulumix.Input[string]
+	ClusterEndpoint pulumi.StringInput
 	// Name of the GKE cluster you want to generate the kubeconfig for
-	ClusterName pulumix.Input[string]
-	Project     pulumix.Input[string]
-	Zone        pulumix.Input[string]
+	ClusterName pulumi.StringInput
+	Project     pulumi.StringInput
+	Zone        pulumi.StringInput
 }
 
 func (GkeKubeConfigArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*gkeKubeConfigArgs)(nil)).Elem()
 }
 
+type GkeKubeConfigInput interface {
+	pulumi.Input
+
+	ToGkeKubeConfigOutput() GkeKubeConfigOutput
+	ToGkeKubeConfigOutputWithContext(ctx context.Context) GkeKubeConfigOutput
+}
+
+func (*GkeKubeConfig) ElementType() reflect.Type {
+	return reflect.TypeOf((**GkeKubeConfig)(nil)).Elem()
+}
+
+func (i *GkeKubeConfig) ToGkeKubeConfigOutput() GkeKubeConfigOutput {
+	return i.ToGkeKubeConfigOutputWithContext(context.Background())
+}
+
+func (i *GkeKubeConfig) ToGkeKubeConfigOutputWithContext(ctx context.Context) GkeKubeConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GkeKubeConfigOutput)
+}
+
 type GkeKubeConfigOutput struct{ *pulumi.OutputState }
 
 func (GkeKubeConfigOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GkeKubeConfig)(nil)).Elem()
+	return reflect.TypeOf((**GkeKubeConfig)(nil)).Elem()
 }
 
 func (o GkeKubeConfigOutput) ToGkeKubeConfigOutput() GkeKubeConfigOutput {
@@ -122,33 +140,24 @@ func (o GkeKubeConfigOutput) ToGkeKubeConfigOutputWithContext(ctx context.Contex
 	return o
 }
 
-func (o GkeKubeConfigOutput) ToOutput(ctx context.Context) pulumix.Output[GkeKubeConfig] {
-	return pulumix.Output[GkeKubeConfig]{
-		OutputState: o.OutputState,
-	}
+func (o GkeKubeConfigOutput) CertificateData() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GkeKubeConfig) pulumi.StringPtrOutput { return v.CertificateData }).(pulumi.StringPtrOutput)
 }
 
-func (o GkeKubeConfigOutput) CertificateData() pulumix.Output[*string] {
-	value := pulumix.Apply[GkeKubeConfig](o, func(v GkeKubeConfig) pulumix.Output[*string] { return v.CertificateData })
-	return pulumix.Flatten[*string, pulumix.Output[*string]](value)
+func (o GkeKubeConfigOutput) ClusterEndpoint() pulumi.StringOutput {
+	return o.ApplyT(func(v *GkeKubeConfig) pulumi.StringOutput { return v.ClusterEndpoint }).(pulumi.StringOutput)
 }
 
-func (o GkeKubeConfigOutput) ClusterEndpoint() pulumix.Output[string] {
-	value := pulumix.Apply[GkeKubeConfig](o, func(v GkeKubeConfig) pulumix.Output[string] { return v.ClusterEndpoint })
-	return pulumix.Flatten[string, pulumix.Output[string]](value)
-}
-
-func (o GkeKubeConfigOutput) ClusterName() pulumix.Output[string] {
-	value := pulumix.Apply[GkeKubeConfig](o, func(v GkeKubeConfig) pulumix.Output[string] { return v.ClusterName })
-	return pulumix.Flatten[string, pulumix.Output[string]](value)
+func (o GkeKubeConfigOutput) ClusterName() pulumi.StringOutput {
+	return o.ApplyT(func(v *GkeKubeConfig) pulumi.StringOutput { return v.ClusterName }).(pulumi.StringOutput)
 }
 
 // Generated Kubeconfig for working with your GKE cluster
-func (o GkeKubeConfigOutput) Kubeconfig() pulumix.Output[string] {
-	value := pulumix.Apply[GkeKubeConfig](o, func(v GkeKubeConfig) pulumix.Output[string] { return v.Kubeconfig })
-	return pulumix.Flatten[string, pulumix.Output[string]](value)
+func (o GkeKubeConfigOutput) Kubeconfig() pulumi.StringOutput {
+	return o.ApplyT(func(v *GkeKubeConfig) pulumi.StringOutput { return v.Kubeconfig }).(pulumi.StringOutput)
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*GkeKubeConfigInput)(nil)).Elem(), &GkeKubeConfig{})
 	pulumi.RegisterOutputType(GkeKubeConfigOutput{})
 }

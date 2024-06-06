@@ -10,14 +10,13 @@ import (
 	"errors"
 	"github.com/pierskarsenbarg/pulumi-kubeconfig/sdk/go/kubeconfig/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 type AksKubeConfig struct {
 	pulumi.ResourceState
 
 	// Kubeconfig returned from AKS cluster
-	Kubeconfig pulumix.Output[string] `pulumi:"kubeconfig"`
+	Kubeconfig pulumi.StringOutput `pulumi:"kubeconfig"`
 }
 
 // NewAksKubeConfig registers a new resource with the given unique name, arguments, and options.
@@ -54,21 +53,40 @@ type aksKubeConfigArgs struct {
 // The set of arguments for constructing a AksKubeConfig resource.
 type AksKubeConfigArgs struct {
 	// Name of the AKS cluster you want the Kubeconfig from.
-	ClusterName pulumix.Input[string]
+	ClusterName pulumi.StringInput
 	// Specify whether you want to retrieve the admin kubeconfig or the user kubeconfig. Default value is false
-	IsAdmin pulumix.Input[*bool]
+	IsAdmin pulumi.BoolPtrInput
 	// Name of the resource group that the cluster is part of.
-	ResourceGroupName pulumix.Input[string]
+	ResourceGroupName pulumi.StringInput
 }
 
 func (AksKubeConfigArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*aksKubeConfigArgs)(nil)).Elem()
 }
 
+type AksKubeConfigInput interface {
+	pulumi.Input
+
+	ToAksKubeConfigOutput() AksKubeConfigOutput
+	ToAksKubeConfigOutputWithContext(ctx context.Context) AksKubeConfigOutput
+}
+
+func (*AksKubeConfig) ElementType() reflect.Type {
+	return reflect.TypeOf((**AksKubeConfig)(nil)).Elem()
+}
+
+func (i *AksKubeConfig) ToAksKubeConfigOutput() AksKubeConfigOutput {
+	return i.ToAksKubeConfigOutputWithContext(context.Background())
+}
+
+func (i *AksKubeConfig) ToAksKubeConfigOutputWithContext(ctx context.Context) AksKubeConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AksKubeConfigOutput)
+}
+
 type AksKubeConfigOutput struct{ *pulumi.OutputState }
 
 func (AksKubeConfigOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*AksKubeConfig)(nil)).Elem()
+	return reflect.TypeOf((**AksKubeConfig)(nil)).Elem()
 }
 
 func (o AksKubeConfigOutput) ToAksKubeConfigOutput() AksKubeConfigOutput {
@@ -79,18 +97,12 @@ func (o AksKubeConfigOutput) ToAksKubeConfigOutputWithContext(ctx context.Contex
 	return o
 }
 
-func (o AksKubeConfigOutput) ToOutput(ctx context.Context) pulumix.Output[AksKubeConfig] {
-	return pulumix.Output[AksKubeConfig]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Kubeconfig returned from AKS cluster
-func (o AksKubeConfigOutput) Kubeconfig() pulumix.Output[string] {
-	value := pulumix.Apply[AksKubeConfig](o, func(v AksKubeConfig) pulumix.Output[string] { return v.Kubeconfig })
-	return pulumix.Flatten[string, pulumix.Output[string]](value)
+func (o AksKubeConfigOutput) Kubeconfig() pulumi.StringOutput {
+	return o.ApplyT(func(v *AksKubeConfig) pulumi.StringOutput { return v.Kubeconfig }).(pulumi.StringOutput)
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*AksKubeConfigInput)(nil)).Elem(), &AksKubeConfig{})
 	pulumi.RegisterOutputType(AksKubeConfigOutput{})
 }
