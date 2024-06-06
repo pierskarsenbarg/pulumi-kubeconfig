@@ -32,7 +32,6 @@ func provider() p.Provider {
 			Description: "Kubeconfig provider",
 			LanguageMap: map[string]any{
 				"go": gen.GoPackageInfo{
-					Generics:       gen.GenericsSettingGenericsOnly,
 					ImportBasePath: "github.com/pierskarsenbarg/pulumi-kubeconfig/sdk/go/kubeconfig",
 				},
 				"nodejs": nodejsgen.NodePackageInfo{

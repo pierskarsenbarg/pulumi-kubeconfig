@@ -10,25 +10,24 @@ import (
 	"errors"
 	"github.com/pierskarsenbarg/pulumi-kubeconfig/sdk/go/kubeconfig/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 type EksKubeConfig struct {
 	pulumi.CustomResourceState
 
 	// Base64 encoded certificate data required to communicate with your cluster.
-	CertificateData pulumix.Output[string] `pulumi:"certificateData"`
+	CertificateData pulumi.StringOutput `pulumi:"certificateData"`
 	// Endpoint for your Kubernetes API server.
-	ClusterEndpoint pulumix.Output[string] `pulumi:"clusterEndpoint"`
+	ClusterEndpoint pulumi.StringOutput `pulumi:"clusterEndpoint"`
 	// Name of the EKS cluster you want to generate the kubeconfig for
-	ClusterName pulumix.Output[string] `pulumi:"clusterName"`
+	ClusterName pulumi.StringOutput `pulumi:"clusterName"`
 	// Generated Kubeconfig for working with your EKS cluster
-	Kubeconfig pulumix.Output[string] `pulumi:"kubeconfig"`
+	Kubeconfig pulumi.StringOutput `pulumi:"kubeconfig"`
 	// AWS Profile name that you want the kubeconfig to use. Optional
-	ProfileName pulumix.Output[*string] `pulumi:"profileName"`
-	Region      pulumix.Output[*string] `pulumi:"region"`
+	ProfileName pulumi.StringPtrOutput `pulumi:"profileName"`
+	Region      pulumi.StringPtrOutput `pulumi:"region"`
 	// Role arn that you want the kubeconfig to use. Optional
-	RoleArn pulumix.Output[*string] `pulumi:"roleArn"`
+	RoleArn pulumi.StringPtrOutput `pulumi:"roleArn"`
 }
 
 // NewEksKubeConfig registers a new resource with the given unique name, arguments, and options.
@@ -98,27 +97,46 @@ type eksKubeConfigArgs struct {
 // The set of arguments for constructing a EksKubeConfig resource.
 type EksKubeConfigArgs struct {
 	// Base64 encoded certificate data required to communicate with your cluster.
-	CertificateData pulumix.Input[*string]
+	CertificateData pulumi.StringPtrInput
 	// Endpoint for your Kubernetes API server.
-	ClusterEndpoint pulumix.Input[string]
+	ClusterEndpoint pulumi.StringInput
 	// Name of the EKS cluster you want to generate the kubeconfig for
-	ClusterName pulumix.Input[string]
+	ClusterName pulumi.StringInput
 	// AWS Profile name that you want the kubeconfig to use
-	ProfileName pulumix.Input[*string]
+	ProfileName pulumi.StringPtrInput
 	// Region that the EKS cluster is in. Optional
-	Region pulumix.Input[*string]
+	Region pulumi.StringPtrInput
 	// Role arn that you want the kubeconfig to use. Optional
-	RoleArn pulumix.Input[*string]
+	RoleArn pulumi.StringPtrInput
 }
 
 func (EksKubeConfigArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*eksKubeConfigArgs)(nil)).Elem()
 }
 
+type EksKubeConfigInput interface {
+	pulumi.Input
+
+	ToEksKubeConfigOutput() EksKubeConfigOutput
+	ToEksKubeConfigOutputWithContext(ctx context.Context) EksKubeConfigOutput
+}
+
+func (*EksKubeConfig) ElementType() reflect.Type {
+	return reflect.TypeOf((**EksKubeConfig)(nil)).Elem()
+}
+
+func (i *EksKubeConfig) ToEksKubeConfigOutput() EksKubeConfigOutput {
+	return i.ToEksKubeConfigOutputWithContext(context.Background())
+}
+
+func (i *EksKubeConfig) ToEksKubeConfigOutputWithContext(ctx context.Context) EksKubeConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EksKubeConfigOutput)
+}
+
 type EksKubeConfigOutput struct{ *pulumi.OutputState }
 
 func (EksKubeConfigOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*EksKubeConfig)(nil)).Elem()
+	return reflect.TypeOf((**EksKubeConfig)(nil)).Elem()
 }
 
 func (o EksKubeConfigOutput) ToEksKubeConfigOutput() EksKubeConfigOutput {
@@ -129,53 +147,41 @@ func (o EksKubeConfigOutput) ToEksKubeConfigOutputWithContext(ctx context.Contex
 	return o
 }
 
-func (o EksKubeConfigOutput) ToOutput(ctx context.Context) pulumix.Output[EksKubeConfig] {
-	return pulumix.Output[EksKubeConfig]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Base64 encoded certificate data required to communicate with your cluster.
-func (o EksKubeConfigOutput) CertificateData() pulumix.Output[string] {
-	value := pulumix.Apply[EksKubeConfig](o, func(v EksKubeConfig) pulumix.Output[string] { return v.CertificateData })
-	return pulumix.Flatten[string, pulumix.Output[string]](value)
+func (o EksKubeConfigOutput) CertificateData() pulumi.StringOutput {
+	return o.ApplyT(func(v *EksKubeConfig) pulumi.StringOutput { return v.CertificateData }).(pulumi.StringOutput)
 }
 
 // Endpoint for your Kubernetes API server.
-func (o EksKubeConfigOutput) ClusterEndpoint() pulumix.Output[string] {
-	value := pulumix.Apply[EksKubeConfig](o, func(v EksKubeConfig) pulumix.Output[string] { return v.ClusterEndpoint })
-	return pulumix.Flatten[string, pulumix.Output[string]](value)
+func (o EksKubeConfigOutput) ClusterEndpoint() pulumi.StringOutput {
+	return o.ApplyT(func(v *EksKubeConfig) pulumi.StringOutput { return v.ClusterEndpoint }).(pulumi.StringOutput)
 }
 
 // Name of the EKS cluster you want to generate the kubeconfig for
-func (o EksKubeConfigOutput) ClusterName() pulumix.Output[string] {
-	value := pulumix.Apply[EksKubeConfig](o, func(v EksKubeConfig) pulumix.Output[string] { return v.ClusterName })
-	return pulumix.Flatten[string, pulumix.Output[string]](value)
+func (o EksKubeConfigOutput) ClusterName() pulumi.StringOutput {
+	return o.ApplyT(func(v *EksKubeConfig) pulumi.StringOutput { return v.ClusterName }).(pulumi.StringOutput)
 }
 
 // Generated Kubeconfig for working with your EKS cluster
-func (o EksKubeConfigOutput) Kubeconfig() pulumix.Output[string] {
-	value := pulumix.Apply[EksKubeConfig](o, func(v EksKubeConfig) pulumix.Output[string] { return v.Kubeconfig })
-	return pulumix.Flatten[string, pulumix.Output[string]](value)
+func (o EksKubeConfigOutput) Kubeconfig() pulumi.StringOutput {
+	return o.ApplyT(func(v *EksKubeConfig) pulumi.StringOutput { return v.Kubeconfig }).(pulumi.StringOutput)
 }
 
 // AWS Profile name that you want the kubeconfig to use. Optional
-func (o EksKubeConfigOutput) ProfileName() pulumix.Output[*string] {
-	value := pulumix.Apply[EksKubeConfig](o, func(v EksKubeConfig) pulumix.Output[*string] { return v.ProfileName })
-	return pulumix.Flatten[*string, pulumix.Output[*string]](value)
+func (o EksKubeConfigOutput) ProfileName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *EksKubeConfig) pulumi.StringPtrOutput { return v.ProfileName }).(pulumi.StringPtrOutput)
 }
 
-func (o EksKubeConfigOutput) Region() pulumix.Output[*string] {
-	value := pulumix.Apply[EksKubeConfig](o, func(v EksKubeConfig) pulumix.Output[*string] { return v.Region })
-	return pulumix.Flatten[*string, pulumix.Output[*string]](value)
+func (o EksKubeConfigOutput) Region() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *EksKubeConfig) pulumi.StringPtrOutput { return v.Region }).(pulumi.StringPtrOutput)
 }
 
 // Role arn that you want the kubeconfig to use. Optional
-func (o EksKubeConfigOutput) RoleArn() pulumix.Output[*string] {
-	value := pulumix.Apply[EksKubeConfig](o, func(v EksKubeConfig) pulumix.Output[*string] { return v.RoleArn })
-	return pulumix.Flatten[*string, pulumix.Output[*string]](value)
+func (o EksKubeConfigOutput) RoleArn() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *EksKubeConfig) pulumi.StringPtrOutput { return v.RoleArn }).(pulumi.StringPtrOutput)
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*EksKubeConfigInput)(nil)).Elem(), &EksKubeConfig{})
 	pulumi.RegisterOutputType(EksKubeConfigOutput{})
 }
