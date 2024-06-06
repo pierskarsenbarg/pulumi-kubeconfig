@@ -54,11 +54,15 @@ tasks:
           yarn install && \
           yarn run tsc && \
           cp ../../README.md ../../LICENSE package.json yarn.lock bin/ && \
-          sed -i.bak 's/${{.NODEJS_VERSION}}/{{.NODEJS_VERSION}}/g' bin/package.json && \
+          sed -i.bak 's/${VERSION}/{{.NODEJS_VERSION}}/g' bin/package.json && \
           rm ./bin/package.json.bak
     vars:
       NODEJS_VERSION:
         sh: pulumictl get version --language javascript
+  install_nodejs_sdk:
+    deps: [generate_nodejs_sdk]
+    cmds:
+      - yarn link --cwd {{.SDK_DIR}}/nodejs/bin
   generate_go_sdk:
     cmds: 
       - rm -rf {{.SDK_DIR}}/go
