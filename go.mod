@@ -3,10 +3,10 @@ module github.com/pierskarsenbarg/pulumi-kubeconfig
 go 1.22.1
 
 require (
-	github.com/pulumi/pulumi-azure-native-sdk/containerservice/v2 v2.43.1
-	github.com/pulumi/pulumi-go-provider v0.18.0
-	github.com/pulumi/pulumi/pkg/v3 v3.119.0
-	github.com/pulumi/pulumi/sdk/v3 v3.119.0
+	github.com/pulumi/pulumi-azure-native-sdk/containerservice/v2 v2.45.0
+	github.com/pulumi/pulumi-go-provider v0.19.0
+	github.com/pulumi/pulumi/pkg/v3 v3.120.0
+	github.com/pulumi/pulumi/sdk/v3 v3.120.0
 )
 
 require (
@@ -130,7 +130,7 @@ require (
 	github.com/pmezard/go-difflib v1.0.0 // indirect
 	github.com/pulumi/appdash v0.0.0-20231130102222-75f619a67231 // indirect
 	github.com/pulumi/esc v0.9.1 // indirect
-	github.com/pulumi/pulumi-azure-native-sdk/v2 v2.43.1 // indirect
+	github.com/pulumi/pulumi-azure-native-sdk/v2 v2.45.0 // indirect
 	github.com/rivo/uniseg v0.4.4 // indirect
 	github.com/rogpeppe/go-internal v1.11.0 // indirect
 	github.com/ryanuber/go-glob v1.0.0 // indirect
