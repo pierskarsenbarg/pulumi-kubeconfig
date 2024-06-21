@@ -22,10 +22,8 @@ type EksKubeConfig struct {
 	// Name of the EKS cluster you want to generate the kubeconfig for
 	ClusterName pulumi.StringOutput `pulumi:"clusterName"`
 	// Generated Kubeconfig for working with your EKS cluster
-	Kubeconfig pulumi.StringOutput `pulumi:"kubeconfig"`
-	// AWS Profile name that you want the kubeconfig to use. Optional
-	ProfileName pulumi.StringPtrOutput `pulumi:"profileName"`
-	Region      pulumi.StringPtrOutput `pulumi:"region"`
+	Kubeconfig pulumi.StringOutput    `pulumi:"kubeconfig"`
+	Region     pulumi.StringPtrOutput `pulumi:"region"`
 	// Role arn that you want the kubeconfig to use. Optional
 	RoleArn pulumi.StringPtrOutput `pulumi:"roleArn"`
 }
@@ -86,8 +84,6 @@ type eksKubeConfigArgs struct {
 	ClusterEndpoint string `pulumi:"clusterEndpoint"`
 	// Name of the EKS cluster you want to generate the kubeconfig for
 	ClusterName string `pulumi:"clusterName"`
-	// AWS Profile name that you want the kubeconfig to use
-	ProfileName *string `pulumi:"profileName"`
 	// Region that the EKS cluster is in. Optional
 	Region *string `pulumi:"region"`
 	// Role arn that you want the kubeconfig to use. Optional
@@ -102,8 +98,6 @@ type EksKubeConfigArgs struct {
 	ClusterEndpoint pulumi.StringInput
 	// Name of the EKS cluster you want to generate the kubeconfig for
 	ClusterName pulumi.StringInput
-	// AWS Profile name that you want the kubeconfig to use
-	ProfileName pulumi.StringPtrInput
 	// Region that the EKS cluster is in. Optional
 	Region pulumi.StringPtrInput
 	// Role arn that you want the kubeconfig to use. Optional
@@ -165,11 +159,6 @@ func (o EksKubeConfigOutput) ClusterName() pulumi.StringOutput {
 // Generated Kubeconfig for working with your EKS cluster
 func (o EksKubeConfigOutput) Kubeconfig() pulumi.StringOutput {
 	return o.ApplyT(func(v *EksKubeConfig) pulumi.StringOutput { return v.Kubeconfig }).(pulumi.StringOutput)
-}
-
-// AWS Profile name that you want the kubeconfig to use. Optional
-func (o EksKubeConfigOutput) ProfileName() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *EksKubeConfig) pulumi.StringPtrOutput { return v.ProfileName }).(pulumi.StringPtrOutput)
 }
 
 func (o EksKubeConfigOutput) Region() pulumi.StringPtrOutput {

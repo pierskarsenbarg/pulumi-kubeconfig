@@ -47,10 +47,6 @@ export class EksKubeConfig extends pulumi.CustomResource {
      * Generated Kubeconfig for working with your EKS cluster
      */
     public /*out*/ readonly kubeconfig!: pulumi.Output<string>;
-    /**
-     * AWS Profile name that you want the kubeconfig to use. Optional
-     */
-    public readonly profileName!: pulumi.Output<string | undefined>;
     public readonly region!: pulumi.Output<string | undefined>;
     /**
      * Role arn that you want the kubeconfig to use. Optional
@@ -77,7 +73,6 @@ export class EksKubeConfig extends pulumi.CustomResource {
             resourceInputs["certificateData"] = args ? args.certificateData : undefined;
             resourceInputs["clusterEndpoint"] = args ? args.clusterEndpoint : undefined;
             resourceInputs["clusterName"] = args ? args.clusterName : undefined;
-            resourceInputs["profileName"] = args ? args.profileName : undefined;
             resourceInputs["region"] = args ? args.region : undefined;
             resourceInputs["roleArn"] = args ? args.roleArn : undefined;
             resourceInputs["kubeconfig"] = undefined /*out*/;
@@ -86,7 +81,6 @@ export class EksKubeConfig extends pulumi.CustomResource {
             resourceInputs["clusterEndpoint"] = undefined /*out*/;
             resourceInputs["clusterName"] = undefined /*out*/;
             resourceInputs["kubeconfig"] = undefined /*out*/;
-            resourceInputs["profileName"] = undefined /*out*/;
             resourceInputs["region"] = undefined /*out*/;
             resourceInputs["roleArn"] = undefined /*out*/;
         }
@@ -113,10 +107,6 @@ export interface EksKubeConfigArgs {
      * Name of the EKS cluster you want to generate the kubeconfig for
      */
     clusterName: pulumi.Input<string>;
-    /**
-     * AWS Profile name that you want the kubeconfig to use
-     */
-    profileName?: pulumi.Input<string>;
     /**
      * Region that the EKS cluster is in. Optional
      */
