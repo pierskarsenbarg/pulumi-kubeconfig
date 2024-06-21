@@ -44,5 +44,4 @@ jobs:
           repo: pulumi/pulumictl
       - name: generate sdks
         run: task generate_sdks
-      # - name: Check working directory
-      #   run: task check_working_dir
+      
