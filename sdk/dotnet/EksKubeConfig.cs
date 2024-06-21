@@ -37,12 +37,6 @@ namespace PiersKarsenbarg.Kubeconfig
         [Output("kubeconfig")]
         public Output<string> Kubeconfig { get; private set; } = null!;
 
-        /// <summary>
-        /// AWS Profile name that you want the kubeconfig to use. Optional
-        /// </summary>
-        [Output("profileName")]
-        public Output<string?> ProfileName { get; private set; } = null!;
-
         [Output("region")]
         public Output<string?> Region { get; private set; } = null!;
 
@@ -119,12 +113,6 @@ namespace PiersKarsenbarg.Kubeconfig
         /// </summary>
         [Input("clusterName", required: true)]
         public Input<string> ClusterName { get; set; } = null!;
-
-        /// <summary>
-        /// AWS Profile name that you want the kubeconfig to use
-        /// </summary>
-        [Input("profileName")]
-        public Input<string>? ProfileName { get; set; }
 
         /// <summary>
         /// Region that the EKS cluster is in. Optional
