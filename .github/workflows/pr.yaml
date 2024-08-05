@@ -7,8 +7,8 @@ on:
     - edited
     - synchronize
 jobs:
-  build_sdks:
-    name: Build SDKs
+  build_all:
+    name: Build all
     runs-on: ubuntu-latest
     steps:
       - name: Checkout Repo

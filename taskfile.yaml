@@ -89,6 +89,12 @@ tasks:
       - task: generate_dotnet_sdk
       - task: generate_go_sdk
       - task: generate_python_sdk
+  only_generate_sdks:
+    cmds:
+      - task: generate_nodejs_sdk
+      - task: generate_dotnet_sdk
+      - task: generate_go_sdk
+      - task: generate_python_sdk
   lint: 
     cmds:
       - golangci-lint run
