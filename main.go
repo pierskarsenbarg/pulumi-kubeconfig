@@ -28,8 +28,13 @@ func main() {
 func provider() p.Provider {
 	return infer.Provider(infer.Options{
 		Metadata: schema.Metadata{
+
 			DisplayName: "kubeconfig",
 			Description: "Kubeconfig provider",
+			Keywords: []string{"pulumi", "kubeconfig", "category/infrastructure", "kind/native"},
+			License: "Apache-2.0",
+			Homepage: "https://github.com/pierskarenbarg/pulumi-kubeconfig",
+			Repository: "https://github.com/pierskarenbarg/pulumi-kubeconfig",
 			LanguageMap: map[string]any{
 				"go": gen.GoPackageInfo{
 					ImportBasePath: "github.com/pierskarsenbarg/pulumi-kubeconfig/sdk/go/kubeconfig",
