@@ -36,13 +36,13 @@ jobs:
         run: task build_provider
       - name: Check for presence of binary
         run: ls ${{ github.workspace}}/bin/
-    #   - name: Tar provider binaries
-    #     run: tar -zcf ${{ github.workspace }}/bin/provider.tar.gz -C ${{ github.workspace}}/bin/pulumi-resource-${{ env.PROVIDER }}
-    #   - name: Upload artifacts
-    #     uses: actions/upload-artifact@v4
-    #     with:
-    #       name: ${{ env.PROVIDER }}-provider.tar.gz
-    #       path: ${{ github.workspace }}/bin/provider.tar.gz
+      - name: Tar provider binaries
+        run: tar -zcf ${{ github.workspace }}/bin/provider.tar.gz -C ${{ github.workspace }}/bin/ pulumi-resource-${{ env.PROVIDER }} 
+      - name: Upload artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: ${{ env.PROVIDER }}-provider.tar.gz
+          path: ${{ github.workspace }}/bin/provider.tar.gz
     strategy:
       fail-fast: true
       matrix:
