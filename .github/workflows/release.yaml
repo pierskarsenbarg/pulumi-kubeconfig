@@ -1,18 +1,9 @@
-# name: release
-# "on":
-#   push:
-#     tags:
-#       - v*.*.*
-#       - "!v*.*.*-**"
-
-name: pr
-on:
-  pull_request:
-    types:
-    - opened
-    - reopened
-    - edited
-    - synchronize
+name: release
+"on":
+  push:
+    tags:
+      - v*.*.*
+      - "!v*.*.*-**"
 
 env:
   PROVIDER: kubeconfig
