@@ -104,7 +104,7 @@ jobs:
         uses: jaxxstorm/action-install-gh-release@v1.12.0
         with:
           repo: pulumi/pulumictl
-      - name: Download provider + tfgen binaries
+      - name: Download provider binaries
         uses: actions/download-artifact@v4
         with:
           name: ${{ env.PROVIDER }}-provider.tar.gz
@@ -113,10 +113,19 @@ jobs:
         run: |-
           tar -zxf ${{ github.workspace }}/bin/provider.tar.gz -C ${{ github.workspace}}/bin
           find ${{ github.workspace }} -name "pulumi-*-${{ env.PROVIDER }}" -print -exec chmod +x {} \;
+      - name: Update path
+        run: echo "${{ github.workspace }}/bin" >> $GITHUB_PATH
       - name: Build SDKs
         run: task generate_${{matrix.language}}_sdk
       - name: Check worktree clean
-        run: ./ci-scripts/ci/check-worktree-is-clean
+        uses: pulumi/git-status-check-action@v1
+        with:
+          allowed-changes: |-
+            sdk/**/pulumi-plugin.json
+            sdk/dotnet/Pulumi.*.csproj
+            sdk/go/**/pulumiUtilities.go
+            sdk/nodejs/package.json
+            sdk/python/pyproject.toml
       - name: Compress SDK folder
         run: tar -zcf sdk/${{ matrix.language }}.tar.gz -C sdk/${{ matrix.language }} .
       - name: Upload artifacts
