@@ -21,7 +21,7 @@ jobs:
       - name: Install Go
         uses: actions/setup-go@v5
         with:
-          go-version: ${matrix.goversion}
+          go-version: ${{matrix.goversion}}
       - name: Install Pulumi CLI
         uses: pulumi/actions@v5
       - name: Install Task
@@ -71,19 +71,19 @@ jobs:
       - name: Install Go
         uses: actions/setup-go@v5
         with:
-          go-version: ${matrix.goversion}
+          go-version: ${{matrix.goversion}}
       - name: Setup Node
         uses: actions/setup-node@v4
         with:
-          node-version: ${matrix.nodeversion}
+          node-version: ${{matrix.nodeversion}}
       - name: Setup DotNet
         uses: actions/setup-dotnet@v4
         with:
-          dotnet-version: ${matrix.dotnetversion}
+          dotnet-version: ${{matrix.dotnetversion}}
       - name: Setup Python
         uses: actions/setup-python@v5
         with:
-          python-version: ${matrix.pythonversion}
+          python-version: ${{matrix.pythonversion}}
       - name: Install Pulumi CLI
         uses: pulumi/actions@v5
       - name: Install Task
