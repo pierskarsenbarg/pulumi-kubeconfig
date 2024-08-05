@@ -23,6 +23,12 @@ setup(name='pierskarsenbarg_pulumi_kubeconfig',
       description="Kubeconfig provider",
       long_description=readme(),
       long_description_content_type='text/markdown',
+      keywords='pulumi kubeconfig category/infrastructure kind/native',
+      url='https://github.com/pierskarenbarg/pulumi-kubeconfig',
+      project_urls={
+          'Repository': 'https://github.com/pierskarenbarg/pulumi-kubeconfig'
+      },
+      license='Apache-2.0',
       packages=find_packages(),
       package_data={
           'pierskarsenbarg_pulumi_kubeconfig': [
