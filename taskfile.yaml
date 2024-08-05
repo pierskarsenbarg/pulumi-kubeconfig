@@ -70,18 +70,21 @@ tasks:
   generate_python_sdk:
     cmds:
       - rm -rf {{.SDK_DIR}}/python
-      - pulumi package gen-sdk ./bin/{{.PROVIDER}} --language python
-      - cp README.md  {{.SDK_DIR}}/python/
+      - pulumi package gen-sdk ./bin/{{.PROVIDER}} --language python -o {{.TMPDIR}}
+      - cp README.md  {{.TMPDIR}}/python/
       - | 
-        cd {{.SDK_DIR}}/python/ && \
-        python3 setup.py clean --all 
-      # rm -rf ./bin/ ../python.bin/ && cp -R . ../python.bin && mv ../python.bin ./bin && \
-      # sed -i.bak -e 's/^VERSION = .*/VERSION = "{{.PYTHON_VERSION}}"/g' -e 's/^PLUGIN_VERSION = .*/PLUGIN_VERSION = "{{.VERSION}}"/g' ./bin/setup.py && \
-      # rm ./bin/setup.py.bak
-      # cd ./bin && python3 setup.py build sdist
+        cd {{.TMPDIR}}/python/ && \
+        rm -rf ./bin/ ../python.bin/ && cp -R . ../python.bin && mv ../python.bin ./bin && \
+        python3 -m venv venv && \
+        ./venv/bin/python -m pip install build && \
+        cd ./bin && \
+        ../venv/bin/python -m build .
+      - mv -f {{.TMPDIR}}/python {{.SDK_DIR}}/python
     vars:
       PYTHON_VERSION: 
         sh: pulumictl get version --language python
+      TMPDIR:
+        sh: mktemp -d
   generate_sdks:
     deps: [build_provider]
     cmds:
