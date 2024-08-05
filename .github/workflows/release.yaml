@@ -7,6 +7,10 @@ name: release
 
 env:
   PROVIDER: kubeconfig
+  GO_VERSION: "1.22.x"
+  NODEJS_VERSION: 20.x
+  DOTNET_VERSION: 6.0.302
+  PYTHON_VERSION: "3.12"
 
 jobs:
   build_provider:
@@ -20,7 +24,8 @@ jobs:
       - name: Install Go
         uses: actions/setup-go@v5
         with:
-          go-version: ${{matrix.goversion}}
+          go-version: ${{env.GO_VERSION}}
+          cache-dependency-path: "**/*.sum"
       - name: Install pulumictl
         uses: jaxxstorm/action-install-gh-release@v1.12.0
         with:
@@ -55,19 +60,11 @@ jobs:
     strategy:
       fail-fast: true
       matrix:
-        dotnetversion:
-          - 6.0.302
-        goversion:
-          - 1.22.x
         language:
           - nodejs
           - python
           - dotnet
           - go
-        nodeversion:
-          - 20.x
-        pythonversion:
-          - "3.12"
     steps:
       - name: Checkout Repo
         uses: actions/checkout@v4
@@ -77,22 +74,23 @@ jobs:
         name: Setup Go
         uses: actions/setup-go@v5
         with:
-          go-version: ${{matrix.goversion}}
+          go-version: ${{env.GO_VERSION}}
+          cache-dependency-path: "**/*.sum"
       - if: matrix.language == 'nodejs'
         name: Setup Node
         uses: actions/setup-node@v4
         with:
-          node-version: ${{matrix.nodeversion}}
+          node-version: ${{env.NODEJS_VERSION}}
       - if: matrix.language == 'dotnet'
         name: Setup DotNet
         uses: actions/setup-dotnet@v4
         with:
-          dotnet-version: ${{matrix.dotnetversion}}
+          dotnet-version: ${{env.DOTNET_VERSION}}
       - if: matrix.language == 'python'
         name: Setup Python
         uses: actions/setup-python@v5
         with:
-          python-version: ${{matrix.pythonversion}}
+          python-version: ${{env.PYTHON_VERSION}}
       - name: Install Pulumi CLI
         uses: pulumi/actions@v5
       - name: Install Task
@@ -133,3 +131,24 @@ jobs:
         with:
           name: ${{ matrix.language  }}.tar.gz
           path: ${{ github.workspace}}/sdk/${{ matrix.language }}.tar.gz
+  publish_provider:
+    runs-on: ubuntu-latest
+    needs: build_sdks
+    name: publish_provider
+    steps:
+      - name: Checkout Repo
+        uses: actions/checkout@v4
+      - name: Unshallow clone for tags
+        run: git fetch --prune --unshallow --tags
+      - name: Install Go
+        uses: actions/setup-go@v5
+        with:
+          go-version: ${{env.GO_VERSION}}
+          cache-dependency-path: "**/*.sum"
+      - name: Run GoReleaser
+        uses: goreleaser/goreleaser-action@v6
+        with:
+          args: release --clean --timeout 60m0s
+          version: latest
+    strategy:
+      fail-fast: true
