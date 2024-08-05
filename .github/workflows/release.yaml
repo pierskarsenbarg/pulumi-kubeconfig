@@ -2,12 +2,11 @@ name: release
 "on":
   push:
     tags:
-    - v*.*.*
-    - '!v*.*.*-**'
+      - v*.*.*
+      - "!v*.*.*-**"
 
 env:
-    PROVIDER: kubeconfig
-
+  PROVIDER: kubeconfig
 
 jobs:
   build_provider:
@@ -22,6 +21,10 @@ jobs:
         uses: actions/setup-go@v5
         with:
           go-version: ${{matrix.goversion}}
+      - name: Install pulumictl
+        uses: jaxxstorm/action-install-gh-release@v1.12.0
+        with:
+          repo: pulumi/pulumictl
       - name: Install Pulumi CLI
         uses: pulumi/actions@v5
       - name: Install Task
@@ -42,7 +45,7 @@ jobs:
       fail-fast: true
       matrix:
         goversion:
-        - 1.22.x
+          - 1.22.x
   build_sdks:
     name: Build SDKs
     runs-on: ubuntu-latest
@@ -51,18 +54,18 @@ jobs:
       fail-fast: true
       matrix:
         dotnetversion:
-        - 6.0.302
+          - 6.0.302
         goversion:
-        - 1.22.x
+          - 1.22.x
         language:
-        - nodejs
-        - python
-        - dotnet
-        - go
+          - nodejs
+          - python
+          - dotnet
+          - go
         nodeversion:
-        - 20.x
+          - 20.x
         pythonversion:
-        - "3.12"
+          - "3.12"
     steps:
       - name: Checkout Repo
         uses: actions/checkout@v4
