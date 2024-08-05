@@ -11,6 +11,7 @@ env:
   NODEJS_VERSION: 20.x
   DOTNET_VERSION: 6.0.302
   PYTHON_VERSION: "3.12"
+  GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
 jobs:
   build_provider:
