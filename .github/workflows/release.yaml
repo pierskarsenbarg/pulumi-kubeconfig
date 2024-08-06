@@ -188,7 +188,7 @@ jobs:
           path: ${{ github.workspace}}/sdk/
       - name: Create ${{matrix.language}} directory
         run: mkdir -p ${{github.workspace}}/sdk/${{matrix.language}}
-      - name: Uncompress nodejs SDK
+      - name: Uncompress ${{matrix.language}} SDK
         run: tar -zxf ${{github.workspace}}/sdk/${{matrix.language}}.tar.gz -C ${{github.workspace}}/sdk/${{matrix.language}}
       - if: matrix.language == 'python'
         name: Publish PyPI
