@@ -41,7 +41,7 @@ tasks:
       - |
         cd {{.SDK_DIR}}/dotnet/ && \
         echo "{{.DOTNET_VERSION}}" >version.txt && \
-        dotnet build /p:Version={{.DOTNET_VERSION}}
+        dotnet build /p:Version={{.DOTNET_VERSION}} --configuration Release
     vars:
       DOTNET_VERSION: 
         sh: pulumictl get version --language dotnet
