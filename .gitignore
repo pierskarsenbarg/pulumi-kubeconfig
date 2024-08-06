@@ -4,7 +4,6 @@ schema*.json
 .code
 **/vendor/
 .pulumi
-**/bin/
 **/obj/
 **/node_modules/
 .DS_Store
@@ -29,3 +28,7 @@ Pulumi.*.yaml
 examples
 
 sdk/python/venv
+sdk/python/bin
+sdk/dotnet/bin
+sdk/nodejs/bin
+bin
