@@ -79,7 +79,7 @@ tasks:
         ./venv/bin/python -m pip install build && \
         cd ./bin && \
         ../venv/bin/python -m build .
-      - rm -rf {{.TMPDIR}}/python/venv {{.TMPDIR}}/python/bin
+      - rm -rf {{.TMPDIR}}/python/venv
       - mv -f {{.TMPDIR}}/python {{.SDK_DIR}}/python
     vars:
       PYTHON_VERSION: 

@@ -153,3 +153,39 @@ jobs:
           version: latest
     strategy:
       fail-fast: true
+  # publish_sdks:
+  #   runs-on: ubuntu-latest
+  #   needs: publish_provider
+  #   strategy:
+  #     fail-fast: true
+  #     matrix:
+  #       language:
+  #         - nodejs
+  #         - python
+  #         - dotnet
+  #   steps:
+  #     - if: matrix.language == 'nodejs'
+  #       name: Setup Node
+  #       uses: actions/setup-node@v4
+  #       with:
+  #         node-version: ${{env.NODEJS_VERSION}}
+  #     - if: matrix.language == 'dotnet'
+  #       name: Setup DotNet
+  #       uses: actions/setup-dotnet@v4
+  #       with:
+  #         dotnet-version: ${{env.DOTNET_VERSION}}
+  #     - if: matrix.language == 'python'
+  #       name: Setup Python
+  #       uses: actions/setup-python@v5
+  #       with:
+  #         python-version: ${{env.PYTHON_VERSION}}
+  #     - name: Download provider binaries
+  #       uses: actions/download-artifact@v4
+  #       with:
+  #         name: ${{ env.PROVIDER }}-provider.tar.gz
+  #         path: ${{ github.workspace }}/bin
+  #     - if: matrix.language == 'python'
+  #       name: Publish PyPI
+  #       uses: pypa/gh-action-pypi-publish@release/v1
+  #       with:
+  #         packages_dir: ${{github.workspace}}/sdk/python/bin/dist
