@@ -38,6 +38,7 @@ tasks:
     cmds: 
       - rm -rf {{.SDK_DIR}}/dotnet
       - pulumi package gen-sdk ./bin/{{.PROVIDER}} --language dotnet
+      - cp README.md {{.SDK_DIR}}/dotnet/
       - |
         cd {{.SDK_DIR}}/dotnet/ && \
         echo "{{.DOTNET_VERSION}}" >version.txt && \
