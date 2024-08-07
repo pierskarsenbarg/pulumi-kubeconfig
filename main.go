@@ -40,7 +40,7 @@ func provider() p.Provider {
 					ImportBasePath: "github.com/pierskarsenbarg/pulumi-kubeconfig/sdk/go/kubeconfig",
 				},
 				"nodejs": nodejsgen.NodePackageInfo{
-					PackageName: "@pierskarsenbarg/pulumi-kubeconfig",
+					PackageName: "@pierskarsenbarg/kubeconfig",
 					Dependencies: map[string]string{
 						"@pulumi/pulumi":       "^3.0.0",
 						"@pulumi/kubernetes":   "^4.0.0",
