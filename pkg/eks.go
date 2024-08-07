@@ -113,11 +113,11 @@ func buildEksConfig(input EksKubeConfigArgs) (string, error) {
 	}
 
 	if len(input.RoleArn) > 0 {
-		cmdArgs = append(cmdArgs, "--role ", input.RoleArn)
+		cmdArgs = append(cmdArgs, "--role", input.RoleArn)
 	}
 
 	if len(input.Region) > 0 {
-		cmdArgs = append(cmdArgs, "--region ", input.Region)
+		cmdArgs = append(cmdArgs, "--region", input.Region)
 	}
 
 	env := []Env{
