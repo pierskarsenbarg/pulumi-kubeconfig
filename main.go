@@ -28,19 +28,18 @@ func main() {
 func provider() p.Provider {
 	return infer.Provider(infer.Options{
 		Metadata: schema.Metadata{
-
 			DisplayName: "kubeconfig",
 			Description: "Kubeconfig provider",
-			Keywords: []string{"pulumi", "kubeconfig", "category/infrastructure", "kind/native"},
-			License: "Apache-2.0",
-			Homepage: "https://github.com/pierskarenbarg/pulumi-kubeconfig",
-			Repository: "https://github.com/pierskarenbarg/pulumi-kubeconfig",
+			Keywords:    []string{"pulumi", "kubeconfig", "category/infrastructure", "kind/native"},
+			License:     "Apache-2.0",
+			Homepage:    "https://github.com/pierskarenbarg/pulumi-kubeconfig",
+			Repository:  "https://github.com/pierskarenbarg/pulumi-kubeconfig",
 			LanguageMap: map[string]any{
 				"go": gen.GoPackageInfo{
 					ImportBasePath: "github.com/pierskarsenbarg/pulumi-kubeconfig/sdk/go/kubeconfig",
 				},
 				"nodejs": nodejsgen.NodePackageInfo{
-					PackageName: "@pierskarsenbarg/kubeconfig",
+					PackageName: "@pierskarsenbarg/pulumi-kubeconfig",
 					Dependencies: map[string]string{
 						"@pulumi/pulumi":       "^3.0.0",
 						"@pulumi/kubernetes":   "^4.0.0",
@@ -53,7 +52,7 @@ func provider() p.Provider {
 					},
 				},
 				"csharp": dotnetgen.CSharpPackageInfo{
-					RootNamespace: "PiersKarsenbarg",
+					RootNamespace: "PiersKarsenbarg.Pulumi",
 					PackageReferences: map[string]string{
 						"Pulumi":             "3.*",
 						"Pulumi.Kubernetes":  "4.*",
