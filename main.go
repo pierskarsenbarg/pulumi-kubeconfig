@@ -36,36 +36,37 @@ func provider() p.Provider {
 			Repository:  "https://github.com/pierskarenbarg/pulumi-kubeconfig",
 			LanguageMap: map[string]any{
 				"go": gen.GoPackageInfo{
-					ImportBasePath: "github.com/pierskarsenbarg/pulumi-kubeconfig/sdk/go/kubeconfig",
+					RespectSchemaVersion: true,
+					ImportBasePath:       "github.com/pierskarsenbarg/pulumi-kubeconfig/sdk/go/kubeconfig",
 				},
 				"nodejs": nodejsgen.NodePackageInfo{
 					PackageName: "@pierskarsenbarg/pulumi-kubeconfig",
 					Dependencies: map[string]string{
 						"@pulumi/pulumi":       "^3.0.0",
-						"@pulumi/kubernetes":   "^4.0.0",
 						"@pulumi/azure-native": "^2.0.0",
-						"@pulumi/aws":          "^6.0.0",
 					},
 					DevDependencies: map[string]string{
 						"@types/node": "^10.0.0", // so we can access strongly typed node definitions.
 						"@types/mime": "^2.0.0",
 					},
+					RespectSchemaVersion: true,
 				},
 				"csharp": dotnetgen.CSharpPackageInfo{
-					RootNamespace: "PiersKarsenbarg.Pulumi",
+					RespectSchemaVersion: true,
+					RootNamespace:        "PiersKarsenbarg.Pulumi",
 					PackageReferences: map[string]string{
 						"Pulumi":             "3.*",
-						"Pulumi.Kubernetes":  "4.*",
 						"Pulumi.AzureNative": "2.*",
-						"Pulumi.Aws":         "6.*",
 					},
 				},
 				"python": pythongen.PackageInfo{
+					RespectSchemaVersion: true,
+					PyProject: struct {
+						Enabled bool `json:"enabled,omitempty"`
+					}{Enabled: true},
 					Requires: map[string]string{
 						"pulumi":              ">=3.0.0,<4.0.0",
-						"pulumi_kubernetes":   ">=4.0.0,<5.0.0",
 						"pulumi_azure_native": ">=2.0.0,<3.0.0",
-						"pulumni_aws":         ">=6.0.0,<7.0.0",
 					},
 					PackageName: "pierskarsenbarg_pulumi_kubeconfig",
 				},
@@ -74,15 +75,15 @@ func provider() p.Provider {
 			Publisher:         "Piers Karsenbarg",
 		},
 		Resources: []infer.InferredResource{
-			infer.Resource[*pkg.EksKubeConfig, pkg.EksKubeConfigArgs, pkg.EksKubeConfigState](),
-			infer.Resource[*pkg.GkeKubeConfig, pkg.GkeKubeConfigArgs, pkg.GkeKubeConfigState](),
+			infer.Resource[*pkg.EksKubeConfig](),
+			infer.Resource[*pkg.GkeKubeConfig](),
 		},
 		ModuleMap: map[tokens.ModuleName]tokens.ModuleName{
 			"pkg": "index",
 		},
 		Functions: []infer.InferredFunction{},
 		Components: []infer.InferredComponent{
-			infer.Component[*pkg.AksKubeConfig, pkg.AksKubeConfigArgs, *pkg.AksKubeConfigState](),
+			infer.Component[*pkg.AksKubeConfig](),
 		},
 	})
 }

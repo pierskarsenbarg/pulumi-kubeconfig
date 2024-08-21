@@ -2,7 +2,7 @@ version: '3'
 
 vars:
   VERSION: 
-    sh: pulumictl get version
+    sh: pulumictl convert-version --language generic --version "0.0.11"
   VERSION_PATH: main.Version
   PROVIDER_NAME: kubeconfig
   PROVIDER: pulumi-resource-{{.PROVIDER_NAME}}
@@ -21,14 +21,14 @@ tasks:
       - cd sdk && go mod tidy
   build_provider:
     deps: [ensure]
-    sources:
-      - '*.go'
-      - 'pkg/**/*.go'
-      - 'go.*'
-    generates:
-      - bin/pulumi-resource-{{.PROVIDER_NAME}}
+    # sources:
+    #   - '*.go'
+    #   - 'pkg/**/*.go'
+    #   - 'go.*'
+    # generates:
+    #   - bin/pulumi-resource-{{.PROVIDER_NAME}}
     cmds:
-      - go build -o bin/{{.PROVIDER}} -ldflags "-X {{.PROJECT}}/{{.VERSION_PATH}}={{.VERSION}}"
+      - go build -o bin/{{.PROVIDER}} -gcflags="all=-N -l" -ldflags "-X {{.PROJECT}}/{{.VERSION_PATH}}={{.VERSION}}"
   get_schema:
     deps: [build_provider]
     cmds:
@@ -82,8 +82,8 @@ tasks:
         ../venv/bin/python -m build .
       - mv -f {{.TMPDIR}}/python {{.SDK_DIR}}/python
     vars:
-      PYTHON_VERSION: 
-        sh: pulumictl get version --language python
+      # PYTHON_VERSION: 
+      #   sh: pulumictl get version --language python
       TMPDIR:
         sh: mktemp -d
   generate_sdks:

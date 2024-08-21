@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 using Pulumi.Serialization;
 using Pulumi;
 
-namespace PiersKarsenbarg.Kubeconfig
+namespace PiersKarsenbarg.Pulumi.Kubeconfig
 {
     [KubeconfigResourceType("kubeconfig:index:AksKubeConfig")]
     public partial class AksKubeConfig : global::Pulumi.ComponentResource
