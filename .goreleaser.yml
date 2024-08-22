@@ -17,7 +17,7 @@ builds:
   ldflags:
   - -s
   - -w
-  - -X github.com/pierskarsenbarg/pulumi-kubeconfig/provider/pkg/version.Version={{.Tag}}
+  - -X main.Version={{.Tag}}
   main: .
 changelog:
   disable: true

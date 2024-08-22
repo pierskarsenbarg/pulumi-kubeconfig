@@ -203,8 +203,8 @@ jobs:
           access: "public"
           token: ${{ secrets.NPM_TOKEN }}
           package: ${{github.workspace}}/sdk/nodejs/bin/package.json
-      # - if: matrix.language == 'dotnet'
-      #   name: Publish Nuget package
-      #   env: 
-      #     NUGET_PUBLISH_KEY: ${{ secrets.NUGET_PUBLISH_KEY }}
-      #   run: find "${{github.workspace}}/sdk/dotnet/bin/Release/" -name 'PiersKarsenbarg.*.nupkg' -exec dotnet nuget push -k "${NUGET_PUBLISH_KEY}" -s https://api.nuget.org/v3/index.json {} ';'
+      - if: matrix.language == 'dotnet'
+        name: Publish Nuget package
+        env: 
+          NUGET_PUBLISH_KEY: ${{ secrets.NUGET_PUBLISH_KEY }}
+        run: find "${{github.workspace}}/sdk/dotnet/bin/Release/" -name 'PiersKarsenbarg.*.nupkg' -exec dotnet nuget push -k "${NUGET_PUBLISH_KEY}" -s https://api.nuget.org/v3/index.json {} ';'
