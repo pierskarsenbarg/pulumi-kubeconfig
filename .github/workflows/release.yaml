@@ -153,58 +153,58 @@ jobs:
           version: latest
     strategy:
       fail-fast: true
-  publish_sdks:
-    runs-on: ubuntu-latest
-    needs: publish_provider
-    permissions:
-      id-token: write
-    strategy:
-      fail-fast: true
-      matrix:
-        language:
-          - nodejs
-          - python
-          - dotnet
-    steps:
-      - if: matrix.language == 'nodejs'
-        name: Setup Node
-        uses: actions/setup-node@v4
-        with:
-          node-version: ${{env.NODEJS_VERSION}}
-          registry-url: https://registry.npmjs.org
-      - if: matrix.language == 'dotnet'
-        name: Setup DotNet
-        uses: actions/setup-dotnet@v4
-        with:
-          dotnet-version: ${{env.DOTNET_VERSION}}
-      - if: matrix.language == 'python'
-        name: Setup Python
-        uses: actions/setup-python@v5
-        with:
-          python-version: ${{env.PYTHON_VERSION}}
-      - name: Download ${{matrix.language}} SDK
-        uses: actions/download-artifact@v4
-        with:
-          name: ${{matrix.language}}.tar.gz
-          path: ${{ github.workspace}}/sdk/
-      - name: Create ${{matrix.language}} directory
-        run: mkdir -p ${{github.workspace}}/sdk/${{matrix.language}}
-      - name: Uncompress ${{matrix.language}} SDK
-        run: tar -zxf ${{github.workspace}}/sdk/${{matrix.language}}.tar.gz -C ${{github.workspace}}/sdk/${{matrix.language}}
-      - if: matrix.language == 'python'
-        name: Publish PyPI
-        uses: pypa/gh-action-pypi-publish@release/v1
-        with:
-          packages-dir: ${{github.workspace}}/sdk/python/bin/dist
-      - if: matrix.language == 'nodejs'
-        name: Publish NPM package
-        uses: JS-DevTools/npm-publish@v3
-        with: 
-          access: "public"
-          token: ${{ secrets.NPM_TOKEN }}
-          package: ${{github.workspace}}/sdk/nodejs/bin/package.json
-      - if: matrix.language == 'dotnet'
-        name: Publish Nuget package
-        env: 
-          NUGET_PUBLISH_KEY: ${{ secrets.NUGET_PUBLISH_KEY }}
-        run: find "${{github.workspace}}/sdk/dotnet/bin/Release/" -name 'PiersKarsenbarg.*.nupkg' -exec dotnet nuget push -k "${NUGET_PUBLISH_KEY}" -s https://api.nuget.org/v3/index.json {} ';'
+  # publish_sdks:
+  #   runs-on: ubuntu-latest
+  #   needs: publish_provider
+  #   permissions:
+  #     id-token: write
+  #   strategy:
+  #     fail-fast: true
+  #     matrix:
+  #       language:
+  #         - nodejs
+  #         - python
+  #         - dotnet
+  #   steps:
+  #     - if: matrix.language == 'nodejs'
+  #       name: Setup Node
+  #       uses: actions/setup-node@v4
+  #       with:
+  #         node-version: ${{env.NODEJS_VERSION}}
+  #         registry-url: https://registry.npmjs.org
+  #     - if: matrix.language == 'dotnet'
+  #       name: Setup DotNet
+  #       uses: actions/setup-dotnet@v4
+  #       with:
+  #         dotnet-version: ${{env.DOTNET_VERSION}}
+  #     - if: matrix.language == 'python'
+  #       name: Setup Python
+  #       uses: actions/setup-python@v5
+  #       with:
+  #         python-version: ${{env.PYTHON_VERSION}}
+  #     - name: Download ${{matrix.language}} SDK
+  #       uses: actions/download-artifact@v4
+  #       with:
+  #         name: ${{matrix.language}}.tar.gz
+  #         path: ${{ github.workspace}}/sdk/
+  #     - name: Create ${{matrix.language}} directory
+  #       run: mkdir -p ${{github.workspace}}/sdk/${{matrix.language}}
+  #     - name: Uncompress ${{matrix.language}} SDK
+  #       run: tar -zxf ${{github.workspace}}/sdk/${{matrix.language}}.tar.gz -C ${{github.workspace}}/sdk/${{matrix.language}}
+  #     - if: matrix.language == 'python'
+  #       name: Publish PyPI
+  #       uses: pypa/gh-action-pypi-publish@release/v1
+  #       with:
+  #         packages-dir: ${{github.workspace}}/sdk/python/bin/dist
+  #     - if: matrix.language == 'nodejs'
+  #       name: Publish NPM package
+  #       uses: JS-DevTools/npm-publish@v3
+  #       with: 
+  #         access: "public"
+  #         token: ${{ secrets.NPM_TOKEN }}
+  #         package: ${{github.workspace}}/sdk/nodejs/bin/package.json
+  #     - if: matrix.language == 'dotnet'
+  #       name: Publish Nuget package
+  #       env: 
+  #         NUGET_PUBLISH_KEY: ${{ secrets.NUGET_PUBLISH_KEY }}
+  #       run: find "${{github.workspace}}/sdk/dotnet/bin/Release/" -name 'PiersKarsenbarg.*.nupkg' -exec dotnet nuget push -k "${NUGET_PUBLISH_KEY}" -s https://api.nuget.org/v3/index.json {} ';'
