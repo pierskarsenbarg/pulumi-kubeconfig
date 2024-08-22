@@ -1,6 +1,6 @@
 {
     "name": "@pierskarsenbarg/pulumi-kubeconfig",
-    "version": "${VERSION}",
+    "version": "0.0.1",
     "keywords": [
         "pulumi",
         "kubeconfig",
@@ -25,6 +25,7 @@
     "pulumi": {
         "resource": true,
         "name": "kubeconfig",
+        "version": "0.0.1",
         "server": "github://api.github.com/pierskarsenbarg/pulumi-kubeconfig"
     }
 }
