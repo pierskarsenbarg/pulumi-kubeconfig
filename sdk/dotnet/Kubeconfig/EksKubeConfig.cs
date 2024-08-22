@@ -8,41 +8,59 @@ using System.Threading.Tasks;
 using Pulumi.Serialization;
 using Pulumi;
 
-namespace PiersKarsenbarg.Kubeconfig
+namespace PiersKarsenbarg.Pulumi.Kubeconfig
 {
-    [KubeconfigResourceType("kubeconfig:index:GkeKubeConfig")]
-    public partial class GkeKubeConfig : global::Pulumi.CustomResource
+    [KubeconfigResourceType("kubeconfig:index:EksKubeConfig")]
+    public partial class EksKubeConfig : global::Pulumi.CustomResource
     {
+        /// <summary>
+        /// Base64 encoded certificate data required to communicate with your cluster.
+        /// </summary>
         [Output("certificateData")]
-        public Output<string?> CertificateData { get; private set; } = null!;
+        public Output<string> CertificateData { get; private set; } = null!;
 
+        /// <summary>
+        /// Endpoint for your Kubernetes API server.
+        /// </summary>
         [Output("clusterEndpoint")]
         public Output<string> ClusterEndpoint { get; private set; } = null!;
 
+        /// <summary>
+        /// Name of the EKS cluster you want to generate the kubeconfig for
+        /// </summary>
         [Output("clusterName")]
         public Output<string> ClusterName { get; private set; } = null!;
 
         /// <summary>
-        /// Generated Kubeconfig for working with your GKE cluster
+        /// Generated Kubeconfig for working with your EKS cluster
         /// </summary>
         [Output("kubeconfig")]
         public Output<string> Kubeconfig { get; private set; } = null!;
 
+        [Output("region")]
+        public Output<string?> Region { get; private set; } = null!;
 
         /// <summary>
-        /// Create a GkeKubeConfig resource with the given unique name, arguments, and options.
+        /// Role arn that you want the kubeconfig to use. Optional
+        /// </summary>
+        [Output("roleArn")]
+        public Output<string?> RoleArn { get; private set; } = null!;
+
+
+        /// <summary>
+        /// Create a EksKubeConfig resource with the given unique name, arguments, and options.
         /// </summary>
         ///
         /// <param name="name">The unique name of the resource</param>
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
-        public GkeKubeConfig(string name, GkeKubeConfigArgs args, CustomResourceOptions? options = null)
-            : base("kubeconfig:index:GkeKubeConfig", name, args ?? new GkeKubeConfigArgs(), MakeResourceOptions(options, ""))
+        public EksKubeConfig(string name, EksKubeConfigArgs args, CustomResourceOptions? options = null)
+            : base("kubeconfig:index:EksKubeConfig", name, args ?? new EksKubeConfigArgs(), MakeResourceOptions(options, ""))
         {
         }
 
-        private GkeKubeConfig(string name, Input<string> id, CustomResourceOptions? options = null)
-            : base("kubeconfig:index:GkeKubeConfig", name, null, MakeResourceOptions(options, id))
+        private EksKubeConfig(string name, Input<string> id, CustomResourceOptions? options = null)
+            : base("kubeconfig:index:EksKubeConfig", name, null, MakeResourceOptions(options, id))
         {
         }
 
@@ -63,26 +81,26 @@ namespace PiersKarsenbarg.Kubeconfig
             return merged;
         }
         /// <summary>
-        /// Get an existing GkeKubeConfig resource's state with the given name, ID, and optional extra
+        /// Get an existing EksKubeConfig resource's state with the given name, ID, and optional extra
         /// properties used to qualify the lookup.
         /// </summary>
         ///
         /// <param name="name">The unique name of the resulting resource.</param>
         /// <param name="id">The unique provider ID of the resource to lookup.</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
-        public static GkeKubeConfig Get(string name, Input<string> id, CustomResourceOptions? options = null)
+        public static EksKubeConfig Get(string name, Input<string> id, CustomResourceOptions? options = null)
         {
-            return new GkeKubeConfig(name, id, options);
+            return new EksKubeConfig(name, id, options);
         }
     }
 
-    public sealed class GkeKubeConfigArgs : global::Pulumi.ResourceArgs
+    public sealed class EksKubeConfigArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Base64 encoded certificate data required to communicate with your cluster.
         /// </summary>
-        [Input("certificateData", required: true)]
-        public Input<string> CertificateData { get; set; } = null!;
+        [Input("certificateData")]
+        public Input<string>? CertificateData { get; set; }
 
         /// <summary>
         /// Endpoint for your Kubernetes API server.
@@ -91,20 +109,26 @@ namespace PiersKarsenbarg.Kubeconfig
         public Input<string> ClusterEndpoint { get; set; } = null!;
 
         /// <summary>
-        /// Name of the GKE cluster you want to generate the kubeconfig for
+        /// Name of the EKS cluster you want to generate the kubeconfig for
         /// </summary>
         [Input("clusterName", required: true)]
         public Input<string> ClusterName { get; set; } = null!;
 
-        [Input("project", required: true)]
-        public Input<string> Project { get; set; } = null!;
+        /// <summary>
+        /// Region that the EKS cluster is in. Optional
+        /// </summary>
+        [Input("region")]
+        public Input<string>? Region { get; set; }
 
-        [Input("zone", required: true)]
-        public Input<string> Zone { get; set; } = null!;
+        /// <summary>
+        /// Role arn that you want the kubeconfig to use. Optional
+        /// </summary>
+        [Input("roleArn")]
+        public Input<string>? RoleArn { get; set; }
 
-        public GkeKubeConfigArgs()
+        public EksKubeConfigArgs()
         {
         }
-        public static new GkeKubeConfigArgs Empty => new GkeKubeConfigArgs();
+        public static new EksKubeConfigArgs Empty => new EksKubeConfigArgs();
     }
 }

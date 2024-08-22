@@ -1,8 +1,9 @@
-version: '3'
+version: "3"
 
 vars:
-  VERSION: 
-    sh: pulumictl get version
+  PROVIDER_VERSION: '{{ if env "PROVIDER_VERSION" }}$PROVIDER_VERSION{{ else }}0.0.1{{ end }}'
+  VERSION:
+    sh: pulumictl convert-version --language generic --version "{{.PROVIDER_VERSION}}"
   VERSION_PATH: main.Version
   PROVIDER_NAME: kubeconfig
   PROVIDER: pulumi-resource-{{.PROVIDER_NAME}}
@@ -21,59 +22,61 @@ tasks:
       - cd sdk && go mod tidy
   build_provider:
     deps: [ensure]
-    sources:
-      - '*.go'
-      - 'pkg/**/*.go'
-      - 'go.*'
-    generates:
-      - bin/pulumi-resource-{{.PROVIDER_NAME}}
     cmds:
-      - go build -o bin/{{.PROVIDER}} -ldflags "-X {{.PROJECT}}/{{.VERSION_PATH}}={{.VERSION}}"
+      - rm -rf ./bin
+      - go build -o bin/{{.PROVIDER}} -gcflags="all=-N -l" -ldflags "-X {{.VERSION_PATH}}={{.VERSION}}"
   get_schema:
     deps: [build_provider]
     cmds:
       - rm -f schema.json
       - pulumi package get-schema ./bin/{{.PROVIDER}} >> schema.json
   generate_dotnet_sdk:
-    cmds: 
+    cmds:
       - rm -rf {{.SDK_DIR}}/dotnet
-      - pulumi package gen-sdk ./bin/{{.PROVIDER}} --language dotnet
-      - cp README.md {{.SDK_DIR}}/dotnet/
+      - pulumi package gen-sdk ./bin/{{.PROVIDER}} --language dotnet -o {{.TMPDIR}}
+      - cp README.md {{.TMPDIR}}/dotnet/
       - |
-        cd {{.SDK_DIR}}/dotnet/ && \
-        echo "{{.DOTNET_VERSION}}" >version.txt && \
-        dotnet build /p:Version={{.DOTNET_VERSION}} --configuration Release
+        cd {{.TMPDIR}}/dotnet/ && \
+          echo "{{.VERSION}}" >version.txt && \
+          dotnet build /p:Version={{.VERSION}} --configuration Release
+      - mv -f {{.TMPDIR}}/dotnet {{.SDK_DIR}}/dotnet
     vars:
-      DOTNET_VERSION: 
-        sh: pulumictl get version --language dotnet
+      TMPDIR:
+        sh: mktemp -d
   generate_nodejs_sdk:
-    cmds: 
+    cmds:
       - rm -rf {{.SDK_DIR}}/nodejs
-      - pulumi package gen-sdk ./bin/{{.PROVIDER}} --language nodejs
-      - | 
-        cd {{.SDK_DIR}}/nodejs/ && \
+      - pulumi package gen-sdk ./bin/{{.PROVIDER}} --language nodejs -o {{.TMPDIR}}
+      - cp README.md LICENSE {{.TMPDIR}}/nodejs
+      - |
+        cd {{.TMPDIR}}/nodejs/ && \
           yarn install && \
           yarn run tsc && \
-          cp ../../README.md ../../LICENSE package.json yarn.lock bin/ && \
-          sed -i.bak 's/${VERSION}/{{.NODEJS_VERSION}}/g' bin/package.json && \
-          rm ./bin/package.json.bak
+          cp README.md LICENSE package.json yarn.lock bin/
+      - mv -f {{.TMPDIR}}/nodejs {{.SDK_DIR}}/nodejs
     vars:
-      NODEJS_VERSION:
-        sh: pulumictl get version --language javascript
+      TMPDIR:
+        sh: mktemp -d
   install_nodejs_sdk:
     deps: [generate_nodejs_sdk]
     cmds:
       - yarn link --cwd {{.SDK_DIR}}/nodejs/bin
   generate_go_sdk:
-    cmds: 
+    cmds:
       - rm -rf {{.SDK_DIR}}/go
-      - pulumi package gen-sdk ./bin/{{.PROVIDER}} --language go
+      - pulumi package gen-sdk ./bin/{{.PROVIDER}} --language go -o {{.TMPDIR}}
+      - cp go.mod {{.TMPDIR}}/go/{{.PROVIDER_NAME}}/go.mod
+      - cd {{.TMPDIR}}/go/{{.PROVIDER_NAME}} && go mod edit -module={{.PROJECT}}/{{.SDK_DIR}}/go/{{.PROVIDER_NAME}} && go mod tidy
+      - mv -f {{.TMPDIR}}/go {{.SDK_DIR}}/go
+    vars:
+      TMPDIR:
+        sh: mktemp -d
   generate_python_sdk:
     cmds:
       - rm -rf {{.SDK_DIR}}/python
       - pulumi package gen-sdk ./bin/{{.PROVIDER}} --language python -o {{.TMPDIR}}
       - cp README.md  {{.TMPDIR}}/python/
-      - | 
+      - |
         cd {{.TMPDIR}}/python/ && \
         rm -rf ./bin/ ../python.bin/ && cp -R . ../python.bin && mv ../python.bin ./bin && \
         python3 -m venv venv && \
@@ -82,8 +85,6 @@ tasks:
         ../venv/bin/python -m build .
       - mv -f {{.TMPDIR}}/python {{.SDK_DIR}}/python
     vars:
-      PYTHON_VERSION: 
-        sh: pulumictl get version --language python
       TMPDIR:
         sh: mktemp -d
   generate_sdks:
@@ -99,13 +100,13 @@ tasks:
       - task: generate_dotnet_sdk
       - task: generate_go_sdk
       - task: generate_python_sdk
-  lint: 
+  lint:
     cmds:
       - golangci-lint run
   watch:
     watch: true
     sources:
-      - '**/*.go'
+      - "**/*.go"
     interval: 500ms
     cmds:
       - echo "Re-building provider"
