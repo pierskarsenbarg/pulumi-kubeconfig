@@ -150,7 +150,7 @@ jobs:
         uses: goreleaser/goreleaser-action@v6
         with:
           args: release --clean --timeout 60m0s
-          version: latest
+          version: "~> v2"
     strategy:
       fail-fast: true
   # publish_sdks:
