@@ -19,7 +19,6 @@ tasks:
   ensure:
     cmds:
       - go mod tidy
-      - cd sdk && go mod tidy
   build_provider:
     deps: [ensure]
     cmds:
