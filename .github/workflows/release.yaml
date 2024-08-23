@@ -47,7 +47,7 @@ jobs:
       - name: Check for presence of binary
         run: ls ${{ github.workspace}}/bin/
       - name: Tar provider binaries
-        run: tar -zcf ${{ github.workspace }}/bin/provider.tar.gz -C ${{ github.workspace }}/bin/ pulumi-resource-${{ env.PROVIDER }} 
+        run: tar -zcf ${{ github.workspace }}/bin/provider.tar.gz -C ${{ github.workspace }}/bin/ pulumi-resource-${{ env.PROVIDER }}
       - name: Upload artifacts
         uses: actions/upload-artifact@v4
         with:
@@ -207,12 +207,42 @@ jobs:
       - if: matrix.language == 'nodejs'
         name: Publish NPM package
         uses: JS-DevTools/npm-publish@v3
-        with: 
+        with:
           access: "public"
           token: ${{ secrets.NPM_TOKEN }}
           package: ${{github.workspace}}/sdk/nodejs/bin/package.json
       - if: matrix.language == 'dotnet'
         name: Publish Nuget package
-        env: 
+        env:
           NUGET_PUBLISH_KEY: ${{ secrets.NUGET_PUBLISH_KEY }}
         run: find "${{github.workspace}}/sdk/dotnet/bin/Release/" -name 'PiersKarsenbarg.*.nupkg' -exec dotnet nuget push -k "${NUGET_PUBLISH_KEY}" -s https://api.nuget.org/v3/index.json {} ';'
+  publish_go_sdk:
+    runs-on: ubuntu-latest
+    name: publish-go-sdk
+    needs: publish_sdks
+    steps:
+      - name: Checkout Repo
+        uses: actions/checkout@v4
+      - id: version
+        name: Set Provider Version
+        uses: pulumi/provider-version-action@v1
+        with:
+          set-env: PROVIDER_VERSION
+      - name: Download go SDK
+        uses: actions/download-artifact@v4
+        with:
+          name: go.tar.gz
+          path: ${{ github.workspace}}/sdk/
+      - name: Uncompress go SDK
+        run: tar -zxf ${{github.workspace}}/sdk/go.tar.gz -C
+          ${{github.workspace}}/sdk/go
+      - name: Publish Go SDK
+        uses: pulumi/publish-go-sdk-action@v1
+        with:
+          repository: ${{ github.repository }}
+          base-ref: ${{ github.sha }}
+          source: sdk/go/kubeconfig
+          path: sdk/go/kubeconfig
+          version: ${{ steps.version.outputs.version }}
+          additive: false
+          files: "**"
