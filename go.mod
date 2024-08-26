@@ -3,17 +3,17 @@ module github.com/pierskarsenbarg/pulumi-kubeconfig
 go 1.22.1
 
 require (
-	github.com/golangci/golangci-lint v1.60.2
-	github.com/pulumi/pulumi-azure-native-sdk/containerservice/v2 v2.56.0
+	github.com/golangci/golangci-lint v1.60.3
+	github.com/pulumi/pulumi-azure-native-sdk/containerservice/v2 v2.58.0
 	github.com/pulumi/pulumi-dotnet/pulumi-language-dotnet v0.0.0-20240820230654-96e7181cf82b
 	github.com/pulumi/pulumi-go-provider v0.21.0
-	github.com/pulumi/pulumi-java/pkg v0.14.0
+	github.com/pulumi/pulumi-java/pkg v0.15.0
 	github.com/pulumi/pulumi-yaml v1.9.2
-	github.com/pulumi/pulumi/pkg/v3 v3.129.0
+	github.com/pulumi/pulumi/pkg/v3 v3.130.0
 	github.com/pulumi/pulumi/sdk/go/pulumi-language-go/v3 v3.0.0-20240821161935-5e6b7ef07097
 	github.com/pulumi/pulumi/sdk/nodejs/cmd/pulumi-language-nodejs/v3 v3.0.0-20240821161935-5e6b7ef07097
 	github.com/pulumi/pulumi/sdk/python/cmd/pulumi-language-python/v3 v3.0.0-20240821161935-5e6b7ef07097
-	github.com/pulumi/pulumi/sdk/v3 v3.129.0
+	github.com/pulumi/pulumi/sdk/v3 v3.130.0
 )
 
 require (
@@ -270,7 +270,7 @@ require (
 	github.com/pgavlin/diff v0.0.0-20230503175810-113847418e2e // indirect
 	github.com/pgavlin/fx v0.1.6 // indirect
 	github.com/pgavlin/goldmark v1.1.33-0.20200616210433-b5eb04559386 // indirect
-	github.com/pgavlin/text v0.0.0-20230428184845-84c285f11d2f // indirect
+	github.com/pgavlin/text v0.0.0-20240821195002-b51d0990e284 // indirect
 	github.com/pjbgf/sha1cd v0.3.0 // indirect
 	github.com/pkg/browser v0.0.0-20240102092130-5ac0b6a4141c // indirect
 	github.com/pkg/errors v0.9.1 // indirect
@@ -285,7 +285,7 @@ require (
 	github.com/pulumi/appdash v0.0.0-20231130102222-75f619a67231 // indirect
 	github.com/pulumi/esc v0.9.1 // indirect
 	github.com/pulumi/inflector v0.1.1 // indirect
-	github.com/pulumi/pulumi-azure-native-sdk/v2 v2.56.0 // indirect
+	github.com/pulumi/pulumi-azure-native-sdk/v2 v2.58.0 // indirect
 	github.com/quasilyte/go-ruleguard v0.4.2 // indirect
 	github.com/quasilyte/go-ruleguard/dsl v0.3.22 // indirect
 	github.com/quasilyte/gogrep v0.5.0 // indirect
@@ -302,7 +302,7 @@ require (
 	github.com/santhosh-tekuri/jsonschema/v5 v5.3.1 // indirect
 	github.com/sashamelentyev/interfacebloat v1.1.0 // indirect
 	github.com/sashamelentyev/usestdlibvars v1.27.0 // indirect
-	github.com/securego/gosec/v2 v2.20.1-0.20240820084340-81cda2f91fbe // indirect
+	github.com/securego/gosec/v2 v2.20.1-0.20240822074752-ab3f6c1c83a0 // indirect
 	github.com/segmentio/asm v1.1.3 // indirect
 	github.com/segmentio/encoding v0.3.5 // indirect
 	github.com/sergi/go-diff v1.3.2-0.20230802210424-5b0b94c5c0d3 // indirect
