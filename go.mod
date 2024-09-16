@@ -6,7 +6,7 @@ require (
 	github.com/golangci/golangci-lint v1.61.0
 	github.com/pulumi/pulumi-azure-native-sdk/containerservice/v2 v2.60.1
 	github.com/pulumi/pulumi-dotnet/pulumi-language-dotnet v0.0.0-20240820230654-96e7181cf82b
-	github.com/pulumi/pulumi-go-provider v0.22.0
+	github.com/pulumi/pulumi-go-provider v0.22.1-0.20240910163342-78792a49e94d
 	github.com/pulumi/pulumi-java/pkg v0.16.1
 	github.com/pulumi/pulumi-yaml v1.10.0
 	github.com/pulumi/pulumi/pkg/v3 v3.132.0
