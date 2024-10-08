@@ -37,6 +37,8 @@ jobs:
           repo: pulumi/pulumictl
       - name: Install Pulumi CLI
         uses: pulumi/actions@v6
+        with:
+          pulumi-version: "3.136.0"
       - name: Check Pulumi CLI version
         run: pulumi version
       - name: Install Task
@@ -104,6 +106,8 @@ jobs:
           python-version: ${{env.PYTHON_VERSION}}
       - name: Install Pulumi CLI
         uses: pulumi/actions@v6
+        with:
+          pulumi-version: "3.136.0"
       - name: Check Pulumi CLI version
         run: pulumi version
       - name: Install Task
