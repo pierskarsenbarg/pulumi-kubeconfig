@@ -318,6 +318,7 @@ github.com/firefart/nonamedreturns v1.0.5 h1:tM+Me2ZaXs8tfdDw3X6DOX++wMCOqzYUho6
 github.com/firefart/nonamedreturns v1.0.5/go.mod h1:gHJjDqhGM4WyPt639SOZs+G89Ko7QKH5R5BhnO6xJhw=
 github.com/frankban/quicktest v1.14.3 h1:FJKSZTDHjyhriyC81FLQ0LY93eSai0ZyR/ZIkd3ZUKE=
 github.com/frankban/quicktest v1.14.3/go.mod h1:mgiwOwqx65TmIk1wJ6Q7wvnVMocbUorkibMOrVTHZps=
+github.com/fsnotify/fsnotify v1.6.0/go.mod h1:sl3t1tCWJFWoRz9R8WJCbQihKKwmorjAbSClcnxKAGw=
 github.com/fsnotify/fsnotify v1.7.0 h1:8JEhPFa5W2WU7YfeZzPNqzMP6Lwt7L2715Ggo0nosvA=
 github.com/fsnotify/fsnotify v1.7.0/go.mod h1:40Bi/Hjc2AVfZrqy+aj+yEI+/bRxZnMJyTJwOpGvigM=
 github.com/fzipp/gocyclo v0.6.0 h1:lsblElZG7d3ALtGMx9fmxeTKZaLLpU8mET09yN4BBLo=
@@ -734,6 +735,8 @@ github.com/nishanths/predeclared v0.2.2 h1:V2EPdZPliZymNAn79T8RkNApBjMmVKh5XRpLm
 github.com/nishanths/predeclared v0.2.2/go.mod h1:RROzoN6TnGQupbC+lqggsOlcgysk3LMK/HI84Mp280c=
 github.com/nunnatsa/ginkgolinter v0.16.2 h1:8iLqHIZvN4fTLDC0Ke9tbSZVcyVHoBs0HIbnVSxfHJk=
 github.com/nunnatsa/ginkgolinter v0.16.2/go.mod h1:4tWRinDN1FeJgU+iJANW/kz7xKN5nYRAOfJDQUS9dOQ=
+github.com/nxadm/tail v1.4.11 h1:8feyoE3OzPrcshW5/MJ4sGESc5cqmGkGCWlco4l0bqY=
+github.com/nxadm/tail v1.4.11/go.mod h1:OTaG3NK980DZzxbRq6lEuzgU+mug70nY11sMd4JXXHc=
 github.com/olekukonko/tablewriter v0.0.5 h1:P2Ga83D34wi1o9J6Wh1mRuqd4mF/x/lgBS7N7AbDhec=
 github.com/olekukonko/tablewriter v0.0.5/go.mod h1:hPp6KlRPjbx+hW8ykQs1w3UBbZlj6HuIJcUGPhkA7kY=
 github.com/onsi/ginkgo/v2 v2.20.2 h1:7NVCeyIWROIAheY21RLS+3j2bb52W0W82tkberYytp4=
@@ -816,8 +819,8 @@ github.com/pulumi/pulumi-azure-native-sdk/containerservice/v2 v2.64.3 h1:oLFAW19
 github.com/pulumi/pulumi-azure-native-sdk/containerservice/v2 v2.64.3/go.mod h1:kVoKIN1o86XWPrJFGhAjuwuN7hwd1Y7OSmLJbTxZRyU=
 github.com/pulumi/pulumi-azure-native-sdk/v2 v2.64.3 h1:D/ZvnVmpmGzX/V7zg7KlJ7Z7VLCOmJUC0Zr7RSRNWdM=
 github.com/pulumi/pulumi-azure-native-sdk/v2 v2.64.3/go.mod h1:6YfMkX/ikj8/gHxNM/kx9T2PIVDUE34QqYXgRDAHpEI=
-github.com/pulumi/pulumi-dotnet/pulumi-language-dotnet v0.0.0-20240820230654-96e7181cf82b h1:oHPdhd6XQPFcBRFEwpQXh224/rwdtY8gFbT0gP06bQU=
-github.com/pulumi/pulumi-dotnet/pulumi-language-dotnet v0.0.0-20240820230654-96e7181cf82b/go.mod h1:JeBf4RyvyPnlwwQ2x2fjpXs+RklrzSnQy2nshqDdXQs=
+github.com/pulumi/pulumi-dotnet/pulumi-language-dotnet v0.0.0-20241001072250-a4939089ffdf h1:JF/Q1jNTwi6haCBu6n5gv4C0dtnaGQx65uxVvT0nS5k=
+github.com/pulumi/pulumi-dotnet/pulumi-language-dotnet v0.0.0-20241001072250-a4939089ffdf/go.mod h1:O1ztHKzNtM6CslOUk9kXoBdI4AYQWuga3kZSA7F8xjg=
 github.com/pulumi/pulumi-go-provider v0.23.0 h1:cJCORjoxnnU4/K2Hnxb8wG540N/DlvxwOkDM1CiyQo4=
 github.com/pulumi/pulumi-go-provider v0.23.0/go.mod h1:F8liLNHpntb2FkIl8GeVHuC1OWo4dDxIelz1/D8Obkw=
 github.com/pulumi/pulumi-java/pkg v0.16.1 h1:orHnDWFbpOERwaBLry9f+6nqPX7x0MsrIkaa5QDGAns=
@@ -826,14 +829,14 @@ github.com/pulumi/pulumi-yaml v1.10.3 h1:j5cjPiE32ILmjrWnC1cfZ0MWdqCZ8fg9wlaWk7H
 github.com/pulumi/pulumi-yaml v1.10.3/go.mod h1:MFMQXkaUP5YQUKVJ6Z/aagZDl2f8hdU9oGaJfTcMf1Y=
 github.com/pulumi/pulumi/pkg/v3 v3.135.1 h1:K0wJa+gdGEPGYdZeOh8L0TtfQ5HlDhlayqbIO9ed9tM=
 github.com/pulumi/pulumi/pkg/v3 v3.135.1/go.mod h1:WK3L4rXXuIR7ai1jA0ld4E7zfh3Fa/aty98vCDd1a1E=
-github.com/pulumi/pulumi/sdk/go/pulumi-language-go/v3 v3.0.0-20240821161935-5e6b7ef07097 h1:/vgcLZdefTb/HiQpqkBzAhp+Zib8RENOd4IJKJTNbT0=
-github.com/pulumi/pulumi/sdk/go/pulumi-language-go/v3 v3.0.0-20240821161935-5e6b7ef07097/go.mod h1:QW1Q+/teG51N2asQD/mIs/3t4R4JdByUqo2CiwP0wfY=
-github.com/pulumi/pulumi/sdk/nodejs/cmd/pulumi-language-nodejs/v3 v3.0.0-20240821161935-5e6b7ef07097 h1:6nDT2c6k+VMciYCA5tV/LShYB/3/vQYdWxDwva/sQ5Y=
-github.com/pulumi/pulumi/sdk/nodejs/cmd/pulumi-language-nodejs/v3 v3.0.0-20240821161935-5e6b7ef07097/go.mod h1:7ublNYsZ6R0WdFP9qjWKMQOnzc/t91MI53QOaZphugs=
-github.com/pulumi/pulumi/sdk/python/cmd/pulumi-language-python/v3 v3.0.0-20240821161935-5e6b7ef07097 h1:XgaJbD8GLV7255yq1OIjkTxp6MvvAkF/ic2brN/7qNk=
-github.com/pulumi/pulumi/sdk/python/cmd/pulumi-language-python/v3 v3.0.0-20240821161935-5e6b7ef07097/go.mod h1:GUdf3kH8ZhilZrKDFQ2QV+5cdZfw5OMT7zmJUYy5QU8=
-github.com/pulumi/pulumi/sdk/v3 v3.135.1 h1:NvJ6buVtt257X3Bg4/x2vsORAoK21n7BNF0cHOYAhpA=
-github.com/pulumi/pulumi/sdk/v3 v3.135.1/go.mod h1:PvKsX88co8XuwuPdzolMvew5lZV+4JmZfkeSjj7A6dI=
+github.com/pulumi/pulumi/sdk/go/pulumi-language-go/v3 v3.0.0-20241008000145-ac7e4b012fba h1:q3DSJLd8Uc8geCiWq7/tyOqdbNYg8EfEOSDoP0tXp5E=
+github.com/pulumi/pulumi/sdk/go/pulumi-language-go/v3 v3.0.0-20241008000145-ac7e4b012fba/go.mod h1:9sRpzRiQd1R18uZa7fU2+DCJhUdgXRiy5Pbu0o1O/08=
+github.com/pulumi/pulumi/sdk/nodejs/cmd/pulumi-language-nodejs/v3 v3.0.0-20241008000145-ac7e4b012fba h1:V39wYxcP8SbDrv6TPvcPMzPu5T0JX174pfd9wR5SkJg=
+github.com/pulumi/pulumi/sdk/nodejs/cmd/pulumi-language-nodejs/v3 v3.0.0-20241008000145-ac7e4b012fba/go.mod h1:+jzlX6TKKgJvtX3acaQ6AUmEAgr1DRso34RpKGVMNhs=
+github.com/pulumi/pulumi/sdk/python/cmd/pulumi-language-python/v3 v3.0.0-20241008022826-e9bb24c3eac5 h1:McDfccmBu1AguoN4D5dkmUZgv8R5CjqhE7uv3ps0p2Q=
+github.com/pulumi/pulumi/sdk/python/cmd/pulumi-language-python/v3 v3.0.0-20241008022826-e9bb24c3eac5/go.mod h1:UAFW5PlGyURgGOhbU5j5Ck75VXORpI8OXxVino4nXII=
+github.com/pulumi/pulumi/sdk/v3 v3.136.0 h1:TVoRtUCdQSOb3TNvJaXp87fJxG6rgw8lCbYKbw1MHcU=
+github.com/pulumi/pulumi/sdk/v3 v3.136.0/go.mod h1:PvKsX88co8XuwuPdzolMvew5lZV+4JmZfkeSjj7A6dI=
 github.com/quasilyte/go-ruleguard v0.4.3-0.20240823090925-0fe6f58b47b1 h1:+Wl/0aFp0hpuHM3H//KMft64WQ1yX9LdJY64Qm/gFCo=
 github.com/quasilyte/go-ruleguard v0.4.3-0.20240823090925-0fe6f58b47b1/go.mod h1:GJLgqsLeo4qgavUoL8JeGFNS7qcisx3awV/w9eWTmNI=
 github.com/quasilyte/go-ruleguard/dsl v0.3.22 h1:wd8zkOhSNr+I+8Qeciml08ivDt1pSXe60+5DqOpCjPE=
@@ -1257,6 +1260,7 @@ golang.org/x/sys v0.0.0-20220715151400-c0bba94af5f8/go.mod h1:oPkhp1MJrh7nUepCBc
 golang.org/x/sys v0.0.0-20220722155257-8c9f86f7a55f/go.mod h1:oPkhp1MJrh7nUepCBck5+mAzfO9JrbApNNgaTdGDITg=
 golang.org/x/sys v0.0.0-20220728004956-3c1f35247d10/go.mod h1:oPkhp1MJrh7nUepCBck5+mAzfO9JrbApNNgaTdGDITg=
 golang.org/x/sys v0.0.0-20220811171246-fbc7d0a398ab/go.mod h1:oPkhp1MJrh7nUepCBck5+mAzfO9JrbApNNgaTdGDITg=
+golang.org/x/sys v0.0.0-20220908164124-27713097b956/go.mod h1:oPkhp1MJrh7nUepCBck5+mAzfO9JrbApNNgaTdGDITg=
 golang.org/x/sys v0.1.0/go.mod h1:oPkhp1MJrh7nUepCBck5+mAzfO9JrbApNNgaTdGDITg=
 golang.org/x/sys v0.2.0/go.mod h1:oPkhp1MJrh7nUepCBck5+mAzfO9JrbApNNgaTdGDITg=
 golang.org/x/sys v0.3.0/go.mod h1:oPkhp1MJrh7nUepCBck5+mAzfO9JrbApNNgaTdGDITg=
@@ -1475,6 +1479,8 @@ gopkg.in/check.v1 v1.0.0-20201130134442-10cb98267c6c/go.mod h1:JHkPIbrfpd72SG/EV
 gopkg.in/errgo.v2 v2.1.0/go.mod h1:hNsd1EY+bozCKY1Ytp96fpM3vjJbqLJn88ws8XvfDNI=
 gopkg.in/ini.v1 v1.67.0 h1:Dgnx+6+nfE+IfzjUEISNeydPJh9AXNNsWbGP9KzCsOA=
 gopkg.in/ini.v1 v1.67.0/go.mod h1:pNLf8WUiyNEtQjuu5G5vTm06TEv9tsIgeAvK8hOrP4k=
+gopkg.in/tomb.v1 v1.0.0-20141024135613-dd632973f1e7 h1:uRGJdciOHaEIrze2W8Q3AKkepLTh2hOroT7a+7czfdQ=
+gopkg.in/tomb.v1 v1.0.0-20141024135613-dd632973f1e7/go.mod h1:dt/ZhP58zS4L8KSrWDmTeBkI65Dw0HsyUHuEVlX15mw=
 gopkg.in/warnings.v0 v0.1.2 h1:wFXVbFY8DY5/xOe1ECiWdKCzZlxgshcYVNkBHstARME=
 gopkg.in/warnings.v0 v0.1.2/go.mod h1:jksf8JmL6Qr/oQM2OXTHunEvvTAsrWBLb6OOjuVWRNI=
 gopkg.in/yaml.v2 v2.2.1/go.mod h1:hI93XBmqTisBFMUTm0b8Fm+jr3Dg1NNxqwp+5A1VGuI=

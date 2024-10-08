@@ -5,15 +5,15 @@ go 1.22.1
 require (
 	github.com/golangci/golangci-lint v1.61.0
 	github.com/pulumi/pulumi-azure-native-sdk/containerservice/v2 v2.64.3
-	github.com/pulumi/pulumi-dotnet/pulumi-language-dotnet v0.0.0-20240820230654-96e7181cf82b
+	github.com/pulumi/pulumi-dotnet/pulumi-language-dotnet v0.0.0-20241001072250-a4939089ffdf
 	github.com/pulumi/pulumi-go-provider v0.23.0
 	github.com/pulumi/pulumi-java/pkg v0.16.1
 	github.com/pulumi/pulumi-yaml v1.10.3
 	github.com/pulumi/pulumi/pkg/v3 v3.135.1
-	github.com/pulumi/pulumi/sdk/go/pulumi-language-go/v3 v3.0.0-20240821161935-5e6b7ef07097
-	github.com/pulumi/pulumi/sdk/nodejs/cmd/pulumi-language-nodejs/v3 v3.0.0-20240821161935-5e6b7ef07097
-	github.com/pulumi/pulumi/sdk/python/cmd/pulumi-language-python/v3 v3.0.0-20240821161935-5e6b7ef07097
-	github.com/pulumi/pulumi/sdk/v3 v3.135.1
+	github.com/pulumi/pulumi/sdk/go/pulumi-language-go/v3 v3.0.0-20241008000145-ac7e4b012fba
+	github.com/pulumi/pulumi/sdk/nodejs/cmd/pulumi-language-nodejs/v3 v3.0.0-20241008000145-ac7e4b012fba
+	github.com/pulumi/pulumi/sdk/python/cmd/pulumi-language-python/v3 v3.0.0-20241008022826-e9bb24c3eac5
+	github.com/pulumi/pulumi/sdk/v3 v3.136.0
 )
 
 require (
@@ -262,6 +262,7 @@ require (
 	github.com/nishanths/exhaustive v0.12.0 // indirect
 	github.com/nishanths/predeclared v0.2.2 // indirect
 	github.com/nunnatsa/ginkgolinter v0.16.2 // indirect
+	github.com/nxadm/tail v1.4.11 // indirect
 	github.com/olekukonko/tablewriter v0.0.5 // indirect
 	github.com/opentracing/basictracer-go v1.1.0 // indirect
 	github.com/opentracing/opentracing-go v1.2.0 // indirect
@@ -397,6 +398,7 @@ require (
 	google.golang.org/grpc v1.66.0 // indirect
 	google.golang.org/protobuf v1.34.2 // indirect
 	gopkg.in/ini.v1 v1.67.0 // indirect
+	gopkg.in/tomb.v1 v1.0.0-20141024135613-dd632973f1e7 // indirect
 	gopkg.in/warnings.v0 v0.1.2 // indirect
 	gopkg.in/yaml.v2 v2.4.0 // indirect
 	gopkg.in/yaml.v3 v3.0.1 // indirect
