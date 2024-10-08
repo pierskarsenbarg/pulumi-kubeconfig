@@ -37,6 +37,8 @@ jobs:
           repo: pulumi/pulumictl
       - name: Install Pulumi CLI
         uses: pulumi/actions@v6
+      - name: Check Pulumi CLI version
+        run: pulumi version
       - name: Install Task
         uses: arduino/setup-task@v2
         with:
@@ -102,6 +104,8 @@ jobs:
           python-version: ${{env.PYTHON_VERSION}}
       - name: Install Pulumi CLI
         uses: pulumi/actions@v6
+      - name: Check Pulumi CLI version
+        run: pulumi version
       - name: Install Task
         uses: arduino/setup-task@v2
         with:
