@@ -6,6 +6,9 @@ on:
       - reopened
       - edited
       - synchronize
+
+env:
+  PULUMI_VERSION: "3.150.0"
 jobs:
   build_all:
     name: Build all
@@ -35,6 +38,8 @@ jobs:
           python-version: "3.11"
       - name: Install Pulumi CLI
         uses: pulumi/actions@v6
+        with:
+          pulumi-version: ${{env.PULUMI_VERSION}}
       - name: Check Pulumi CLI version
         run: pulumi version
       - name: Install Task
