@@ -2,10 +2,10 @@ name: pr
 on:
   pull_request:
     types:
-    - opened
-    - reopened
-    - edited
-    - synchronize
+      - opened
+      - reopened
+      - edited
+      - synchronize
 jobs:
   build_all:
     name: Build all
@@ -35,8 +35,6 @@ jobs:
           python-version: "3.11"
       - name: Install Pulumi CLI
         uses: pulumi/actions@v6
-        with:
-          pulumi-version: "3.143.0"
       - name: Check Pulumi CLI version
         run: pulumi version
       - name: Install Task
@@ -50,4 +48,3 @@ jobs:
           repo: pulumi/pulumictl
       - name: generate sdks
         run: task generate_sdks
-      
