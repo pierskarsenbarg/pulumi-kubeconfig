@@ -9,6 +9,10 @@ name: main
       - v*
       - sdk/*
       - "**"
+
+env:
+  PULUMI_VERSION: "3.15.0"
+
 jobs:
   build_sdks:
     name: Build SDKs
@@ -39,7 +43,7 @@ jobs:
       - name: Install Pulumi CLI
         uses: pulumi/actions@v6
         with:
-          pulumi-version: "3.143.0"
+          pulumi-version: ${{env.PULUMI_VERSION}}
       - name: Check Pulumi CLI version
         run: pulumi version
       - name: Install Task
