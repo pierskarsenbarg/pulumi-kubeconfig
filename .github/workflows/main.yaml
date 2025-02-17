@@ -11,7 +11,7 @@ name: main
       - "**"
 
 env:
-  PULUMI_VERSION: "3.15.0"
+  PULUMI_VERSION: "3.150.0"
 
 jobs:
   build_sdks:
