@@ -22,6 +22,7 @@ class EksKubeConfigArgs:
                  cluster_endpoint: pulumi.Input[str],
                  cluster_name: pulumi.Input[str],
                  certificate_data: Optional[pulumi.Input[str]] = None,
+                 profile: Optional[pulumi.Input[str]] = None,
                  region: Optional[pulumi.Input[str]] = None,
                  role_arn: Optional[pulumi.Input[str]] = None):
         """
@@ -29,6 +30,7 @@ class EksKubeConfigArgs:
         :param pulumi.Input[str] cluster_endpoint: Endpoint for your Kubernetes API server.
         :param pulumi.Input[str] cluster_name: Name of the EKS cluster you want to generate the kubeconfig for
         :param pulumi.Input[str] certificate_data: Base64 encoded certificate data required to communicate with your cluster.
+        :param pulumi.Input[str] profile: AWS Profile name. This will overwrite any environment variables set.
         :param pulumi.Input[str] region: Region that the EKS cluster is in. Optional
         :param pulumi.Input[str] role_arn: Role arn that you want the kubeconfig to use. Optional
         """
@@ -36,6 +38,8 @@ class EksKubeConfigArgs:
         pulumi.set(__self__, "cluster_name", cluster_name)
         if certificate_data is not None:
             pulumi.set(__self__, "certificate_data", certificate_data)
+        if profile is not None:
+            pulumi.set(__self__, "profile", profile)
         if region is not None:
             pulumi.set(__self__, "region", region)
         if role_arn is not None:
@@ -79,6 +83,18 @@ class EksKubeConfigArgs:
 
     @property
     @pulumi.getter
+    def profile(self) -> Optional[pulumi.Input[str]]:
+        """
+        AWS Profile name. This will overwrite any environment variables set.
+        """
+        return pulumi.get(self, "profile")
+
+    @profile.setter
+    def profile(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "profile", value)
+
+    @property
+    @pulumi.getter
     def region(self) -> Optional[pulumi.Input[str]]:
         """
         Region that the EKS cluster is in. Optional
@@ -110,6 +126,7 @@ class EksKubeConfig(pulumi.CustomResource):
                  certificate_data: Optional[pulumi.Input[str]] = None,
                  cluster_endpoint: Optional[pulumi.Input[str]] = None,
                  cluster_name: Optional[pulumi.Input[str]] = None,
+                 profile: Optional[pulumi.Input[str]] = None,
                  region: Optional[pulumi.Input[str]] = None,
                  role_arn: Optional[pulumi.Input[str]] = None,
                  __props__=None):
@@ -120,6 +137,7 @@ class EksKubeConfig(pulumi.CustomResource):
         :param pulumi.Input[str] certificate_data: Base64 encoded certificate data required to communicate with your cluster.
         :param pulumi.Input[str] cluster_endpoint: Endpoint for your Kubernetes API server.
         :param pulumi.Input[str] cluster_name: Name of the EKS cluster you want to generate the kubeconfig for
+        :param pulumi.Input[str] profile: AWS Profile name. This will overwrite any environment variables set.
         :param pulumi.Input[str] region: Region that the EKS cluster is in. Optional
         :param pulumi.Input[str] role_arn: Role arn that you want the kubeconfig to use. Optional
         """
@@ -149,6 +167,7 @@ class EksKubeConfig(pulumi.CustomResource):
                  certificate_data: Optional[pulumi.Input[str]] = None,
                  cluster_endpoint: Optional[pulumi.Input[str]] = None,
                  cluster_name: Optional[pulumi.Input[str]] = None,
+                 profile: Optional[pulumi.Input[str]] = None,
                  region: Optional[pulumi.Input[str]] = None,
                  role_arn: Optional[pulumi.Input[str]] = None,
                  __props__=None):
@@ -167,6 +186,7 @@ class EksKubeConfig(pulumi.CustomResource):
             if cluster_name is None and not opts.urn:
                 raise TypeError("Missing required property 'cluster_name'")
             __props__.__dict__["cluster_name"] = cluster_name
+            __props__.__dict__["profile"] = profile
             __props__.__dict__["region"] = region
             __props__.__dict__["role_arn"] = role_arn
             __props__.__dict__["kubeconfig"] = None
@@ -198,6 +218,7 @@ class EksKubeConfig(pulumi.CustomResource):
         __props__.__dict__["cluster_endpoint"] = None
         __props__.__dict__["cluster_name"] = None
         __props__.__dict__["kubeconfig"] = None
+        __props__.__dict__["profile"] = None
         __props__.__dict__["region"] = None
         __props__.__dict__["role_arn"] = None
         return EksKubeConfig(resource_name, opts=opts, __props__=__props__)
@@ -233,6 +254,14 @@ class EksKubeConfig(pulumi.CustomResource):
         Generated Kubeconfig for working with your EKS cluster
         """
         return pulumi.get(self, "kubeconfig")
+
+    @property
+    @pulumi.getter
+    def profile(self) -> pulumi.Output[Optional[str]]:
+        """
+        AWS Profile name. This will overwrite any environment variables set.
+        """
+        return pulumi.get(self, "profile")
 
     @property
     @pulumi.getter
