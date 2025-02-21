@@ -37,6 +37,12 @@ namespace PiersKarsenbarg.Pulumi.Kubeconfig
         [Output("kubeconfig")]
         public Output<string> Kubeconfig { get; private set; } = null!;
 
+        /// <summary>
+        /// AWS Profile name. This will overwrite any environment variables set.
+        /// </summary>
+        [Output("profile")]
+        public Output<string?> Profile { get; private set; } = null!;
+
         [Output("region")]
         public Output<string?> Region { get; private set; } = null!;
 
@@ -113,6 +119,12 @@ namespace PiersKarsenbarg.Pulumi.Kubeconfig
         /// </summary>
         [Input("clusterName", required: true)]
         public Input<string> ClusterName { get; set; } = null!;
+
+        /// <summary>
+        /// AWS Profile name. This will overwrite any environment variables set.
+        /// </summary>
+        [Input("profile")]
+        public Input<string>? Profile { get; set; }
 
         /// <summary>
         /// Region that the EKS cluster is in. Optional
