@@ -3,6 +3,7 @@ package pkg
 import (
 	"context"
 	"encoding/json"
+	"os"
 
 	p "github.com/pulumi/pulumi-go-provider"
 	"github.com/pulumi/pulumi-go-provider/infer"
@@ -16,6 +17,7 @@ type EksKubeConfigArgs struct {
 	CertificateData string `pulumi:"certificateData,optional"`
 	RoleArn         string `pulumi:"roleArn,optional"`
 	Region          string `pulumi:"region,optional"`
+	Profile         string `pulumi:"profile,optional"`
 }
 
 func (eks *EksKubeConfigArgs) Annotate(a infer.Annotator) {
@@ -24,6 +26,7 @@ func (eks *EksKubeConfigArgs) Annotate(a infer.Annotator) {
 	a.Describe(&eks.CertificateData, "Base64 encoded certificate data required to communicate with your cluster.")
 	a.Describe(&eks.RoleArn, "Role arn that you want the kubeconfig to use. Optional")
 	a.Describe(&eks.Region, "Region that the EKS cluster is in. Optional")
+	a.Describe(&eks.Profile, "AWS Profile name. This will overwrite any environment variables set.")
 }
 
 type EksKubeConfigState struct {
@@ -33,6 +36,7 @@ type EksKubeConfigState struct {
 	RoleArn         string `pulumi:"roleArn,optional"`
 	Region          string `pulumi:"region,optional"`
 	KubeConfig      string `pulumi:"kubeconfig" provider:"secret"`
+	Profile         string `pulumi:"profile,optional"`
 }
 
 func (eks *EksKubeConfigState) Annotate(a infer.Annotator) {
@@ -41,6 +45,7 @@ func (eks *EksKubeConfigState) Annotate(a infer.Annotator) {
 	a.Describe(&eks.ClusterEndpoint, "Endpoint for your Kubernetes API server.")
 	a.Describe(&eks.CertificateData, "Base64 encoded certificate data required to communicate with your cluster.")
 	a.Describe(&eks.RoleArn, "Role arn that you want the kubeconfig to use. Optional")
+	a.Describe(&eks.Profile, "AWS Profile name. This will overwrite any environment variables set.")
 }
 
 func (e *EksKubeConfig) Create(ctx context.Context, name string, input EksKubeConfigArgs, preview bool) (
@@ -63,7 +68,7 @@ func (e *EksKubeConfig) Create(ctx context.Context, name string, input EksKubeCo
 		ClusterEndpoint: input.ClusterEndpoint,
 		CertificateData: input.CertificateData,
 		RoleArn:         input.RoleArn,
-		Region: 		 input.Region,
+		Region:          input.Region,
 	}, nil
 }
 
@@ -125,6 +130,19 @@ func buildEksConfig(input EksKubeConfigArgs) (string, error) {
 			Name:  "KUBERNETES_EXEC_INFO",
 			Value: "{\"apiVersion\": \"client.authentication.k8s.io/v1beta1\"}",
 		},
+	}
+
+	le, ok := os.LookupEnv("AWS_PROFILE")
+	if len(le) > 0 && ok {
+		env = append(env, Env{
+			Name:  "AWS_PROFILE",
+			Value: os.Getenv("AWS_PROFILE"),
+		})
+	} else if len(input.Profile) > 0 {
+		env = append(env, Env{
+			Name:  "AWS_PROFILE",
+			Value: input.Profile,
+		})
 	}
 
 	kubeconfig, err := json.Marshal(&KubeConfig{
