@@ -69,6 +69,7 @@ func (e *EksKubeConfig) Create(ctx context.Context, name string, input EksKubeCo
 		CertificateData: input.CertificateData,
 		RoleArn:         input.RoleArn,
 		Region:          input.Region,
+		Profile:         input.Profile,
 	}, nil
 }
 
@@ -85,6 +86,9 @@ func (*EksKubeConfig) Diff(ctx context.Context, id string, olds EksKubeConfigSta
 	}
 	if news.RoleArn != olds.RoleArn {
 		diff["roleArn"] = p.PropertyDiff{Kind: p.Update}
+	}
+	if news.Profile != olds.Profile {
+		diff["profile"] = p.PropertyDiff{Kind: p.Update}
 	}
 
 	return p.DiffResponse{
@@ -106,6 +110,7 @@ func (*EksKubeConfig) Update(ctx context.Context, id string, olds EksKubeConfigS
 		ClusterEndpoint: news.ClusterEndpoint,
 		CertificateData: news.CertificateData,
 		RoleArn:         news.RoleArn,
+		Profile:         news.Profile,
 	}, nil
 }
 
