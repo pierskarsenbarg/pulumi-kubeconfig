@@ -8,7 +8,7 @@ on:
       - synchronize
 
 env:
-  PULUMI_VERSION: "3.150.0"
+  PULUMI_VERSION: "3.154.0"
 jobs:
   build_all:
     name: Build all

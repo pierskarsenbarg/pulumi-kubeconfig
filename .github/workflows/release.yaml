@@ -12,7 +12,7 @@ env:
   DOTNET_VERSION: 6.0.302
   PYTHON_VERSION: "3.12"
   GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-  PULUMI_VERSION: "3.150.0"
+  PULUMI_VERSION: "3.154.0"
 
 jobs:
   build_provider:
