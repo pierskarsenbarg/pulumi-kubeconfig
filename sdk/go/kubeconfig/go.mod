@@ -6,7 +6,7 @@ toolchain go1.23.6
 
 require (
 	github.com/blang/semver v3.5.1+incompatible
-	github.com/pulumi/pulumi/sdk/v3 v3.154.0
+	github.com/pulumi/pulumi/sdk/v3 v3.157.0
 )
 
 require (
@@ -85,18 +85,18 @@ require (
 	go.opentelemetry.io/otel v1.34.0 // indirect
 	go.opentelemetry.io/otel/sdk v1.34.0 // indirect
 	go.uber.org/atomic v1.11.0 // indirect
-	golang.org/x/crypto v0.35.0 // indirect
+	golang.org/x/crypto v0.36.0 // indirect
 	golang.org/x/exp v0.0.0-20240909161429-701f63a606c0 // indirect
-	golang.org/x/mod v0.23.0 // indirect
-	golang.org/x/net v0.36.0 // indirect
-	golang.org/x/sync v0.11.0 // indirect
-	golang.org/x/sys v0.30.0 // indirect
-	golang.org/x/term v0.29.0 // indirect
-	golang.org/x/text v0.22.0 // indirect
-	golang.org/x/tools v0.30.0 // indirect
-	google.golang.org/genproto/googleapis/rpc v0.0.0-20250127172529-29210b9bc287 // indirect
+	golang.org/x/mod v0.24.0 // indirect
+	golang.org/x/net v0.37.0 // indirect
+	golang.org/x/sync v0.12.0 // indirect
+	golang.org/x/sys v0.31.0 // indirect
+	golang.org/x/term v0.30.0 // indirect
+	golang.org/x/text v0.23.0 // indirect
+	golang.org/x/tools v0.31.0 // indirect
+	google.golang.org/genproto/googleapis/rpc v0.0.0-20250219182151-9fdb1cabc7b2 // indirect
 	google.golang.org/grpc v1.70.0 // indirect
-	google.golang.org/protobuf v1.36.4 // indirect
+	google.golang.org/protobuf v1.36.5 // indirect
 	gopkg.in/warnings.v0 v0.1.2 // indirect
 	gopkg.in/yaml.v3 v3.0.1 // indirect
 	lukechampine.com/frand v1.4.2 // indirect
