@@ -1,21 +1,20 @@
 module github.com/pierskarsenbarg/pulumi-kubeconfig
 
 go 1.23.0
-
-toolchain go1.23.6
+toolchain go1.24.1
 
 require (
 	github.com/golangci/golangci-lint v1.64.8
-	github.com/pulumi/pulumi-azure-native-sdk/containerservice/v2 v2.89.3
+	github.com/pulumi/pulumi-azure-native-sdk/containerservice/v2 v2.90.0
 	github.com/pulumi/pulumi-dotnet/pulumi-language-dotnet v0.0.0-20241001072250-a4939089ffdf
-	github.com/pulumi/pulumi-go-provider v0.24.1
-	github.com/pulumi/pulumi-java/pkg v1.6.0
-	github.com/pulumi/pulumi-yaml v1.14.1
-	github.com/pulumi/pulumi/pkg/v3 v3.157.0
+	github.com/pulumi/pulumi-go-provider v0.26.0
+	github.com/pulumi/pulumi-java/pkg v1.10.0
+	github.com/pulumi/pulumi-yaml v1.18.0
+	github.com/pulumi/pulumi/pkg/v3 v3.165.1-0.20250430113504-38d20473773f
 	github.com/pulumi/pulumi/sdk/go/pulumi-language-go/v3 v3.0.0-20241008000145-ac7e4b012fba
 	github.com/pulumi/pulumi/sdk/nodejs/cmd/pulumi-language-nodejs/v3 v3.0.0-20241008000145-ac7e4b012fba
 	github.com/pulumi/pulumi/sdk/python/cmd/pulumi-language-python/v3 v3.0.0-20241008022826-e9bb24c3eac5
-	github.com/pulumi/pulumi/sdk/v3 v3.157.0
+	github.com/pulumi/pulumi/sdk/v3 v3.165.1-0.20250429124421-ae3c33c4d997
 )
 
 require (
@@ -262,7 +261,7 @@ require (
 	github.com/mitchellh/go-wordwrap v1.0.1 // indirect
 	github.com/mitchellh/mapstructure v1.5.0 // indirect
 	github.com/mitchellh/reflectwalk v1.0.2 // indirect
-	github.com/moby/moby v26.1.0+incompatible // indirect
+	github.com/moby/moby v26.1.5+incompatible // indirect
 	github.com/moby/term v0.0.0-20210619224110-3f7ff695adc6 // indirect
 	github.com/modern-go/concurrent v0.0.0-20180306012644-bacd9c7ef1dd // indirect
 	github.com/modern-go/reflect2 v1.0.2 // indirect
@@ -301,9 +300,9 @@ require (
 	github.com/prometheus/common v0.32.1 // indirect
 	github.com/prometheus/procfs v0.7.3 // indirect
 	github.com/pulumi/appdash v0.0.0-20231130102222-75f619a67231 // indirect
-	github.com/pulumi/esc v0.10.0 // indirect
+	github.com/pulumi/esc v0.13.0 // indirect
 	github.com/pulumi/inflector v0.1.1 // indirect
-	github.com/pulumi/pulumi-azure-native-sdk/v2 v2.89.3 // indirect
+	github.com/pulumi/pulumi-azure-native-sdk/v2 v2.90.0 // indirect
 	github.com/quasilyte/go-ruleguard v0.4.3-0.20240823090925-0fe6f58b47b1 // indirect
 	github.com/quasilyte/go-ruleguard/dsl v0.3.22 // indirect
 	github.com/quasilyte/gogrep v0.5.0 // indirect
