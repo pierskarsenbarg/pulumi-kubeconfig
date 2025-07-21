@@ -37,24 +37,29 @@ func (gke *GkeKubeConfigState) Annotate(a infer.Annotator) {
 	a.Describe(&gke.KubeConfig, "Generated Kubeconfig for working with your GKE cluster")
 }
 
-func (g *GkeKubeConfig) Create(ctx context.Context, name string, input GkeKubeConfigArgs, preview bool) (
-	id string, output GkeKubeConfigState, err error) {
-	if preview {
-		return "", GkeKubeConfigState{}, nil
+func (g *GkeKubeConfig) Create(ctx context.Context, req infer.CreateRequest[GkeKubeConfigArgs]) (infer.CreateResponse[GkeKubeConfigState], error) {
+	if req.DryRun {
+		return infer.CreateResponse[GkeKubeConfigState]{}, nil
 	}
 
-	kubeConfig, err := buildGkeConfig(input)
+	kubeConfig, err := buildGkeConfig(req.Inputs)
 	if err != nil {
-		return name, GkeKubeConfigState{
-			KubeConfig: "",
+		return infer.CreateResponse[GkeKubeConfigState]{
+			ID: req.Name,
+			Output: GkeKubeConfigState{
+				KubeConfig: "",
+			},
 		}, nil
 	}
 
-	return name, GkeKubeConfigState{
-		KubeConfig:      kubeConfig,
-		ClusterName:     input.ClusterName,
-		ClusterEndpoint: input.ClusterEndpoint,
-		CertificateData: input.CertificateData,
+	return infer.CreateResponse[GkeKubeConfigState]{
+		ID: req.Name,
+		Output: GkeKubeConfigState{
+			KubeConfig:      kubeConfig,
+			ClusterName:     req.Inputs.ClusterName,
+			ClusterEndpoint: req.Inputs.ClusterEndpoint,
+			CertificateData: req.Inputs.CertificateData,
+		},
 	}, nil
 }
 
