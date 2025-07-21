@@ -1,6 +1,7 @@
 package main
 
 import (
+	"context"
 	"fmt"
 	"os"
 
@@ -20,7 +21,7 @@ var Version = "0.0.1"
 const Name string = "kubeconfig"
 
 func main() {
-	err := p.RunProvider(Name, Version, provider())
+	err := p.RunProvider(context.Background(), Name, Version, provider())
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error: %s", err.Error())
 		os.Exit(1)
@@ -77,15 +78,15 @@ func provider() p.Provider {
 			Publisher:         "Piers Karsenbarg",
 		},
 		Resources: []infer.InferredResource{
-			infer.Resource[*pkg.EksKubeConfig](),
-			infer.Resource[*pkg.GkeKubeConfig](),
+			infer.Resource[*pkg.EksKubeConfig](&pkg.EksKubeConfig{}),
+			infer.Resource[*pkg.GkeKubeConfig](&pkg.GkeKubeConfig{}),
 		},
 		ModuleMap: map[tokens.ModuleName]tokens.ModuleName{
 			"pkg": "index",
 		},
 		Functions: []infer.InferredFunction{},
 		Components: []infer.InferredComponent{
-			infer.Component[*pkg.AksKubeConfig](),
+			infer.Component[*pkg.AksKubeConfig](&pkg.AksKubeConfig{}),
 		},
 	})
 }
