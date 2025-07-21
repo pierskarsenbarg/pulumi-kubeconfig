@@ -48,28 +48,32 @@ func (eks *EksKubeConfigState) Annotate(a infer.Annotator) {
 	a.Describe(&eks.Profile, "AWS Profile name. This will overwrite any environment variables set.")
 }
 
-func (e *EksKubeConfig) Create(ctx context.Context, name string, input EksKubeConfigArgs, preview bool) (
-	id string, output EksKubeConfigState, err error,
-) {
-	if preview {
-		return "", EksKubeConfigState{}, nil
+func (e *EksKubeConfig) Create(ctx context.Context, req infer.CreateRequest[EksKubeConfigArgs]) (infer.CreateResponse[EksKubeConfigState], error) {
+	if req.DryRun {
+		return infer.CreateResponse[EksKubeConfigState]{}, nil
 	}
 
-	kubeConfig, err := buildEksConfig(input)
+	kubeConfig, err := buildEksConfig(req.Inputs)
 	if err != nil {
-		return name, EksKubeConfigState{
-			KubeConfig: kubeConfig,
+		return infer.CreateResponse[EksKubeConfigState]{
+			ID: req.Name,
+			Output: EksKubeConfigState{
+				KubeConfig: kubeConfig,
+			},
 		}, nil
 	}
 
-	return name, EksKubeConfigState{
-		KubeConfig:      kubeConfig,
-		ClusterName:     input.ClusterName,
-		ClusterEndpoint: input.ClusterEndpoint,
-		CertificateData: input.CertificateData,
-		RoleArn:         input.RoleArn,
-		Region:          input.Region,
-		Profile:         input.Profile,
+	return infer.CreateResponse[EksKubeConfigState]{
+		ID: req.Name,
+		Output: EksKubeConfigState{
+			KubeConfig:      kubeConfig,
+			ClusterName:     req.Inputs.ClusterName,
+			ClusterEndpoint: req.Inputs.ClusterEndpoint,
+			CertificateData: req.Inputs.CertificateData,
+			RoleArn:         req.Inputs.RoleArn,
+			Region:          req.Inputs.Region,
+			Profile:         req.Inputs.Profile,
+		},
 	}, nil
 }
 
