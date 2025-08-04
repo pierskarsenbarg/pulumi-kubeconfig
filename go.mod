@@ -9,13 +9,13 @@ require (
 	github.com/pulumi/pulumi-azure-native-sdk/containerservice/v2 v2.90.0
 	github.com/pulumi/pulumi-dotnet/pulumi-language-dotnet v0.0.0-20241001072250-a4939089ffdf
 	github.com/pulumi/pulumi-go-provider v1.1.0
-	github.com/pulumi/pulumi-java/pkg v1.16.0
-	github.com/pulumi/pulumi-yaml v1.21.3
-	github.com/pulumi/pulumi/pkg/v3 v3.185.0
+	github.com/pulumi/pulumi-java/pkg v1.16.1
+	github.com/pulumi/pulumi-yaml v1.21.4
+	github.com/pulumi/pulumi/pkg/v3 v3.186.0
 	github.com/pulumi/pulumi/sdk/go/pulumi-language-go/v3 v3.0.0-20241008000145-ac7e4b012fba
 	github.com/pulumi/pulumi/sdk/nodejs/cmd/pulumi-language-nodejs/v3 v3.0.0-20241008000145-ac7e4b012fba
 	github.com/pulumi/pulumi/sdk/python/cmd/pulumi-language-python/v3 v3.0.0-20241008022826-e9bb24c3eac5
-	github.com/pulumi/pulumi/sdk/v3 v3.185.0
+	github.com/pulumi/pulumi/sdk/v3 v3.186.0
 )
 
 require (
