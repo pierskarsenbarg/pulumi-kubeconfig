@@ -15,7 +15,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout Repo
-        uses: actions/checkout@v4
+        uses: actions/checkout@v5
       - name: Set Provider Version
         uses: pulumi/provider-version-action@v1
         with:
