@@ -22,7 +22,7 @@ export class AksKubeConfig extends pulumi.ComponentResource {
     /**
      * Kubeconfig returned from AKS cluster
      */
-    public /*out*/ readonly kubeconfig!: pulumi.Output<string>;
+    declare public /*out*/ readonly kubeconfig: pulumi.Output<string>;
 
     /**
      * Create a AksKubeConfig resource with the given unique name, arguments, and options.
@@ -35,15 +35,15 @@ export class AksKubeConfig extends pulumi.ComponentResource {
         let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
-            if ((!args || args.clusterName === undefined) && !opts.urn) {
+            if (args?.clusterName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'clusterName'");
             }
-            if ((!args || args.resourceGroupName === undefined) && !opts.urn) {
+            if (args?.resourceGroupName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'resourceGroupName'");
             }
-            resourceInputs["clusterName"] = args ? args.clusterName : undefined;
-            resourceInputs["isAdmin"] = args ? args.isAdmin : undefined;
-            resourceInputs["resourceGroupName"] = args ? args.resourceGroupName : undefined;
+            resourceInputs["clusterName"] = args?.clusterName;
+            resourceInputs["isAdmin"] = args?.isAdmin;
+            resourceInputs["resourceGroupName"] = args?.resourceGroupName;
             resourceInputs["kubeconfig"] = undefined /*out*/;
         } else {
             resourceInputs["kubeconfig"] = undefined /*out*/;

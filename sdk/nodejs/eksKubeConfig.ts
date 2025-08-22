@@ -34,28 +34,28 @@ export class EksKubeConfig extends pulumi.CustomResource {
     /**
      * Base64 encoded certificate data required to communicate with your cluster.
      */
-    public readonly certificateData!: pulumi.Output<string>;
+    declare public readonly certificateData: pulumi.Output<string>;
     /**
      * Endpoint for your Kubernetes API server.
      */
-    public readonly clusterEndpoint!: pulumi.Output<string>;
+    declare public readonly clusterEndpoint: pulumi.Output<string>;
     /**
      * Name of the EKS cluster you want to generate the kubeconfig for
      */
-    public readonly clusterName!: pulumi.Output<string>;
+    declare public readonly clusterName: pulumi.Output<string>;
     /**
      * Generated Kubeconfig for working with your EKS cluster
      */
-    public /*out*/ readonly kubeconfig!: pulumi.Output<string>;
+    declare public /*out*/ readonly kubeconfig: pulumi.Output<string>;
     /**
      * AWS Profile name. This will overwrite any environment variables set.
      */
-    public readonly profile!: pulumi.Output<string | undefined>;
-    public readonly region!: pulumi.Output<string | undefined>;
+    declare public readonly profile: pulumi.Output<string | undefined>;
+    declare public readonly region: pulumi.Output<string | undefined>;
     /**
      * Role arn that you want the kubeconfig to use. Optional
      */
-    public readonly roleArn!: pulumi.Output<string | undefined>;
+    declare public readonly roleArn: pulumi.Output<string | undefined>;
 
     /**
      * Create a EksKubeConfig resource with the given unique name, arguments, and options.
@@ -68,18 +68,18 @@ export class EksKubeConfig extends pulumi.CustomResource {
         let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
-            if ((!args || args.clusterEndpoint === undefined) && !opts.urn) {
+            if (args?.clusterEndpoint === undefined && !opts.urn) {
                 throw new Error("Missing required property 'clusterEndpoint'");
             }
-            if ((!args || args.clusterName === undefined) && !opts.urn) {
+            if (args?.clusterName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'clusterName'");
             }
-            resourceInputs["certificateData"] = args ? args.certificateData : undefined;
-            resourceInputs["clusterEndpoint"] = args ? args.clusterEndpoint : undefined;
-            resourceInputs["clusterName"] = args ? args.clusterName : undefined;
-            resourceInputs["profile"] = args ? args.profile : undefined;
-            resourceInputs["region"] = args ? args.region : undefined;
-            resourceInputs["roleArn"] = args ? args.roleArn : undefined;
+            resourceInputs["certificateData"] = args?.certificateData;
+            resourceInputs["clusterEndpoint"] = args?.clusterEndpoint;
+            resourceInputs["clusterName"] = args?.clusterName;
+            resourceInputs["profile"] = args?.profile;
+            resourceInputs["region"] = args?.region;
+            resourceInputs["roleArn"] = args?.roleArn;
             resourceInputs["kubeconfig"] = undefined /*out*/;
         } else {
             resourceInputs["certificateData"] = undefined /*out*/;
