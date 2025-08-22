@@ -31,13 +31,13 @@ export class GkeKubeConfig extends pulumi.CustomResource {
         return obj['__pulumiType'] === GkeKubeConfig.__pulumiType;
     }
 
-    public readonly certificateData!: pulumi.Output<string | undefined>;
-    public readonly clusterEndpoint!: pulumi.Output<string>;
-    public readonly clusterName!: pulumi.Output<string>;
+    declare public readonly certificateData: pulumi.Output<string | undefined>;
+    declare public readonly clusterEndpoint: pulumi.Output<string>;
+    declare public readonly clusterName: pulumi.Output<string>;
     /**
      * Generated Kubeconfig for working with your GKE cluster
      */
-    public /*out*/ readonly kubeconfig!: pulumi.Output<string>;
+    declare public /*out*/ readonly kubeconfig: pulumi.Output<string>;
 
     /**
      * Create a GkeKubeConfig resource with the given unique name, arguments, and options.
@@ -50,26 +50,26 @@ export class GkeKubeConfig extends pulumi.CustomResource {
         let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
-            if ((!args || args.certificateData === undefined) && !opts.urn) {
+            if (args?.certificateData === undefined && !opts.urn) {
                 throw new Error("Missing required property 'certificateData'");
             }
-            if ((!args || args.clusterEndpoint === undefined) && !opts.urn) {
+            if (args?.clusterEndpoint === undefined && !opts.urn) {
                 throw new Error("Missing required property 'clusterEndpoint'");
             }
-            if ((!args || args.clusterName === undefined) && !opts.urn) {
+            if (args?.clusterName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'clusterName'");
             }
-            if ((!args || args.project === undefined) && !opts.urn) {
+            if (args?.project === undefined && !opts.urn) {
                 throw new Error("Missing required property 'project'");
             }
-            if ((!args || args.zone === undefined) && !opts.urn) {
+            if (args?.zone === undefined && !opts.urn) {
                 throw new Error("Missing required property 'zone'");
             }
-            resourceInputs["certificateData"] = args ? args.certificateData : undefined;
-            resourceInputs["clusterEndpoint"] = args ? args.clusterEndpoint : undefined;
-            resourceInputs["clusterName"] = args ? args.clusterName : undefined;
-            resourceInputs["project"] = args ? args.project : undefined;
-            resourceInputs["zone"] = args ? args.zone : undefined;
+            resourceInputs["certificateData"] = args?.certificateData;
+            resourceInputs["clusterEndpoint"] = args?.clusterEndpoint;
+            resourceInputs["clusterName"] = args?.clusterName;
+            resourceInputs["project"] = args?.project;
+            resourceInputs["zone"] = args?.zone;
             resourceInputs["kubeconfig"] = undefined /*out*/;
         } else {
             resourceInputs["certificateData"] = undefined /*out*/;
