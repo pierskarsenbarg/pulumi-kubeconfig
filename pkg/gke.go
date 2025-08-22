@@ -9,8 +9,7 @@ import (
 	"github.com/pulumi/pulumi-go-provider/infer"
 )
 
-type GkeKubeConfig struct {
-}
+type GkeKubeConfig struct{}
 
 type GkeKubeConfigArgs struct {
 	ClusterName     string `pulumi:"clusterName"`
@@ -66,13 +65,13 @@ func (g *GkeKubeConfig) Create(ctx context.Context, req infer.CreateRequest[GkeK
 func (*GkeKubeConfig) Diff(ctx context.Context, id string, olds GkeKubeConfigState, news GkeKubeConfigArgs) (p.DiffResponse, error) {
 	diff := map[string]p.PropertyDiff{}
 	if news.CertificateData != olds.CertificateData {
-		diff["certificateData"] = p.PropertyDiff{Kind: p.Update}
+		diff["certificateData"] = p.PropertyDiff{Kind: p.UpdateReplace}
 	}
 	if news.ClusterEndpoint != olds.ClusterEndpoint {
-		diff["clusterEndpoint"] = p.PropertyDiff{Kind: p.Update}
+		diff["clusterEndpoint"] = p.PropertyDiff{Kind: p.UpdateReplace}
 	}
 	if news.ClusterName != olds.ClusterName {
-		diff["clusterName"] = p.PropertyDiff{Kind: p.Update}
+		diff["clusterName"] = p.PropertyDiff{Kind: p.UpdateReplace}
 	}
 
 	return p.DiffResponse{
@@ -119,7 +118,6 @@ func buildGkeConfig(input GkeKubeConfigArgs) (string, error) {
 			},
 		},
 	})
-
 	if err != nil {
 		return "", nil
 	}

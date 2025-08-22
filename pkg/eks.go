@@ -80,19 +80,19 @@ func (e *EksKubeConfig) Create(ctx context.Context, req infer.CreateRequest[EksK
 func (*EksKubeConfig) Diff(ctx context.Context, id string, olds EksKubeConfigState, news EksKubeConfigArgs) (p.DiffResponse, error) {
 	diff := map[string]p.PropertyDiff{}
 	if news.CertificateData != olds.CertificateData {
-		diff["certificateData"] = p.PropertyDiff{Kind: p.Update}
+		diff["certificateData"] = p.PropertyDiff{Kind: p.UpdateReplace}
 	}
 	if news.ClusterEndpoint != olds.ClusterEndpoint {
-		diff["clusterEndpoint"] = p.PropertyDiff{Kind: p.Update}
+		diff["clusterEndpoint"] = p.PropertyDiff{Kind: p.UpdateReplace}
 	}
 	if news.ClusterName != olds.ClusterName {
-		diff["clusterName"] = p.PropertyDiff{Kind: p.Update}
+		diff["clusterName"] = p.PropertyDiff{Kind: p.UpdateReplace}
 	}
 	if news.RoleArn != olds.RoleArn {
-		diff["roleArn"] = p.PropertyDiff{Kind: p.Update}
+		diff["roleArn"] = p.PropertyDiff{Kind: p.UpdateReplace}
 	}
 	if news.Profile != olds.Profile {
-		diff["profile"] = p.PropertyDiff{Kind: p.Update}
+		diff["profile"] = p.PropertyDiff{Kind: p.UpdateReplace}
 	}
 
 	return p.DiffResponse{
