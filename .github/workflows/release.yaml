@@ -12,7 +12,6 @@ env:
   DOTNET_VERSION: 6.0.302
   PYTHON_VERSION: "3.12"
   GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-  PULUMI_VERSION: "3.154.0"
 
 jobs:
   build_provider:
@@ -39,7 +38,7 @@ jobs:
       - name: Install Pulumi CLI
         uses: pulumi/actions@v6
         with:
-          pulumi-version: ${{env.PULUMI_VERSION}}
+          pulumi-version: latest
       - name: Check Pulumi CLI version
         run: pulumi version
       - name: Install Task
@@ -108,7 +107,7 @@ jobs:
       - name: Install Pulumi CLI
         uses: pulumi/actions@v6
         with:
-          pulumi-version: ${{env.PULUMI_VERSION}}
+          pulumi-version: latest
       - name: Check Pulumi CLI version
         run: pulumi version
       - name: Install Task
