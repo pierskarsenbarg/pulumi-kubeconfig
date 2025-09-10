@@ -101,7 +101,7 @@ jobs:
           dotnet-version: ${{env.DOTNET_VERSION}}
       - if: matrix.language == 'python'
         name: Setup Python
-        uses: actions/setup-python@v5
+        uses: actions/setup-python@v6
         with:
           python-version: ${{env.PYTHON_VERSION}}
       - name: Install Pulumi CLI
@@ -195,7 +195,7 @@ jobs:
           dotnet-version: ${{env.DOTNET_VERSION}}
       - if: matrix.language == 'python'
         name: Setup Python
-        uses: actions/setup-python@v5
+        uses: actions/setup-python@v6
         with:
           python-version: ${{env.PYTHON_VERSION}}
       - name: Download ${{matrix.language}} SDK
