@@ -91,7 +91,7 @@ jobs:
           cache-dependency-path: "**/*.sum"
       - if: matrix.language == 'nodejs'
         name: Setup Node
-        uses: actions/setup-node@v4
+        uses: actions/setup-node@v5
         with:
           node-version: ${{env.NODEJS_VERSION}}
       - if: matrix.language == 'dotnet'
@@ -184,7 +184,7 @@ jobs:
     steps:
       - if: matrix.language == 'nodejs'
         name: Setup Node
-        uses: actions/setup-node@v4
+        uses: actions/setup-node@v5
         with:
           node-version: ${{env.NODEJS_VERSION}}
           registry-url: https://registry.npmjs.org
