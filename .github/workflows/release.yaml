@@ -214,7 +214,7 @@ jobs:
           packages-dir: ${{github.workspace}}/sdk/python/bin/dist
       - if: matrix.language == 'nodejs'
         name: Publish NPM package
-        uses: JS-DevTools/npm-publish@v3
+        uses: JS-DevTools/npm-publish@v4
         with:
           access: "public"
           token: ${{ secrets.NPM_TOKEN }}
