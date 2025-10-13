@@ -7,7 +7,7 @@ name: release
 
 env:
   PROVIDER: kubeconfig
-  GO_VERSION: "1.22.x"
+  GO_VERSION: "1.24.x"
   NODEJS_VERSION: 20.x
   DOTNET_VERSION: 6.0.302
   PYTHON_VERSION: "3.12"
@@ -61,7 +61,7 @@ jobs:
       fail-fast: true
       matrix:
         goversion:
-          - 1.22.x
+          - 1.24.x
   build_sdks:
     name: Build SDKs
     runs-on: ubuntu-latest
