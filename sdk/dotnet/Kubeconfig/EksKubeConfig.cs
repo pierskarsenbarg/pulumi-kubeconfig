@@ -78,6 +78,7 @@ namespace PiersKarsenbarg.Pulumi.Kubeconfig
                 PluginDownloadURL = "github://api.github.com/pierskarsenbarg/pulumi-kubeconfig",
                 AdditionalSecretOutputs =
                 {
+                    "certificateData",
                     "kubeconfig",
                 },
             };
@@ -108,11 +109,21 @@ namespace PiersKarsenbarg.Pulumi.Kubeconfig
         [Input("certificateData")]
         public Input<string>? CertificateData { get; set; }
 
+        [Input("clusterEndpoint", required: true)]
+        private Input<string>? _clusterEndpoint;
+
         /// <summary>
         /// Endpoint for your Kubernetes API server.
         /// </summary>
-        [Input("clusterEndpoint", required: true)]
-        public Input<string> ClusterEndpoint { get; set; } = null!;
+        public Input<string>? ClusterEndpoint
+        {
+            get => _clusterEndpoint;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _clusterEndpoint = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
 
         /// <summary>
         /// Name of the EKS cluster you want to generate the kubeconfig for

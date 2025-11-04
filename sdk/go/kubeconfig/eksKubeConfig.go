@@ -43,7 +43,11 @@ func NewEksKubeConfig(ctx *pulumi.Context,
 	if args.ClusterName == nil {
 		return nil, errors.New("invalid value for required argument 'ClusterName'")
 	}
+	if args.ClusterEndpoint != nil {
+		args.ClusterEndpoint = pulumi.ToSecret(args.ClusterEndpoint).(pulumi.StringInput)
+	}
 	secrets := pulumi.AdditionalSecretOutputs([]string{
+		"certificateData",
 		"kubeconfig",
 	})
 	opts = append(opts, secrets)

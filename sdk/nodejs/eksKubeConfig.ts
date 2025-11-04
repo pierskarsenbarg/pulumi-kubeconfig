@@ -75,7 +75,7 @@ export class EksKubeConfig extends pulumi.CustomResource {
                 throw new Error("Missing required property 'clusterName'");
             }
             resourceInputs["certificateData"] = args?.certificateData;
-            resourceInputs["clusterEndpoint"] = args?.clusterEndpoint;
+            resourceInputs["clusterEndpoint"] = args?.clusterEndpoint ? pulumi.secret(args.clusterEndpoint) : undefined;
             resourceInputs["clusterName"] = args?.clusterName;
             resourceInputs["profile"] = args?.profile;
             resourceInputs["region"] = args?.region;
@@ -91,7 +91,7 @@ export class EksKubeConfig extends pulumi.CustomResource {
             resourceInputs["roleArn"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const secretOpts = { additionalSecretOutputs: ["kubeconfig"] };
+        const secretOpts = { additionalSecretOutputs: ["certificateData", "kubeconfig"] };
         opts = pulumi.mergeOptions(opts, secretOpts);
         super(EksKubeConfig.__pulumiType, name, resourceInputs, opts);
     }
