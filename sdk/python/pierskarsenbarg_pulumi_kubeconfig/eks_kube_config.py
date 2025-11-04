@@ -183,7 +183,7 @@ class EksKubeConfig(pulumi.CustomResource):
             __props__.__dict__["certificate_data"] = certificate_data
             if cluster_endpoint is None and not opts.urn:
                 raise TypeError("Missing required property 'cluster_endpoint'")
-            __props__.__dict__["cluster_endpoint"] = cluster_endpoint
+            __props__.__dict__["cluster_endpoint"] = None if cluster_endpoint is None else pulumi.Output.secret(cluster_endpoint)
             if cluster_name is None and not opts.urn:
                 raise TypeError("Missing required property 'cluster_name'")
             __props__.__dict__["cluster_name"] = cluster_name
@@ -191,7 +191,7 @@ class EksKubeConfig(pulumi.CustomResource):
             __props__.__dict__["region"] = region
             __props__.__dict__["role_arn"] = role_arn
             __props__.__dict__["kubeconfig"] = None
-        secret_opts = pulumi.ResourceOptions(additional_secret_outputs=["kubeconfig"])
+        secret_opts = pulumi.ResourceOptions(additional_secret_outputs=["certificateData", "kubeconfig"])
         opts = pulumi.ResourceOptions.merge(opts, secret_opts)
         super(EksKubeConfig, __self__).__init__(
             'kubeconfig:index:EksKubeConfig',

@@ -13,7 +13,7 @@ type EksKubeConfig struct{}
 
 type EksKubeConfigArgs struct {
 	ClusterName     string `pulumi:"clusterName"`
-	ClusterEndpoint string `pulumi:"clusterEndpoint"`
+	ClusterEndpoint string `pulumi:"clusterEndpoint" provider:"secret"`
 	CertificateData string `pulumi:"certificateData,optional"`
 	RoleArn         string `pulumi:"roleArn,optional"`
 	Region          string `pulumi:"region,optional"`
@@ -32,7 +32,7 @@ func (eks *EksKubeConfigArgs) Annotate(a infer.Annotator) {
 type EksKubeConfigState struct {
 	ClusterName     string `pulumi:"clusterName"`
 	ClusterEndpoint string `pulumi:"clusterEndpoint"`
-	CertificateData string `pulumi:"certificateData"`
+	CertificateData string `pulumi:"certificateData" provider:"secret"`
 	RoleArn         string `pulumi:"roleArn,optional"`
 	Region          string `pulumi:"region,optional"`
 	KubeConfig      string `pulumi:"kubeconfig" provider:"secret"`
