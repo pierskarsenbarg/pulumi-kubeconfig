@@ -19,7 +19,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout Repo
-        uses: actions/checkout@v5
+        uses: actions/checkout@v6
       - name: Unshallow clone for tags
         run: git fetch --prune --unshallow --tags
       - name: Set Provider Version
@@ -76,7 +76,7 @@ jobs:
           - go
     steps:
       - name: Checkout Repo
-        uses: actions/checkout@v5
+        uses: actions/checkout@v6
       - name: Unshallow clone for tags
         run: git fetch --prune --unshallow --tags
       - name: Set Provider Version
@@ -154,7 +154,7 @@ jobs:
     name: publish_provider
     steps:
       - name: Checkout Repo
-        uses: actions/checkout@v5
+        uses: actions/checkout@v6
       - name: Unshallow clone for tags
         run: git fetch --prune --unshallow --tags
       - name: Install Go
@@ -230,7 +230,7 @@ jobs:
     needs: publish_sdks
     steps:
       - name: Checkout Repo
-        uses: actions/checkout@v5
+        uses: actions/checkout@v6
       - id: version
         name: Set Provider Version
         uses: pulumi/provider-version-action@v1
