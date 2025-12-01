@@ -7,13 +7,13 @@ require (
 	github.com/pulumi/pulumi-azure-native-sdk/containerservice/v2 v2.90.0
 	github.com/pulumi/pulumi-dotnet/pulumi-language-dotnet v0.0.0-20241001072250-a4939089ffdf
 	github.com/pulumi/pulumi-go-provider v1.2.0
-	github.com/pulumi/pulumi-java/pkg v1.17.0
-	github.com/pulumi/pulumi-yaml v1.25.0
-	github.com/pulumi/pulumi/pkg/v3 v3.208.0
+	github.com/pulumi/pulumi-java/pkg v1.17.1
+	github.com/pulumi/pulumi-yaml v1.25.1
+	github.com/pulumi/pulumi/pkg/v3 v3.209.0
 	github.com/pulumi/pulumi/sdk/go/pulumi-language-go/v3 v3.0.0-20241008000145-ac7e4b012fba
 	github.com/pulumi/pulumi/sdk/nodejs/cmd/pulumi-language-nodejs/v3 v3.0.0-20241008000145-ac7e4b012fba
 	github.com/pulumi/pulumi/sdk/python/cmd/pulumi-language-python/v3 v3.0.0-20241008022826-e9bb24c3eac5
-	github.com/pulumi/pulumi/sdk/v3 v3.208.0
+	github.com/pulumi/pulumi/sdk/v3 v3.209.0
 )
 
 require (
@@ -297,7 +297,7 @@ require (
 	github.com/prometheus/common v0.32.1 // indirect
 	github.com/prometheus/procfs v0.7.3 // indirect
 	github.com/pulumi/appdash v0.0.0-20231130102222-75f619a67231 // indirect
-	github.com/pulumi/esc v0.17.0 // indirect
+	github.com/pulumi/esc v0.20.0 // indirect
 	github.com/pulumi/inflector v0.2.1 // indirect
 	github.com/pulumi/pulumi-azure-native-sdk/v2 v2.90.0 // indirect
 	github.com/quasilyte/go-ruleguard v0.4.3-0.20240823090925-0fe6f58b47b1 // indirect
@@ -372,7 +372,7 @@ require (
 	github.com/yuin/goldmark v1.7.13 // indirect
 	github.com/yuin/goldmark-emoji v1.0.1 // indirect
 	github.com/yusufpapurcu/wmi v1.2.4 // indirect
-	github.com/zclconf/go-cty v1.16.3 // indirect
+	github.com/zclconf/go-cty v1.17.0 // indirect
 	github.com/zeebo/errs v1.4.0 // indirect
 	gitlab.com/bosi/decorder v0.4.2 // indirect
 	go-simpler.org/musttag v0.13.0 // indirect
@@ -409,7 +409,6 @@ require (
 	golang.org/x/text v0.31.0 // indirect
 	golang.org/x/time v0.10.0 // indirect
 	golang.org/x/tools v0.38.0 // indirect
-	golang.org/x/tools/godoc v0.1.0-deprecated // indirect
 	golang.org/x/xerrors v0.0.0-20231012003039-104605ab7028 // indirect
 	google.golang.org/api v0.223.0 // indirect
 	google.golang.org/genproto v0.0.0-20241118233622-e639e219e697 // indirect
