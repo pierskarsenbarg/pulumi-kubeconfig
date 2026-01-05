@@ -7,13 +7,13 @@ require (
 	github.com/pulumi/pulumi-azure-native-sdk/containerservice/v2 v2.92.0
 	github.com/pulumi/pulumi-dotnet/pulumi-language-dotnet v0.0.0-20241001072250-a4939089ffdf
 	github.com/pulumi/pulumi-go-provider v1.2.0
-	github.com/pulumi/pulumi-java/pkg v1.19.0
+	github.com/pulumi/pulumi-java/pkg v1.20.0
 	github.com/pulumi/pulumi-yaml v1.26.1
-	github.com/pulumi/pulumi/pkg/v3 v3.213.0
+	github.com/pulumi/pulumi/pkg/v3 v3.214.1
 	github.com/pulumi/pulumi/sdk/go/pulumi-language-go/v3 v3.0.0-20241008000145-ac7e4b012fba
 	github.com/pulumi/pulumi/sdk/nodejs/cmd/pulumi-language-nodejs/v3 v3.0.0-20241008000145-ac7e4b012fba
 	github.com/pulumi/pulumi/sdk/python/cmd/pulumi-language-python/v3 v3.0.0-20241008022826-e9bb24c3eac5
-	github.com/pulumi/pulumi/sdk/v3 v3.213.0
+	github.com/pulumi/pulumi/sdk/v3 v3.214.1
 )
 
 require (
@@ -136,7 +136,6 @@ require (
 	github.com/envoyproxy/go-control-plane/envoy v1.32.4 // indirect
 	github.com/envoyproxy/protoc-gen-validate v1.2.1 // indirect
 	github.com/erikgeiser/coninput v0.0.0-20211004153227-1c3628e74d0f // indirect
-	github.com/erikgeiser/promptkit v0.9.0 // indirect
 	github.com/ettle/strcase v0.2.0 // indirect
 	github.com/fatih/color v1.18.0 // indirect
 	github.com/fatih/structtag v1.2.0 // indirect
