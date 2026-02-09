@@ -8,12 +8,12 @@ require (
 	github.com/pulumi/pulumi-dotnet/pulumi-language-dotnet v0.0.0-20241001072250-a4939089ffdf
 	github.com/pulumi/pulumi-go-provider v1.3.0
 	github.com/pulumi/pulumi-java/pkg v1.21.0
-	github.com/pulumi/pulumi-yaml v1.26.2
-	github.com/pulumi/pulumi/pkg/v3 v3.217.1
+	github.com/pulumi/pulumi-yaml v1.27.0
+	github.com/pulumi/pulumi/pkg/v3 v3.218.0
 	github.com/pulumi/pulumi/sdk/go/pulumi-language-go/v3 v3.0.0-20241008000145-ac7e4b012fba
 	github.com/pulumi/pulumi/sdk/nodejs/cmd/pulumi-language-nodejs/v3 v3.0.0-20241008000145-ac7e4b012fba
 	github.com/pulumi/pulumi/sdk/python/cmd/pulumi-language-python/v3 v3.0.0-20241008022826-e9bb24c3eac5
-	github.com/pulumi/pulumi/sdk/v3 v3.217.1
+	github.com/pulumi/pulumi/sdk/v3 v3.218.0
 )
 
 require (
