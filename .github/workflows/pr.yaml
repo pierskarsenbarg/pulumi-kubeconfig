@@ -46,6 +46,7 @@ jobs:
   build_sdks:
     name: Build provider SDKs
     runs-on: ubuntu-latest
+    needs: build_provider
     strategy:
         fail-fast: true
         matrix:
