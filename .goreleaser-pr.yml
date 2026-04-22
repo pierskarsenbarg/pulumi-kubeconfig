@@ -10,7 +10,7 @@ builds:
   - CGO_ENABLED=0
   - GO111MODULE=on
   goarch:
-  - arm64
+  - amd64
   goos:
   - linux
   ldflags:
