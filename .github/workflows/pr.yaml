@@ -92,7 +92,7 @@ jobs:
           path: ${{ github.workspace }}/dist
       - name: Untar provider binary
         run: |-
-          tar -zxf ${{ github.workspace }}/dist/provider.tar.gz -C ${{ github.workspace}}/bin
+          tar -zxf ${{ github.workspace }}/dist/${{ env.PROVIDER_NAME }}.tar.gz -C ${{ github.workspace}}/bin
           find ${{ github.workspace }} -name "pulumi-*-${{ env.PROVIDER_NAME }}" -print -exec chmod +x {} \;
       - name: Build ${{ matrix.language }} SDK
         run: task generate_${{ matrix.language }}_sdk
