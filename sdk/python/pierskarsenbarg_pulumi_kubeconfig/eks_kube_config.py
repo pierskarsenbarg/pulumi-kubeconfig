@@ -27,6 +27,7 @@ class EksKubeConfigArgs:
                  role_arn: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a EksKubeConfig resource.
+
         :param pulumi.Input[_builtins.str] cluster_endpoint: Endpoint for your Kubernetes API server.
         :param pulumi.Input[_builtins.str] cluster_name: Name of the EKS cluster you want to generate the kubeconfig for
         :param pulumi.Input[_builtins.str] certificate_data: Base64 encoded certificate data required to communicate with your cluster.
@@ -133,6 +134,7 @@ class EksKubeConfig(pulumi.CustomResource):
                  __props__=None):
         """
         Create a EksKubeConfig resource with the given unique name, props, and options.
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] certificate_data: Base64 encoded certificate data required to communicate with your cluster.
@@ -150,6 +152,7 @@ class EksKubeConfig(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         Create a EksKubeConfig resource with the given unique name, props, and options.
+
         :param str resource_name: The name of the resource.
         :param EksKubeConfigArgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
