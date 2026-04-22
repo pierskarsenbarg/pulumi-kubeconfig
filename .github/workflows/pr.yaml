@@ -41,7 +41,7 @@ jobs:
         uses: actions/upload-artifact@v7
         with:
           name: ${{ env.PROVIDER_NAME }}.tar.gz
-          path: ${{ github.workspace }}/dist/${{ env.PROVIDER_NAME }}-${{ steps.short_commit_sha.outputs.sha_short}}-linux-arm64.tar.gz
+          path: ${{ github.workspace }}/dist/${{ env.PROVIDER_NAME }}.tar.gz
   
   build_sdks:
     name: Build provider SDKs
@@ -94,8 +94,8 @@ jobs:
         run: ls ${{ github.workspace }}/bin
       - name: Untar provider binary
         run: |-
-          tar -zxf ${{ github.workspace }}/bin/${{ env.PROVIDER_NAME }}.tar.gz -C ${{ github.workspace}}/bin
-          find ${{ github.workspace }} -name "${{ env.PROVIDER_NAME }}" -print -exec chmod +x {} \;
+          tar -zxf ${{ github.workspace }}/bin/*.tar.gz -C ${{ github.workspace }}/bin
+          chmod +x ${{ github.workspace }}/bin/${{ env.PROVIDER_NAME }}
       - name: Build ${{ matrix.language }} SDK
         run: task generate_${{ matrix.language }}_sdk
       - name: Compress SDK folder
