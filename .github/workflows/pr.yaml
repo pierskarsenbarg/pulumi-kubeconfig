@@ -109,7 +109,7 @@ jobs:
           path: ${{ github.workspace }}/bin
       - name: Untar provider binary
         run: |-
-          tar -zxf ${{ github.workspace }}/${{ env.PROVIDER_NAME }}.tar.gz -C ${{ github.workspace }}/bin
+          tar -zxf ${{ github.workspace }}/bin/${{ env.PROVIDER_NAME }}.tar.gz -C ${{ github.workspace }}/bin
           chmod +x ${{ github.workspace }}/bin/${{ env.PROVIDER_NAME }}
       - name: Build ${{ matrix.language }} SDK
         run: task generate_${{ matrix.language }}_sdk
