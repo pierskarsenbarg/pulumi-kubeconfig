@@ -1,11 +1,6 @@
 name: pr
 on:
   pull_request:
-    types:
-      - opened
-      - reopened
-      - edited
-      - synchronize
 
 env:
   PROVIDER_NAME: pulumi-resource-kubeconfig
