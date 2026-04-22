@@ -43,6 +43,10 @@ jobs:
         uses: jaxxstorm/action-install-gh-release@v3.0.0
         with:
           repo: pulumi/pulumictl
+      - name: Install GoReleaser
+        uses: goreleaser/goreleaser-action@v7
+        with:
+          install-only: true
       - name: Build provider
         run: task ci_pr_build_provider
       - name: Upload artifacts
