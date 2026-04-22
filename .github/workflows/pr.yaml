@@ -70,6 +70,16 @@ jobs:
         with:
           version: 3.x
           repo-token: ${{ secrets.GITHUB_TOKEN }}
+      - name: Install Pulumi CLI
+        uses: pulumi/actions@v6
+        with:
+          pulumi-version: latest
+      - name: Check Pulumi CLI version
+        run: pulumi version
+      - name: Install pulumictl
+        uses: jaxxstorm/action-install-gh-release@v3.0.0
+        with:
+          repo: pulumi/pulumictl
       - if: matrix.language == 'nodejs' 
         name: Setup Node
         uses: actions/setup-node@v6
