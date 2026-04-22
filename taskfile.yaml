@@ -26,7 +26,7 @@ tasks:
       - go build -o bin/{{.PROVIDER}} -gcflags="all=-N -l" -ldflags "-X {{.VERSION_PATH}}={{.VERSION}}"
   ci_pr_build_provider:
     cmds: 
-      - goreleaser release --clean -f .goreleaser-pr.yml --shapshot
+      - goreleaser release --clean -f .goreleaser-pr.yml --snapshot
   get_schema:
     deps: [build_provider]
     cmds:
