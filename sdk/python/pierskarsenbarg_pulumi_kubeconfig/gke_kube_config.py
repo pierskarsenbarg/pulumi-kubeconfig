@@ -26,6 +26,7 @@ class GkeKubeConfigArgs:
                  zone: pulumi.Input[_builtins.str]):
         """
         The set of arguments for constructing a GkeKubeConfig resource.
+
         :param pulumi.Input[_builtins.str] certificate_data: Base64 encoded certificate data required to communicate with your cluster.
         :param pulumi.Input[_builtins.str] cluster_endpoint: Endpoint for your Kubernetes API server.
         :param pulumi.Input[_builtins.str] cluster_name: Name of the GKE cluster you want to generate the kubeconfig for
@@ -105,6 +106,7 @@ class GkeKubeConfig(pulumi.CustomResource):
                  __props__=None):
         """
         Create a GkeKubeConfig resource with the given unique name, props, and options.
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] certificate_data: Base64 encoded certificate data required to communicate with your cluster.
@@ -119,6 +121,7 @@ class GkeKubeConfig(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         Create a GkeKubeConfig resource with the given unique name, props, and options.
+
         :param str resource_name: The name of the resource.
         :param GkeKubeConfigArgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.

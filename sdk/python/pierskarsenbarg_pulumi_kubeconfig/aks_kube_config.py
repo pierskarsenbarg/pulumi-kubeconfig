@@ -24,6 +24,7 @@ class AksKubeConfigArgs:
                  is_admin: Optional[pulumi.Input[_builtins.bool]] = None):
         """
         The set of arguments for constructing a AksKubeConfig resource.
+
         :param pulumi.Input[_builtins.str] cluster_name: Name of the AKS cluster you want the Kubeconfig from.
         :param pulumi.Input[_builtins.str] resource_group_name: Name of the resource group that the cluster is part of.
         :param pulumi.Input[_builtins.bool] is_admin: Specify whether you want to retrieve the admin kubeconfig or the user kubeconfig. Default value is false
@@ -82,6 +83,7 @@ class AksKubeConfig(pulumi.ComponentResource):
                  __props__=None):
         """
         Create a AksKubeConfig resource with the given unique name, props, and options.
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] cluster_name: Name of the AKS cluster you want the Kubeconfig from.
@@ -96,6 +98,7 @@ class AksKubeConfig(pulumi.ComponentResource):
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         Create a AksKubeConfig resource with the given unique name, props, and options.
+
         :param str resource_name: The name of the resource.
         :param AksKubeConfigArgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.

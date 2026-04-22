@@ -114,7 +114,7 @@ jobs:
       - name: Build ${{ matrix.language }} SDK
         run: task generate_${{ matrix.language }}_sdk
       - name: Compress SDK folder
-        run: tar -zcf sdk/${{ matrix.language }}.tar.gz -C sdk/${{ matrix.language }}
+        run: tar -zcf sdk/${{ matrix.language }}.tar.gz -C sdk/${{ matrix.language }} .
       - name: Upload artifacts
         uses: actions/upload-artifact@v7
         with:
