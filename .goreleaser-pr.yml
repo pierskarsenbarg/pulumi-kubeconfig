@@ -2,7 +2,7 @@ version: 2
 project_name: pulumi-resource-kubeconfig
 archives:
 - id: archive
-  name_template: '{{ .Binary }}-{{ .ShortCommit }}-{{ .Os }}-{{ .Arch }}'
+  name_template: '{{ .Binary }}'
   formats: "tar.gz"
 builds:
 - binary: pulumi-resource-kubeconfig
@@ -11,11 +11,8 @@ builds:
   - GO111MODULE=on
   goarch:
   - arm64
-  - amd64
   goos:
   - linux
-  - windows
-  - darwin
   ldflags:
   - -s
   - -w
