@@ -1,0 +1,22 @@
+version: 2
+project_name: pulumi-resource-kubeconfig
+archives:
+- id: archive
+  name_template: '{{ .Binary }}-{{ .ShortCommit }}-{{ .Os }}-{{ .Arch }}'
+  formats: "tar.gz"
+builds:
+- binary: pulumi-resource-kubeconfig
+  env:
+  - CGO_ENABLED=0
+  - GO111MODULE=on
+  goarch:
+  - arm64
+  goos:
+  - linux
+  ldflags:
+  - -s
+  - -w
+  - -X main.Version={{.ShortCommit}}
+  main: .
+snapshot:
+  version_template: '{{ .ShortCommit }}-SNAPSHOT'
