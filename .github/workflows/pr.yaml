@@ -42,7 +42,67 @@ jobs:
         with:
           name: ${{ env.PROVIDER_NAME }}.tar.gz
           path: ${{ github.workspace }}/dist/pulumi-resource-kubeconfig-${{ steps.short_commit_sha.outputs.sha_short}}-linux-arm64.tar.gz
-
+  
+  build_sdks:
+    name: Build provider SDKs
+    runs-on: ubuntu-latest
+    strategy:
+        fail-fast: true
+        matrix:
+          language:
+            - nodejs
+            - python
+            - dotnet
+            - go
+    steps:
+      - name: Checkout Repo
+        uses: actions/checkout@v6
+      - name: Get short commit sha
+        id: short_commit_sha
+        run: echo "sha_short=$(git rev-parse --short HEAD)" >> $GITHUB_OUTPUT
+      - name: Set Provider Version
+        uses: pulumi/provider-version-action@v1
+        with:
+          set-env: PROVIDER_VERSION
+      - name: Install Task
+        uses: arduino/setup-task@v2
+        with:
+          version: 3.x
+          repo-token: ${{ secrets.GITHUB_TOKEN }}
+      - if: matrix.language == 'nodejs' 
+        name: Setup Node
+        uses: actions/setup-node@v6
+        with:
+          node-version: "22.x"
+      - if: matrix.language == 'dotnet'
+        name: Setup DotNet
+        uses: actions/setup-dotnet@v5
+        with:
+          dotnet-version: "10.0.201"
+      - if: matrix.language == 'python'
+        name: Setup Python
+        uses: actions/setup-python@v6
+        with:
+          python-version: "3.11"
+      - name: Download provider binary
+        uses: actions/download-artifact@v8
+        with:
+          name: ${{ env.PROVIDER_NAME }}.tar.gz
+          path: ${{ github.workspace }}/dist
+      - name: Untar provider binary
+        run: |-
+          tar -zxf ${{ github.workspace }}/dist/provider.tar.gz -C ${{ github.workspace}}/bin
+          find ${{ github.workspace }} -name "pulumi-*-${{ env.PROVIDER_NAME }}" -print -exec chmod +x {} \;
+      - name: Build ${{ matrix.language }} SDK
+        run: task generate_${{ matrix.language }}_sdk
+      - name: Compress SDK folder
+        run: tar -zcf sdk/${{ matrix.language }}.tar.gz -C sdk/${{ matrix.language }}
+      - name: Upload artifacts
+        uses: actions/upload-artifact@v7
+        with:
+          name: ${{ matrix.language  }}-sdk.tar.gz
+          path: ${{ github.workspace}}/sdk/${{ matrix.language }}.tar.gz
+      
   # build_all:
   #   name: Build all
   #   runs-on: ubuntu-latest
@@ -57,6 +117,23 @@ jobs:
   #       uses: actions/setup-go@v6
   #       with:
   #         go-version: "1.26.x"
+  #     - name: Install Pulumi CLI
+  #       uses: pulumi/actions@v6
+  #       with:
+  #         pulumi-version: latest
+  #     - name: Check Pulumi CLI version
+  #       run: pulumi version
+  #     - name: Install Task
+  #       uses: arduino/setup-task@v2
+  #       with:
+  #         version: 3.x
+  #         repo-token: ${{ secrets.GITHUB_TOKEN }}
+  #     - name: Install pulumictl
+  #       uses: jaxxstorm/action-install-gh-release@v3.0.0
+  #       with:
+  #         repo: pulumi/pulumictl
+      
+
   #     - name: Setup Node
   #       uses: actions/setup-node@v6
   #       with:
@@ -69,22 +146,9 @@ jobs:
   #       uses: actions/setup-python@v6
   #       with:
   #         python-version: "3.11"
-  #     - name: Install Pulumi CLI
-  #       uses: pulumi/actions@v6
-  #       with:
-  #         pulumi-version: latest
-  #     - name: Check Pulumi CLI version
-  #       run: pulumi version
-  #     - name: Install Task
-  #       uses: arduino/setup-task@v2
-  #       with:
-  #         version: 3.x
-  #         repo-token: ${{ secrets.GITHUB_TOKEN }}
       
-  #     - name: Install pulumictl
-  #       uses: jaxxstorm/action-install-gh-release@v3.0.0
-  #       with:
-  #         repo: pulumi/pulumictl
+      
+
   #     - name: generate sdks
   #       run: task generate_sdks
   #   strategy: 
