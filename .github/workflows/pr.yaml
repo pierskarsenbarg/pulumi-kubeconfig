@@ -92,16 +92,27 @@ jobs:
         uses: actions/setup-node@v6
         with:
           node-version: "22.x"
+          cache: true
+          cache-dependency-path: ${{ github.workspace }}/sdk/nodejs
       - if: matrix.language == 'dotnet'
         name: Setup DotNet
         uses: actions/setup-dotnet@v5
         with:
           dotnet-version: "10.0.201"
+          cache: true
       - if: matrix.language == 'python'
         name: Setup Python
         uses: actions/setup-python@v6
         with:
           python-version: "3.11"
+          cache: "pip"
+      - if: matrix.language == 'go'
+        name: Install Go
+        uses: actions/setup-go@v6
+        with:
+          go-version: "1.26.x"
+          cache: true
+          cache-dependency-path: "go.sum"
       - name: Download provider binary
         uses: actions/download-artifact@v8
         with:
@@ -120,60 +131,4 @@ jobs:
         with:
           name: ${{ matrix.language  }}-sdk.tar.gz
           path: ${{ github.workspace}}/sdk/${{ matrix.language }}.tar.gz
-      
-  # build_all:
-  #   name: Build all
-  #   runs-on: ubuntu-latest
-  #   steps:
-  #     - name: Checkout Repo
-  #       uses: actions/checkout@v6
-  #     - name: Set Provider Version
-  #       uses: pulumi/provider-version-action@v1
-  #       with:
-  #         set-env: PROVIDER_VERSION
-  #     - name: Install Go
-  #       uses: actions/setup-go@v6
-  #       with:
-  #         go-version: "1.26.x"
-  #     - name: Install Pulumi CLI
-  #       uses: pulumi/actions@v6
-  #       with:
-  #         pulumi-version: latest
-  #     - name: Check Pulumi CLI version
-  #       run: pulumi version
-  #     - name: Install Task
-  #       uses: arduino/setup-task@v2
-  #       with:
-  #         version: 3.x
-  #         repo-token: ${{ secrets.GITHUB_TOKEN }}
-  #     - name: Install pulumictl
-  #       uses: jaxxstorm/action-install-gh-release@v3.0.0
-  #       with:
-  #         repo: pulumi/pulumictl
-      
-
-  #     - name: Setup Node
-  #       uses: actions/setup-node@v6
-  #       with:
-  #         node-version: "22.x"
-  #     - name: Setup DotNet
-  #       uses: actions/setup-dotnet@v5
-  #       with:
-  #         dotnet-version: "10.0.201"
-  #     - name: Setup Python
-  #       uses: actions/setup-python@v6
-  #       with:
-  #         python-version: "3.11"
-      
-      
-
-  #     - name: generate sdks
-  #       run: task generate_sdks
-  #   strategy: 
-  #     fail-fast: true
-  #     matrix:
-  #       language:
-  #         - nodejs
-  #         - python
-  #         - go
-  #         - dotnet
+     
