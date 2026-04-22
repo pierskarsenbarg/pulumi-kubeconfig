@@ -29,21 +29,14 @@ jobs:
           pulumi-version: latest
       - name: Check Pulumi CLI version
         run: pulumi version
-      - name: Install Task
-        uses: arduino/setup-task@v2
-        with:
-          version: 3.x
-          repo-token: ${{ secrets.GITHUB_TOKEN }}
       - name: Install pulumictl
         uses: jaxxstorm/action-install-gh-release@v3.0.0
         with:
           repo: pulumi/pulumictl
-      - name: Install GoReleaser
+      - name: Run GoReleaser
         uses: goreleaser/goreleaser-action@v7
         with:
-          install-only: true
-      - name: Build provider
-        run: task ci_pr_build_provider
+          args: release --clean -f .goreleaser-pr.yml --snapshot
       - name: Upload artifacts
         uses: actions/upload-artifact@v7
         with:
@@ -87,6 +80,7 @@ jobs:
   #       with:
   #         version: 3.x
   #         repo-token: ${{ secrets.GITHUB_TOKEN }}
+      
   #     - name: Install pulumictl
   #       uses: jaxxstorm/action-install-gh-release@v3.0.0
   #       with:

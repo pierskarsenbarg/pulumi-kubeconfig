@@ -11,8 +11,11 @@ builds:
   - GO111MODULE=on
   goarch:
   - arm64
+  - amd64
   goos:
   - linux
+  - windows
+  - darwin
   ldflags:
   - -s
   - -w
