@@ -33,15 +33,18 @@ jobs:
         uses: jaxxstorm/action-install-gh-release@v3.0.0
         with:
           repo: pulumi/pulumictl
-      - name: Run GoReleaser
-        uses: goreleaser/goreleaser-action@v7
+      - name: Install Task
+        uses: arduino/setup-task@v2
         with:
-          args: release --clean -f .goreleaser-pr.yml --snapshot
+          version: 3.x
+          repo-token: ${{ secrets.GITHUB_TOKEN }}
+      - name: Build provider
+        run: task build_provider
       - name: Upload artifacts
         uses: actions/upload-artifact@v7
         with:
           name: ${{ env.PROVIDER_NAME }}.tar.gz
-          path: ${{ github.workspace }}/dist/${{ env.PROVIDER_NAME }}.tar.gz
+          path: ${{ github.workspace }}/bin/${{ env.PROVIDER_NAME }}.tar.gz
   
   build_sdks:
     name: Build provider SDKs
@@ -100,8 +103,6 @@ jobs:
         with:
           name: ${{ env.PROVIDER_NAME }}.tar.gz
           path: ${{ github.workspace }}/bin
-      - name: List files
-        run: ls ${{ github.workspace }}/bin
       - name: Untar provider binary
         run: |-
           tar -zxf ${{ github.workspace }}/bin/*.tar.gz -C ${{ github.workspace }}/bin
