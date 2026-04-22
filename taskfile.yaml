@@ -9,6 +9,7 @@ vars:
   PROVIDER: pulumi-resource-{{.PROVIDER_NAME}}
   PROJECT: github.com/pierskarsenbarg/pulumi-{{.PROVIDER_NAME}}
   SDK_DIR: sdk
+  DIST: 
 
 tasks:
   clean:
@@ -24,9 +25,6 @@ tasks:
     cmds:
       - rm -rf ./bin
       - go build -o bin/{{.PROVIDER}} -gcflags="all=-N -l" -ldflags "-X {{.VERSION_PATH}}={{.VERSION}}"
-  ci_pr_build_provider:
-    cmds: 
-      - goreleaser release --clean -f .goreleaser-pr.yml --snapshot
   get_schema:
     deps: [build_provider]
     cmds:
