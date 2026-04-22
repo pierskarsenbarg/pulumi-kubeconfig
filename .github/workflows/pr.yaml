@@ -92,27 +92,21 @@ jobs:
         uses: actions/setup-node@v6
         with:
           node-version: "22.x"
-          cache: true
-          cache-dependency-path: ${{ github.workspace }}/sdk/nodejs
       - if: matrix.language == 'dotnet'
         name: Setup DotNet
         uses: actions/setup-dotnet@v5
         with:
           dotnet-version: "10.0.201"
-          cache: true
       - if: matrix.language == 'python'
         name: Setup Python
         uses: actions/setup-python@v6
         with:
           python-version: "3.11"
-          cache: "pip"
       - if: matrix.language == 'go'
         name: Install Go
         uses: actions/setup-go@v6
         with:
           go-version: "1.26.x"
-          cache: true
-          cache-dependency-path: "go.sum"
       - name: Download provider binary
         uses: actions/download-artifact@v8
         with:
