@@ -90,6 +90,8 @@ jobs:
         with:
           name: ${{ env.PROVIDER_NAME }}.tar.gz
           path: ${{ github.workspace }}/bin
+      - name: Check for file
+        run: find ${{ github.workspace }} -name "pulumi-*-${{ env.PROVIDER_NAME }}.tar.gz" -print -exec chmod +x {} \;
       - name: Untar provider binary
         run: |-
           tar -zxf ${{ github.workspace }}/bin/${{ env.PROVIDER_NAME }}.tar.gz -C ${{ github.workspace}}/bin
