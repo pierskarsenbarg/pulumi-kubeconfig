@@ -41,7 +41,7 @@ jobs:
         uses: actions/upload-artifact@v7
         with:
           name: ${{ env.PROVIDER_NAME }}.tar.gz
-          path: ${{ github.workspace }}/dist/pulumi-resource-kubeconfig-${{ steps.short_commit_sha.outputs.sha_short}}-linux-arm64.tar.gz
+          path: ${{ github.workspace }}/dist/${{ env.PROVIDER_NAME }}-${{ steps.short_commit_sha.outputs.sha_short}}-linux-arm64.tar.gz
   
   build_sdks:
     name: Build provider SDKs
@@ -90,12 +90,12 @@ jobs:
         with:
           name: ${{ env.PROVIDER_NAME }}.tar.gz
           path: ${{ github.workspace }}/bin
-      - name: Check for file
-        run: find ${{ github.workspace }} -name "pulumi-*-${{ env.PROVIDER_NAME }}.tar.gz" -print -exec chmod +x {} \;
+      - name: List files
+        run: ls ${{ github.workspace }}/bin
       - name: Untar provider binary
         run: |-
           tar -zxf ${{ github.workspace }}/bin/${{ env.PROVIDER_NAME }}.tar.gz -C ${{ github.workspace}}/bin
-          find ${{ github.workspace }} -name "pulumi-*-${{ env.PROVIDER_NAME }}" -print -exec chmod +x {} \;
+          find ${{ github.workspace }} -name "${{ env.PROVIDER_NAME }}" -print -exec chmod +x {} \;
       - name: Build ${{ matrix.language }} SDK
         run: task generate_${{ matrix.language }}_sdk
       - name: Compress SDK folder
