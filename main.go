@@ -6,10 +6,10 @@ import (
 	"os"
 
 	"github.com/pierskarsenbarg/pulumi-kubeconfig/pkg"
+	dotnetgen "github.com/pulumi/pulumi-dotnet/pulumi-language-dotnet/v3/codegen"
 	p "github.com/pulumi/pulumi-go-provider"
 	"github.com/pulumi/pulumi-go-provider/infer"
 	"github.com/pulumi/pulumi-go-provider/middleware/schema"
-	dotnetgen "github.com/pulumi/pulumi-dotnet/pulumi-language-dotnet/v3/codegen"
 	gen "github.com/pulumi/pulumi/pkg/v3/codegen/go"
 	nodejsgen "github.com/pulumi/pulumi/pkg/v3/codegen/nodejs"
 	pythongen "github.com/pulumi/pulumi/pkg/v3/codegen/python"
@@ -35,8 +35,8 @@ func provider() p.Provider {
 			Description: "Kubeconfig provider",
 			Keywords:    []string{"pulumi", "kubeconfig", "category/infrastructure", "kind/native"},
 			License:     "Apache-2.0",
-			Homepage:    "https://github.com/pierskarenbarg/pulumi-kubeconfig",
-			Repository:  "https://github.com/pierskarenbarg/pulumi-kubeconfig",
+			Homepage:    "https://github.com/pierskarsenbarg/pulumi-kubeconfig",
+			Repository:  "https://github.com/pierskarsenbarg/pulumi-kubeconfig",
 			LanguageMap: map[string]any{
 				"go": gen.GoPackageInfo{
 					RespectSchemaVersion: true,
