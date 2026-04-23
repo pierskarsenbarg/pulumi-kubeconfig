@@ -12,9 +12,6 @@ jobs:
     steps:
       - name: Checkout Repo
         uses: actions/checkout@v6
-      - name: Get short commit sha
-        id: short_commit_sha
-        run: echo "sha_short=$(git rev-parse --short HEAD)" >> $GITHUB_OUTPUT
       - name: Set Provider Version
         uses: pulumi/provider-version-action@v1
         with:
@@ -65,9 +62,6 @@ jobs:
     steps:
       - name: Checkout Repo
         uses: actions/checkout@v6
-      - name: Get short commit sha
-        id: short_commit_sha
-        run: echo "sha_short=$(git rev-parse --short HEAD)" >> $GITHUB_OUTPUT
       - name: Set Provider Version
         uses: pulumi/provider-version-action@v1
         with:
