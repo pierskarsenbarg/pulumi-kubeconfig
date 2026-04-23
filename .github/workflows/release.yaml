@@ -120,6 +120,7 @@ jobs:
     needs: build_sdks
     permissions:
       id-token: write
+      contents: read
     strategy:
       fail-fast: true
       matrix:
@@ -160,10 +161,8 @@ jobs:
           packages-dir: ${{github.workspace}}/sdk/python/bin/dist
       - if: matrix.language == 'nodejs'
         name: Publish NPM package
-        uses: JS-DevTools/npm-publish@v4
-        with:
-          access: "public"
-          package: ${{github.workspace}}/sdk/nodejs/bin/package.json
+        run: npm publish
+        working-directory: ${{github.workspace}}/sdk/nodejs/bin
       - if: matrix.language == 'dotnet'
         name: Publish Nuget package
         env:
