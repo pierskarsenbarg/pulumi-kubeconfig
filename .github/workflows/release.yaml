@@ -136,9 +136,6 @@ jobs:
         with:
           node-version: ${{env.NODEJS_VERSION}}
           registry-url: https://registry.npmjs.org
-      - if: matrix.language == 'nodejs'
-        name: Update npm
-        run: npm install -g npm@latest
       - if: matrix.language == 'dotnet'
         name: Setup DotNet
         uses: actions/setup-dotnet@v5
