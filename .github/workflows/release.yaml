@@ -12,7 +12,7 @@ permissions:
 env:
   PROVIDER: kubeconfig
   GO_VERSION: "1.26.x"
-  NODEJS_VERSION: "22.x"
+  NODEJS_VERSION: "24.x"
   DOTNET_VERSION: "10.0.201"
   PYTHON_VERSION: "3.12"
   GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
