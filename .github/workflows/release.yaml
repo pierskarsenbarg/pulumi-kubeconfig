@@ -161,7 +161,7 @@ jobs:
           packages-dir: ${{github.workspace}}/sdk/python/bin/dist
       - if: matrix.language == 'nodejs'
         name: Publish NPM package
-        run: npm publish
+        run: npm publish --access public
         working-directory: ${{github.workspace}}/sdk/nodejs/bin
       - if: matrix.language == 'dotnet'
         name: Publish Nuget package
