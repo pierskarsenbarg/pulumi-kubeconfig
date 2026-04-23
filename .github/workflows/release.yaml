@@ -163,7 +163,6 @@ jobs:
         uses: JS-DevTools/npm-publish@v4
         with:
           access: "public"
-          token: ${{ secrets.NPM_TOKEN }}
           package: ${{github.workspace}}/sdk/nodejs/bin/package.json
       - if: matrix.language == 'dotnet'
         name: Publish Nuget package
