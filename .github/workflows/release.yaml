@@ -128,7 +128,7 @@ jobs:
         language:
           - nodejs
           - python
-          - dotnet
+          # - dotnet
     steps:
       - if: matrix.language == 'nodejs'
         name: Setup Node
@@ -164,11 +164,11 @@ jobs:
         name: Publish NPM package
         run: npm publish --access public
         working-directory: ${{github.workspace}}/sdk/nodejs/bin
-      # - if: matrix.language == 'dotnet'
-      #   name: Publish Nuget package
-      #   env:
-      #     NUGET_PUBLISH_KEY: ${{ secrets.NUGET_PUBLISH_KEY }}
-      #   run: find "${{github.workspace}}/sdk/dotnet/bin/Release/" -name 'PiersKarsenbarg.*.nupkg' -exec dotnet nuget push -k "${NUGET_PUBLISH_KEY}" -s https://api.nuget.org/v3/index.json {} ';'
+      - if: matrix.language == 'dotnet'
+        name: Publish Nuget package
+        env:
+          NUGET_PUBLISH_KEY: ${{ secrets.NUGET_PUBLISH_KEY }}
+        run: find "${{github.workspace}}/sdk/dotnet/bin/Release/" -name 'PiersKarsenbarg.*.nupkg' -exec dotnet nuget push -k "${NUGET_PUBLISH_KEY}" -s https://api.nuget.org/v3/index.json {} ';'
   
   publish_go_sdk:
     runs-on: ubuntu-latest
