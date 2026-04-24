@@ -31,9 +31,7 @@ func (kca *AksKubeConfigState) Annotate(a infer.Annotator) {
 	a.Describe(&kca.KubeConfig, "Kubeconfig returned from AKS cluster")
 }
 
-func (k *AksKubeConfig) Construct(ctx *pulumi.Context, name, typ string, args AksKubeConfigArgs, opts pulumi.ResourceOption) (
-	*AksKubeConfigState, error,
-) {
+func (k *AksKubeConfig) Construct(ctx *pulumi.Context, name, typ string, args AksKubeConfigArgs, opts pulumi.ResourceOption) (*AksKubeConfigState, error) {
 	comp := &AksKubeConfigState{}
 	err := ctx.RegisterComponentResource(typ, name, comp, opts)
 	if err != nil {
