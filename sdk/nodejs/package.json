@@ -7,14 +7,14 @@
         "category/infrastructure",
         "kind/native"
     ],
-    "homepage": "https://github.com/pierskarenbarg/pulumi-kubeconfig",
-    "repository": "https://github.com/pierskarenbarg/pulumi-kubeconfig",
+    "homepage": "https://github.com/pierskarsenbarg/pulumi-kubeconfig",
+    "repository": "https://github.com/pierskarsenbarg/pulumi-kubeconfig",
     "license": "Apache-2.0",
     "scripts": {
         "build": "tsc"
     },
     "dependencies": {
-        "@pulumi/azure-native": "^2.0.0",
+        "@pulumi/azure-native": "^3.0.0",
         "@pulumi/pulumi": "^3.0.0"
     },
     "devDependencies": {

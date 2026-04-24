@@ -4,7 +4,7 @@ go 1.26.0
 
 require (
 	github.com/golangci/golangci-lint v1.64.8
-	github.com/pulumi/pulumi-azure-native-sdk/containerservice/v2 v2.92.2
+	github.com/pulumi/pulumi-azure-native-sdk/containerservice/v3 v3.17.0
 	github.com/pulumi/pulumi-dotnet/pulumi-language-dotnet/v3 v3.103.0
 	github.com/pulumi/pulumi-go-provider v1.3.1
 	github.com/pulumi/pulumi-java/pkg v1.22.0
@@ -309,7 +309,7 @@ require (
 	github.com/pulumi/appdash v0.0.0-20231130102222-75f619a67231 // indirect
 	github.com/pulumi/esc v0.23.0 // indirect
 	github.com/pulumi/inflector v0.2.1 // indirect
-	github.com/pulumi/pulumi-azure-native-sdk/v2 v2.92.2 // indirect
+	github.com/pulumi/pulumi-azure-native-sdk/v3 v3.17.0 // indirect
 	github.com/quasilyte/go-ruleguard v0.4.3-0.20240823090925-0fe6f58b47b1 // indirect
 	github.com/quasilyte/go-ruleguard/dsl v0.3.23 // indirect
 	github.com/quasilyte/gogrep v0.5.0 // indirect

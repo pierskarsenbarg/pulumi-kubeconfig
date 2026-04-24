@@ -3,7 +3,7 @@ package pkg
 import (
 	"encoding/base64"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/containerservice/v2"
+	"github.com/pulumi/pulumi-azure-native-sdk/containerservice/v3"
 	"github.com/pulumi/pulumi-go-provider/infer"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
@@ -32,10 +32,10 @@ func (kca *AksKubeConfigState) Annotate(a infer.Annotator) {
 }
 
 func (k *AksKubeConfig) Construct(ctx *pulumi.Context, name, typ string, args AksKubeConfigArgs, opts pulumi.ResourceOption) (
-	*AksKubeConfigState, error) {
+	*AksKubeConfigState, error,
+) {
 	comp := &AksKubeConfigState{}
 	err := ctx.RegisterComponentResource(typ, name, comp, opts)
-
 	if err != nil {
 		return nil, err
 	}
