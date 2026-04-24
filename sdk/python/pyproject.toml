@@ -1,7 +1,7 @@
 [project]
   name = "pierskarsenbarg_pulumi_kubeconfig"
   description = "Kubeconfig provider"
-  dependencies = ["parver>=0.2.1", "pulumi>=3.0.0,<4.0.0", "pulumi_azure_native>=2.0.0,<3.0.0", "semver>=2.8.1", "typing-extensions>=4.11,<5; python_version < \"3.11\""]
+  dependencies = ["parver>=0.2.1", "pulumi>=3.0.0,<4.0.0", "pulumi_azure_native>=3.0.0,<4.0.0", "semver>=2.8.1", "typing-extensions>=4.11,<5; python_version < \"3.11\""]
   keywords = ["pulumi", "kubeconfig", "category/infrastructure", "kind/native"]
   readme = "README.md"
   requires-python = ">=3.9"
@@ -9,8 +9,8 @@
   [project.license]
     text = "Apache-2.0"
   [project.urls]
-    Homepage = "https://github.com/pierskarenbarg/pulumi-kubeconfig"
-    Repository = "https://github.com/pierskarenbarg/pulumi-kubeconfig"
+    Homepage = "https://github.com/pierskarsenbarg/pulumi-kubeconfig"
+    Repository = "https://github.com/pierskarsenbarg/pulumi-kubeconfig"
 
 [build-system]
   requires = ["setuptools>=61.0"]

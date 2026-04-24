@@ -46,7 +46,7 @@ func provider() p.Provider {
 					PackageName: "@pierskarsenbarg/pulumi-kubeconfig",
 					Dependencies: map[string]string{
 						"@pulumi/pulumi":       "^3.0.0",
-						"@pulumi/azure-native": "^2.0.0",
+						"@pulumi/azure-native": "^3.0.0",
 					},
 					DevDependencies: map[string]string{
 						"@types/node": "^10.0.0", // so we can access strongly typed node definitions.
@@ -59,7 +59,7 @@ func provider() p.Provider {
 					RootNamespace:        "PiersKarsenbarg.Pulumi",
 					PackageReferences: map[string]string{
 						"Pulumi":             "3.*",
-						"Pulumi.AzureNative": "2.*",
+						"Pulumi.AzureNative": "3.*",
 					},
 				},
 				"python": pythongen.PackageInfo{
@@ -69,7 +69,7 @@ func provider() p.Provider {
 					}{Enabled: true},
 					Requires: map[string]string{
 						"pulumi":              ">=3.0.0,<4.0.0",
-						"pulumi_azure_native": ">=2.0.0,<3.0.0",
+						"pulumi_azure_native": ">=3.0.0,<4.0.0",
 					},
 					PackageName: "pierskarsenbarg_pulumi_kubeconfig",
 				},
@@ -78,15 +78,15 @@ func provider() p.Provider {
 			Publisher:         "Piers Karsenbarg",
 		},
 		Resources: []infer.InferredResource{
-			infer.Resource[*pkg.EksKubeConfig](&pkg.EksKubeConfig{}),
-			infer.Resource[*pkg.GkeKubeConfig](&pkg.GkeKubeConfig{}),
+			infer.Resource(&pkg.EksKubeConfig{}),
+			infer.Resource(&pkg.GkeKubeConfig{}),
 		},
 		ModuleMap: map[tokens.ModuleName]tokens.ModuleName{
 			"pkg": "index",
 		},
 		Functions: []infer.InferredFunction{},
 		Components: []infer.InferredComponent{
-			infer.Component[*pkg.AksKubeConfig](&pkg.AksKubeConfig{}),
+			infer.Component(&pkg.AksKubeConfig{}),
 		},
 	})
 }
