@@ -5,7 +5,7 @@ go 1.26.0
 require (
 	github.com/golangci/golangci-lint v1.64.8
 	github.com/pulumi/pulumi-azure-native-sdk/containerservice/v3 v3.17.0
-	github.com/pulumi/pulumi-dotnet/pulumi-language-dotnet/v3 v3.103.0
+	github.com/pulumi/pulumi-dotnet/pulumi-language-dotnet/v3 v3.103.1
 	github.com/pulumi/pulumi-go-provider v1.3.1
 	github.com/pulumi/pulumi-java/pkg v1.22.0
 	github.com/pulumi/pulumi-yaml v1.32.0
@@ -291,7 +291,7 @@ require (
 	github.com/pgavlin/aho-corasick v0.5.1 // indirect
 	github.com/pgavlin/diff v0.0.0-20230503175810-113847418e2e // indirect
 	github.com/pgavlin/fx v0.1.6 // indirect
-	github.com/pgavlin/fx/v2 v2.0.10 // indirect
+	github.com/pgavlin/fx/v2 v2.0.12 // indirect
 	github.com/pgavlin/goldmark v1.1.33-0.20200616210433-b5eb04559386 // indirect
 	github.com/pgavlin/text v0.0.0-20240821195002-b51d0990e284 // indirect
 	github.com/pjbgf/sha1cd v0.4.0 // indirect
@@ -425,8 +425,8 @@ require (
 	golang.org/x/xerrors v0.0.0-20231012003039-104605ab7028 // indirect
 	google.golang.org/api v0.223.0 // indirect
 	google.golang.org/genproto v0.0.0-20241118233622-e639e219e697 // indirect
-	google.golang.org/genproto/googleapis/api v0.0.0-20260414002931-afd174a4e478 // indirect
-	google.golang.org/genproto/googleapis/rpc v0.0.0-20260414002931-afd174a4e478 // indirect
+	google.golang.org/genproto/googleapis/api v0.0.0-20260420184626-e10c466a9529 // indirect
+	google.golang.org/genproto/googleapis/rpc v0.0.0-20260420184626-e10c466a9529 // indirect
 	google.golang.org/grpc v1.80.0 // indirect
 	google.golang.org/protobuf v1.36.11 // indirect
 	gopkg.in/ini.v1 v1.67.0 // indirect
