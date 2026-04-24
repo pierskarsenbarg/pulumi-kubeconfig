@@ -128,7 +128,7 @@ jobs:
         language:
           - nodejs
           - python
-          # - dotnet
+          - dotnet
     steps:
       - if: matrix.language == 'nodejs'
         name: Setup Node
