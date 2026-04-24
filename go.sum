@@ -825,8 +825,8 @@ github.com/pgavlin/diff v0.0.0-20230503175810-113847418e2e h1:Or25BtWLCyWKjnLyuM
 github.com/pgavlin/diff v0.0.0-20230503175810-113847418e2e/go.mod h1:WGwlmuPAiQTGQUjxyAfP7j4JgbgiFvFpI/qRtsQtS/4=
 github.com/pgavlin/fx v0.1.6 h1:r9jEg69DhNoCd3Xh0+5mIbdbS3PqWrVWujkY76MFRTU=
 github.com/pgavlin/fx v0.1.6/go.mod h1:KWZJ6fqBBSh8GxHYqwYCf3rYE7Gp2p0N8tJp8xv9u9M=
-github.com/pgavlin/fx/v2 v2.0.10 h1:ggyQ6pB+lEQEbEae48Wh/X221eLOamMD7i01ISe88u4=
-github.com/pgavlin/fx/v2 v2.0.10/go.mod h1:M/nF/ooAOy+NUBooYYXl2REARzJ/giPJxfMs8fINfKc=
+github.com/pgavlin/fx/v2 v2.0.12 h1:SjjaJ68Dt8Z4zHwOpY/RPijd7lShs6xYupJbF9ra00M=
+github.com/pgavlin/fx/v2 v2.0.12/go.mod h1:M/nF/ooAOy+NUBooYYXl2REARzJ/giPJxfMs8fINfKc=
 github.com/pgavlin/goldmark v1.1.33-0.20200616210433-b5eb04559386 h1:LoCV5cscNVWyK5ChN/uCoIFJz8jZD63VQiGJIRgr6uo=
 github.com/pgavlin/goldmark v1.1.33-0.20200616210433-b5eb04559386/go.mod h1:MRxHTJrf9FhdfNQ8Hdeh9gmHevC9RJE/fu8M3JIGjoE=
 github.com/pgavlin/text v0.0.0-20240821195002-b51d0990e284 h1:qpLdAFg3kyV/mEsuMPBgLzFo3xRpKBdOff8m0up9eAs=
@@ -885,8 +885,8 @@ github.com/pulumi/pulumi-azure-native-sdk/containerservice/v3 v3.17.0 h1:S4JAk4c
 github.com/pulumi/pulumi-azure-native-sdk/containerservice/v3 v3.17.0/go.mod h1:SYvurL6Qyw/dTmAjOdETI5se8uo29oovDHomYclHBNw=
 github.com/pulumi/pulumi-azure-native-sdk/v3 v3.17.0 h1:CFtP/hsyGR2jSAm/Fz+4QW8d/Slw619gUoLuobnCCX8=
 github.com/pulumi/pulumi-azure-native-sdk/v3 v3.17.0/go.mod h1:ELaNq3/fmYWdM6Y4vTQmheO9gGkeCrAMeiOD1XReDwA=
-github.com/pulumi/pulumi-dotnet/pulumi-language-dotnet/v3 v3.103.0 h1:jkZrUea6JRgDrTgsUI/vd99bQqnpZiMXtvzfkeWLeFg=
-github.com/pulumi/pulumi-dotnet/pulumi-language-dotnet/v3 v3.103.0/go.mod h1:qVjigpiMlW2k9NP0LziXNR118/SqJnQwJRhK7n21osA=
+github.com/pulumi/pulumi-dotnet/pulumi-language-dotnet/v3 v3.103.1 h1:g04apzDR0UbF1f+TNtAmbj3T1WVdwTLNAhyKw/dMg5I=
+github.com/pulumi/pulumi-dotnet/pulumi-language-dotnet/v3 v3.103.1/go.mod h1:21ULKvDIGaXBH0qGAWD+WmDwoHuXoMhjQWQN7359ZNg=
 github.com/pulumi/pulumi-go-provider v1.3.1 h1:HuzbOG3BWU+JZ1CdJeUwGEATRtCU8HNwRX6rxKUeZ/E=
 github.com/pulumi/pulumi-go-provider v1.3.1/go.mod h1:HS3UcUA42rwKdSx4k47Fr+36oGJqErGm22GP74JC1Gs=
 github.com/pulumi/pulumi-java/pkg v1.22.0 h1:p60fqNNS1yfZzr3xPv7o6pZoCfwySCnFduMdUr9LHTo=
@@ -1533,10 +1533,10 @@ google.golang.org/genproto v0.0.0-20200804131852-c06518451d9c/go.mod h1:FWY/as6D
 google.golang.org/genproto v0.0.0-20200825200019-8632dd797987/go.mod h1:FWY/as6DDZQgahTzZj3fqbO1CbirC29ZNUFHwi0/+no=
 google.golang.org/genproto v0.0.0-20241118233622-e639e219e697 h1:ToEetK57OidYuqD4Q5w+vfEnPvPpuTwedCNVohYJfNk=
 google.golang.org/genproto v0.0.0-20241118233622-e639e219e697/go.mod h1:JJrvXBWRZaFMxBufik1a4RpFw4HhgVtBBWQeQgUj2cc=
-google.golang.org/genproto/googleapis/api v0.0.0-20260414002931-afd174a4e478 h1:yQugLulqltosq0B/f8l4w9VryjV+N/5gcW0jQ3N8Qec=
-google.golang.org/genproto/googleapis/api v0.0.0-20260414002931-afd174a4e478/go.mod h1:C6ADNqOxbgdUUeRTU+LCHDPB9ttAMCTff6auwCVa4uc=
-google.golang.org/genproto/googleapis/rpc v0.0.0-20260414002931-afd174a4e478 h1:RmoJA1ujG+/lRGNfUnOMfhCy5EipVMyvUE+KNbPbTlw=
-google.golang.org/genproto/googleapis/rpc v0.0.0-20260414002931-afd174a4e478/go.mod h1:4Hqkh8ycfw05ld/3BWL7rJOSfebL2Q+DVDeRgYgxUU8=
+google.golang.org/genproto/googleapis/api v0.0.0-20260420184626-e10c466a9529 h1:zUWMZsvo/IJcD1t6MNCPO/azZTwz0TvwCBqr5aifoVY=
+google.golang.org/genproto/googleapis/api v0.0.0-20260420184626-e10c466a9529/go.mod h1:a5OGAgyRr4lqco7AG9hQM9Fwh0N2ZV4grR0eXFEsXQg=
+google.golang.org/genproto/googleapis/rpc v0.0.0-20260420184626-e10c466a9529 h1:XF8+t6QQiS0o9ArVan/HW8Q7cycNPGsJf6GA2nXxYAg=
+google.golang.org/genproto/googleapis/rpc v0.0.0-20260420184626-e10c466a9529/go.mod h1:4Hqkh8ycfw05ld/3BWL7rJOSfebL2Q+DVDeRgYgxUU8=
 google.golang.org/grpc v1.19.0/go.mod h1:mqu4LbDTu4XGKhr4mRzUsmM4RtVoemTSY81AxZiDr8c=
 google.golang.org/grpc v1.20.1/go.mod h1:10oTOabMzJvdu6/UiuZezV6QK5dSlG84ov/aaiqXj38=
 google.golang.org/grpc v1.21.1/go.mod h1:oYelfM1adQP15Ek0mdvEgi9Df8B9CZIaU1084ijfRaM=
