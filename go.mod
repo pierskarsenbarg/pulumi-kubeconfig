@@ -9,11 +9,11 @@ require (
 	github.com/pulumi/pulumi-go-provider v1.3.1
 	github.com/pulumi/pulumi-java/pkg v1.22.0
 	github.com/pulumi/pulumi-yaml v1.32.0
-	github.com/pulumi/pulumi/pkg/v3 v3.230.0
+	github.com/pulumi/pulumi/pkg/v3 v3.231.0
 	github.com/pulumi/pulumi/sdk/go/pulumi-language-go/v3 v3.0.0-20260423015423-1696a68b7b43
 	github.com/pulumi/pulumi/sdk/nodejs/cmd/pulumi-language-nodejs/v3 v3.0.0-20260423015423-1696a68b7b43
 	github.com/pulumi/pulumi/sdk/python/cmd/pulumi-language-python/v3 v3.0.0-20260423015423-1696a68b7b43
-	github.com/pulumi/pulumi/sdk/v3 v3.231.0
+	github.com/pulumi/pulumi/sdk/v3 v3.232.0
 )
 
 require (
