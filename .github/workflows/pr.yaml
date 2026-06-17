@@ -13,7 +13,7 @@ jobs:
       - name: Checkout Repo
         uses: actions/checkout@v6
       - name: Set Provider Version
-        uses: pulumi/provider-version-action@v1
+        uses: pulumi/provider-version-action@v2
         with:
           set-env: PROVIDER_VERSION
       - name: Install Go
@@ -63,7 +63,7 @@ jobs:
       - name: Checkout Repo
         uses: actions/checkout@v6
       - name: Set Provider Version
-        uses: pulumi/provider-version-action@v1
+        uses: pulumi/provider-version-action@v2
         with:
           set-env: PROVIDER_VERSION
       - name: Install Task
