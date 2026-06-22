@@ -64,7 +64,7 @@ export interface AksKubeConfigArgs {
     /**
      * Specify whether you want to retrieve the admin kubeconfig or the user kubeconfig. Default value is false
      */
-    isAdmin?: pulumi.Input<boolean>;
+    isAdmin?: pulumi.Input<boolean | undefined>;
     /**
      * Name of the resource group that the cluster is part of.
      */

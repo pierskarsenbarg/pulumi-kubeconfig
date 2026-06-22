@@ -21,7 +21,7 @@ class AksKubeConfigArgs:
     def __init__(__self__, *,
                  cluster_name: pulumi.Input[_builtins.str],
                  resource_group_name: pulumi.Input[_builtins.str],
-                 is_admin: Optional[pulumi.Input[_builtins.bool]] = None):
+                 is_admin: pulumi.Input[Optional[_builtins.bool]] = None):
         """
         The set of arguments for constructing a AksKubeConfig resource.
 
@@ -60,14 +60,14 @@ class AksKubeConfigArgs:
 
     @_builtins.property
     @pulumi.getter(name="isAdmin")
-    def is_admin(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def is_admin(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Specify whether you want to retrieve the admin kubeconfig or the user kubeconfig. Default value is false
         """
         return pulumi.get(self, "is_admin")
 
     @is_admin.setter
-    def is_admin(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def is_admin(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "is_admin", value)
 
 
@@ -77,9 +77,9 @@ class AksKubeConfig(pulumi.ComponentResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 cluster_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 is_admin: Optional[pulumi.Input[_builtins.bool]] = None,
-                 resource_group_name: Optional[pulumi.Input[_builtins.str]] = None,
+                 cluster_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 is_admin: pulumi.Input[Optional[_builtins.bool]] = None,
+                 resource_group_name: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Create a AksKubeConfig resource with the given unique name, props, and options.
@@ -114,9 +114,9 @@ class AksKubeConfig(pulumi.ComponentResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 cluster_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 is_admin: Optional[pulumi.Input[_builtins.bool]] = None,
-                 resource_group_name: Optional[pulumi.Input[_builtins.str]] = None,
+                 cluster_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 is_admin: pulumi.Input[Optional[_builtins.bool]] = None,
+                 resource_group_name: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
