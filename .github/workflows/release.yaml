@@ -61,7 +61,7 @@ jobs:
       - name: Checkout Repo
         uses: actions/checkout@v6
       - name: Set Provider Version
-        uses: pulumi/provider-version-action@v1
+        uses: pulumi/provider-version-action@v2
         with:
           set-env: PROVIDER_VERSION
       - name: Install Task
@@ -70,7 +70,7 @@ jobs:
           version: 3.x
           repo-token: ${{ secrets.GITHUB_TOKEN }}
       - name: Install Pulumi CLI
-        uses: pulumi/actions@v6
+        uses: pulumi/actions@v7
         with:
           pulumi-version: latest
       - name: Check Pulumi CLI version
@@ -185,7 +185,7 @@ jobs:
         uses: actions/checkout@v6
       - id: version
         name: Set Provider Version
-        uses: pulumi/provider-version-action@v1
+        uses: pulumi/provider-version-action@v2
         with:
           set-env: PROVIDER_VERSION
       - name: Download go SDK
