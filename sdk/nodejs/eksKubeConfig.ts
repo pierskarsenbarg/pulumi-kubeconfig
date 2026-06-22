@@ -104,7 +104,7 @@ export interface EksKubeConfigArgs {
     /**
      * Base64 encoded certificate data required to communicate with your cluster.
      */
-    certificateData?: pulumi.Input<string>;
+    certificateData?: pulumi.Input<string | undefined>;
     /**
      * Endpoint for your Kubernetes API server.
      */
@@ -116,13 +116,13 @@ export interface EksKubeConfigArgs {
     /**
      * AWS Profile name. This will overwrite any environment variables set.
      */
-    profile?: pulumi.Input<string>;
+    profile?: pulumi.Input<string | undefined>;
     /**
      * Region that the EKS cluster is in. Optional
      */
-    region?: pulumi.Input<string>;
+    region?: pulumi.Input<string | undefined>;
     /**
      * Role arn that you want the kubeconfig to use. Optional
      */
-    roleArn?: pulumi.Input<string>;
+    roleArn?: pulumi.Input<string | undefined>;
 }
