@@ -16,6 +16,8 @@ jobs:
         uses: pulumi/provider-version-action@v2
         with:
           set-env: PROVIDER_VERSION
+        env: 
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       - name: Install Go
         uses: actions/setup-go@v7
         with:
