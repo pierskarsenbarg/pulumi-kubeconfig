@@ -4,7 +4,7 @@ updates:
     assignees:
       - "pierskarsenbarg"
     schedule:
-      interval: "weekly"
+      interval: "monthly"
       time: "08:00"
       day: "monday"
     commit-message:
@@ -22,7 +22,7 @@ updates:
       - "pierskarsenbarg"
     directory: "/sdk"
     schedule:
-      interval: "weekly"
+      interval: "monthly"
       day: "tuesday"
       time: "08:00"
     commit-message:
@@ -39,7 +39,7 @@ updates:
       - "pierskarsenbarg"
     directory: "/"
     schedule:
-      interval: "weekly"
+      interval: "monthly"
       day: "wednesday"
       time: "08:00"
     commit-message:
